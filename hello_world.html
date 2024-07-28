@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Exercises</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Python Exercises</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button>
+        <button onclick="showExercise('exercise2')">Exercise 2</button>
+    </div>
+    
+    <div class="exercise-container">
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Say hello</h2>
+                <p>The very first program you will learn to write is <strong>hello, world</strong>. In Python, the command to display <strong>hello, world</strong> on the screen is simply:</p>
+                <pre><code>print('hello, world')</code></pre>
+                <p><strong>print</strong> is a special command to tell the computer program to show whatever is inside the parentheses.</p>
+                <p>The quoted text, <strong>'hello, world'</strong>, is called a <strong>string</strong>. Think of a string as a sequence of characters that are strung together in order.</p>
+                <h3>Try it Yourself</h3>
+                <p>Now, write code to print the following:</p>
+                <pre><code>hello, world</code></pre>
+                <p>Then hit the <strong>Run</strong> button to validate.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50"># write code to print hello, world</textarea>
+                <button onclick="runCode('codeEditor1', 'output1', 'result1', 'hello, world')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output1"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result1"></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 2: Print your name</h2>
+                <p>Write a Python program to print your name. For example, if your name is John, the command to display <strong>John</strong> on the screen is:</p>
+                <pre><code>print('John')</code></pre>
+                <p><strong>print</strong> is a special command to tell the computer program to show whatever is inside the parentheses.</p>
+                <p>The quoted text, <strong>'John'</strong>, is called a <strong>string</strong>. Think of a string as a sequence of characters that are strung together in order.</p>
+                <h3>Try it Yourself</h3>
+                <p>Now, write code to print your name:</p>
+                <pre><code>Your Name</code></pre>
+                <p>Then hit the <strong>Run</strong> button to validate.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor2" rows="10" cols="50"># write code to print your name</textarea>
+                <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output2"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result2"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'flex';
+        }
+
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null) {
+                    resultElement.textContent = "Success";
+                } else if (actualOutput === expectedOutput) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+    </script>
+</body>
+</html>

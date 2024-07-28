@@ -18,3 +18,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+
+function runCode() {
+    const code = document.getElementById('codeEditor').value;
+    const outputElement = document.getElementById('output');
+    const resultElement = document.getElementById('result');
+    
+    try {
+        const output = eval(code);
+        outputElement.textContent = output;
+        resultElement.textContent = 'Success';
+    } catch (error) {
+        resultElement.textContent = `Error: ${error.message}`;
+    }
+}
