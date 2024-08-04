@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Exercises</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Lesson 2 Practice</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button>
+        <button onclick="showExercise('exercise2')">Exercise 2</button>
+        <button onclick="showExercise('exercise3')">Exercise 3</button>
+        <button onclick="showExercise('exercise4')">Exercise 4</button>
+        <button onclick="showExercise('exercise5')">Exercise 5</button>
+        <button onclick="showExercise('project')">Project</button>
+    </div>
+    
+    <div class="exercise-container">
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Understanding Variables</h2>
+                <p>Variables are where information is stored in a computer's memory. Here’s an example of how to create a variable:</p>
+                <pre><code>x = 100</code></pre>
+                <p>Now, let's try creating a variable named <strong>my_variable</strong> with a value of <strong>50</strong>.</p>
+                <p>Write your code below and click "Run".</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50"># create a variable named my_variable with a value of 50</textarea>
+                <button onclick="runCode('codeEditor1', 'output1', 'result1', '50')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output1"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result1"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 2: Data Types</h2>
+                <p>A <strong>string</strong> is all the words and letters that are not functions and operations. Strings must be surrounded by either quotation marks or single quotes.</p>
+
+                <pre><code>string = "hello"</code></pre>
+                <pre><code>good_string = "I love Python"</code></pre>
+                <p>Note that you can also put numbers in the strings, as long as they are inside the quotation marks! However, these examples are <strong>NOT</strong> strings.</p>
+            
+                <pre><code>12, 10, 1.23, 3.14159</code></pre>
+                <p>Remember the “Hello World” from last class? That was a string too!</p>
+        
+                <p>The <strong>Integer</strong> is the simplest of the three main data types. It is simply a number, without a decimal point.</p>
+       
+                <pre><code>1, 10, 343, 21</code></pre>
+                <p>Not an example:</p>
+                <pre><code>hello, 1.0, 2.3, 3.14159, 2.10</code></pre>
+                <p>We can perform functions like adding, subtracting, division, and basically all the math functions you can think of with these.</p>
+        
+                <p><strong>Float:</strong> Floats are the final of the three main data types. The Float is simply a number that has a decimal point!</p>
+                
+                <pre><code>1.124, 3.14159, 1.20, 2.0</code></pre>
+                <p>Not an example:</p>
+                <pre><code>hello</code></pre>
+                <p>Floats can be added, subtracted, and all the other mathematical operations too!</p>
+                <br>
+                <p>Now try to create examples and non-examples for each data type in the code editor below:</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor2" rows="10" cols="50"># write examples and non-examples for strings, integers, and floats</textarea>
+                <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output2"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result2"></pre>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <!-- Exercise 3 -->
+        <div id="exercise3" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 3: String Operations</h2>
+                <p>Strings can be combined using the <strong>+</strong> operator. This is called string concatenation. For example:</p>
+                <pre><code>first_string = "Hello, "
+                second_string = "World!"
+                full_string = first_string + second_string
+                print(full_string)</code></pre>
+                <p>Now, let's create two string variables and concatenate them.</p>
+                <p>Write your code below and click "Run".</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50"># create two string variables and concatenate them</textarea>
+                <button onclick="runCode('codeEditor3', 'output3', 'result3', 'Hello, World!')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output3"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result3"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 4 -->
+        <div id="exercise4" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 4: Integer and Float Operations</h2>
+                <p>Integers and floats can be used in mathematical operations. For example:</p>
+                <pre><code>integer_variable = 10
+                float_variable = 5.5
+                result = integer_variable + float_variable
+                print(result)</code></pre>
+                <p>Now, let's create two variables (one integer and one float) and perform a multiplication operation.</p>
+                <p>Write your code below and click "Run".</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor4" rows="10" cols="50"># create an integer and a float variable, then multiply them</textarea>
+                <button onclick="runCode('codeEditor4', 'output4', 'result4', '55.0')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output4"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result4"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 5 -->
+        <div id="exercise5" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 5: Printing Variables</h2>
+                <p>To print the value of a variable, simply include the variable name in the print function:</p>
+                <pre><code>my_variable = 100
+                print(my_variable)</code></pre>
+                <p>Let's print a variable that contains a float value.</p>
+                <p>Write your code below and click "Run".</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor5" rows="10" cols="50"># create a float variable and print its value</textarea>
+                <button onclick="runCode('codeEditor5', 'output5', 'result5', '3.14159')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output5"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result5"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project -->
+        <div id="project" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Project: Art Project</h2>
+                <p>Use this space to create your own design using <strong> print </strong> statements.</p>
+                <p>Remember that anything you input between the parentheses gets printed!</p><br>
+                <p>Here is mine: \_('_')_/ </p>
+                <p>What's yours? Get creative with it!</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditorProject" rows="20" cols="100"># start your project here, write a story or create artwork!</textarea>
+                <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="outputProject"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="resultProject"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'flex';
+        }
+
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null) {
+                    resultElement.textContent = "Success";
+                } else if (actualOutput === expectedOutput) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+    </script>
+</body>
+</html>
