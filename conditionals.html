@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: Conditionals Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Lesson 4: Conditionals Practice</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button>
+        <button onclick="showExercise('exercise2')">Exercise 2</button>
+        <button onclick="showExercise('exercise3')">Exercise 3</button>
+        <button onclick="showExercise('project')">Project</button>
+    </div>
+
+    <div class="exercise-container">
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Introduction to Conditionals</h2>
+                <p>Conditionals are simply statements that say that if something happens, the computer must do this, otherwise, the computer should do something else.</p>
+                <p>Think of it as your mom telling you to finish your chores. If you finish your chores, you will get your allowance. But if you don’t, your mom will get mad at you.</p>
+                <p>There are three types of conditional statements:</p>
+                <ul>
+                    <li><strong>If statement:</strong> The if statement starts off the conditional.</li>
+                    <li><strong>Elif statement:</strong> This is the middle, it says that if the previous conditions didn't happen, but this one does, then do the following function.</li>
+                    <li><strong>Else statement:</strong> This ends the conditional, saying that if nothing above happened, then do the following.</li>
+                </ul>
+                <h3>Example of Proper Syntax:</h3>
+                <pre><code>if condition:
+    # do something
+elif another_condition:
+    # do something else
+else:
+    # do something if none of the above conditions are true
+</code></pre>
+                <h3>Try it Yourself</h3>
+                <p>Write a Python program that uses if, elif, and else statements.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50"># practice writing if, elif, and else statements</textarea>
+                <button onclick="runCode('codeEditor1', 'output1', 'result1')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output1"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result1"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 2: Conditions</h2>
+                <p>Conditions are the part of the conditional which state what is supposed to happen.</p>
+                <p>For math:</p>
+                <ul>
+                    <li>Equal to: <code>==</code></li>
+                    <li>Not equal to: <code>!=</code></li>
+                    <li>Less than: <code><</code></li>
+                    <li>Greater than: <code>></code></li>
+                    <li>Less than or Equal to: <code><=</code></li>
+                    <li>Greater than or equal to: <code>>=</code></li>
+                </ul>
+                <p>For strings, you can use equal (==) and not equal (!=) to determine whether the string is the same or not the same as the other string that it is compared to.</p>
+                <h3>Example of Conditions:</h3>
+                <pre><code>if age == 18:
+    print("You are 18 years old")
+if name != "John":
+    print("You are not John")
+if height > 160:
+    print("You are tall")
+</code></pre>
+                <h3>Try it Yourself</h3>
+                <p>Write a Python program using different conditions.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor2" rows="10" cols="50"># practice using conditions</textarea>
+                <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output2"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result2"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div id="exercise3" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 3: Debugging Conditionals</h2>
+                <p>Conditionals must have proper syntax to work correctly. This includes correct use of tabs/4 spaces.</p>
+                <p>Fix the error in the following Python code:</p>
+                <pre><code>if age > 18:
+print("You are an adult")
+    elif age == 18:
+print("You just became an adult")
+else:
+print("You are not an adult yet")
+</code></pre>
+                <h3>Try it Yourself</h3>
+                <p>Debug the code above to make it work correctly.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50"># debug the code below
+if age > 18:
+print("You are an adult")
+    elif age == 18:
+print("You just became an adult")
+else:
+print("You are not an adult yet")</textarea>
+                <button onclick="runCode('codeEditor3', 'output3', 'result3')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output3"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result3"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project -->
+        <div id="project" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Project: Conditional Story</h2>
+                <p>Use this space to create a short story or program that utilizes conditionals.</p>
+                <p>Be creative and make sure to use if, elif, and else statements!</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditorProject" rows="20" cols="100"># start your conditional story or program here!</textarea>
+                <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="outputProject"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="resultProject"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'flex';
+        }
+    
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+    
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+    
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+    
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+    
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null || actualOutput.includes(expectedOutput)) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+    </script>
+    
+
+ 
