@@ -30,7 +30,9 @@
                 <p>Write your code below and click "Run".</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor1" rows="10" cols="50"># create a variable named my_variable with a value of 50</textarea>
+                <textarea id="codeEditor1" rows="10" cols="50"># create a variable named my_variable with a value of 50.
+print(my_variable)
+                </textarea>
                 <button onclick="runCode('codeEditor1', 'output1', 'result1', '50')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -69,10 +71,18 @@
                 <pre><code>hello</code></pre>
                 <p>Floats can be added, subtracted, and all the other mathematical operations too!</p>
                 <br>
-                <p>Now try to create examples and non-examples for each data type in the code editor below:</p>
+                <p>Now fix the non-examples for each data type in the code editor below:</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor2" rows="10" cols="50"># write examples and non-examples for strings, integers, and floats</textarea>
+                <textarea id="codeEditor2" rows="10" cols="50"># fix the variables that have mismatched data types
+int1 = 30
+float1 = "hello"
+string1 = 3.14
+float2 = 8.56
+int2 = "pi"
+string2 = "I like coding"
+print(string2)
+                </textarea>
                 <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -93,14 +103,14 @@
                 <h2>Exercise 3: String Operations</h2>
                 <p>Strings can be combined using the <strong>+</strong> operator. This is called string concatenation. For example:</p>
                 <pre><code>first_string = "Hello, "
-                second_string = "World!"
-                full_string = first_string + second_string
-                print(full_string)</code></pre>
+second_string = "World!"
+full_string = first_string + second_string
+print(full_string)</code></pre>
                 <p>Now, let's create two string variables and concatenate them.</p>
                 <p>Write your code below and click "Run".</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor3" rows="10" cols="50"># create two string variables and concatenate them</textarea>
+                <textarea id="codeEditor3" rows="10" cols="50"># create two string variables and concatenate them. Print the final string.</textarea>
                 <button onclick="runCode('codeEditor3', 'output3', 'result3', 'Hello, World!')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -119,9 +129,9 @@
                 <h2>Exercise 4: Integer and Float Operations</h2>
                 <p>Integers and floats can be used in mathematical operations. For example:</p>
                 <pre><code>integer_variable = 10
-                float_variable = 5.5
-                result = integer_variable + float_variable
-                print(result)</code></pre>
+float_variable = 5.5
+result = integer_variable + float_variable
+print(result)</code></pre>
                 <p>Now, let's create two variables (one integer and one float) and perform a multiplication operation.</p>
                 <p>Write your code below and click "Run".</p>
             </div>

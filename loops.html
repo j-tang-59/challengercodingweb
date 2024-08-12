@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Loops Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Lesson 6: Loops Practice</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button>
+        <button onclick="showExercise('exercise2')">Exercise 2</button>
+        <button onclick="showExercise('exercise3')">Exercise 3</button>
+        <button onclick="showExercise('exercise4')">Exercise 4</button>
+    </div>
+    
+    <div class="exercise-container">
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Introduction to Loops</h2>
+                <p>Loops are repeat functions that tell the code to repeat a certain block of code for a specified amount of time or until a condition is met.</p>
+                <p>There are two main types of loops:</p>
+                
+                    <strong>While Loops</strong>
+                    <strong>For Loops</strong>
+                </ul>
+                <h3>Try it Yourself</h3>
+                <p>Study the similarities and differences of for and while loops.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50"># these two loops have the same function. study them.
+print("for loop")
+for x in range(6):
+    print(x)
+
+print()
+print("while loop")
+
+y = 0
+while y < 6:
+    print(y)
+    y+=1  
+
+                </textarea>
+                <button onclick="runCode('codeEditor1', 'output1', 'result1')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output1"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result1"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 2: While Loops</h2>
+                <p><strong>While loops</strong> are the simplest type of loops. Like an if statement, they have a condition. If the condition is true, the while loop will continue running.</p>
+                <p>The computer checks if the condition is still true after it finishes the current round of the loop.</p>
+                <p><strong>Example:</strong> If you had a while loop that prints "Hi" and then prints your name, the code would only check if the condition is true after it prints your name.</p>
+                <p>You can also use:</p>
+                <ul>
+                    <li><strong>break:</strong> To break out of the loop early before it naturally ends.</li>
+                    <li><strong>continue:</strong> To skip the rest of the current loop iteration and move to the next one.</li>
+                    <li><strong>True:</strong> A Boolean variable to create a loop that never ends.</li>
+                </ul>
+                <h3>While Loop Syntax:</h3>
+                <pre><code>while condition:
+    # code to be executed
+    if some_condition:
+        break  # optional</code></pre>
+                <h3>Try it Yourself</h3>
+                <p>Write a while loop that uses break or continue.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor2" rows="10" cols="50"># Write a while loop with break or continue here</textarea>
+                <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output2"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result2"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div id="exercise3" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 3: For Loops</h2>
+                <p><strong>For loops</strong> run the code for a certain range or number of times. The <code>range()</code> function is often used to provide the program with a range within which it will run the code.</p>
+                <p><strong>range syntax:</strong></p>
+                <pre><code>range(STARTING, ENDING)</code></pre>
+                <p>The STARTING is the first number in the range, and the ENDING is the last number plus one. So, if you want the range to be 0 to 10, you will write:</p>
+                <pre><code>range(0, 11)</code></pre>
+                <p>The syntax of for loops can be tricky:</p>
+                <pre><code>for VARIABLE in RANGE:
+    # code to be executed</code></pre>
+                <p>The VARIABLE represents the current item in the range, and the RANGE can be anything with a length or a range, such as a list, a string, or the range function.</p>
+                <h3>Try it Yourself</h3>
+                <p>Write a for loop that uses a range of numbers.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50"># Write a for loop with a range here</textarea>
+                <button onclick="runCode('codeEditor3', 'output3', 'result3')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output3"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result3"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 4 -->
+        <div id="exercise4" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 4: How For Loops Work</h2>
+                <p>For loops start with the first item in the list or range and set the VARIABLE to it. The code inside the loop is then executed for that value. The loop then moves to the next item and repeats the process.</p>
+                <h3>Example:</h3>
+                <pre><code>fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)</code></pre>
+                <p>This loop will print each fruit in the list until all items have been processed.</p>
+                <h3>Try it Yourself</h3>
+                <p>Write a for loop that processes a list of items.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor4" rows="10" cols="50"># Write a for loop that processes a list here</textarea>
+                <button onclick="runCode('codeEditor4', 'output4', 'result4')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="output4"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="result4"></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            function showExercise(exerciseId) {
+                const exercises = document.querySelectorAll('.exercise');
+                exercises.forEach(exercise => {
+                    exercise.style.display = 'none';
+                });
+                document.getElementById(exerciseId).style.display = 'flex';
+            }
+            
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null) {
+                    resultElement.textContent = "Success";
+                } else if (actualOutput === expectedOutput) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+</script>
+
+        
