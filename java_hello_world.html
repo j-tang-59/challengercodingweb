@@ -6,6 +6,20 @@
     <title>Java Tutorial</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <style>
+        /* Ensure that all exercises take up the full width of the page */
+        .exercise {
+            width: 100%;
+            box-sizing: border-box; /* Include padding and border in the element's width and height */
+        }
+        
+        /* Ensure that iframes take up the full width of their container */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 0; /* Remove border if not needed */
+        }
+    </style>
 </head>
 <body>
     <h1>Week 1 Guided Tutorials</h1>
@@ -33,54 +47,32 @@
                 <h3>Try it Yourself</h3>
                 <p>Write a Java program with a public class named <strong>MyFirstClass</strong>. In the main method, use <strong>System.out.println</strong> to print out: Welcome to CS Wonders Java class!</p>
             </div>
-            <div class="editor">
-                <textarea id="codeEditorJava1" rows="10" cols="50">// write your Java code here</textarea>
-                <button onclick="runJavaCode('codeEditorJava1', 'outputJava1', 'resultJava1')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="outputJava1"></pre>
-                </div>
-                <div class="result">
-                    <h3>Result</h3>
-                    <pre id="resultJava1"></pre>
-                </div>
-            </div>
+            <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
         </div>
         
         <!-- Exercise 2 -->
-<div id="exercise2" class="exercise" style="display: none;">
-    <div class="instructions">
-        <h2>Hello, world!</h2>
-        <p>Every executable Java program consists of a <strong>class</strong>, that contains a <strong>method</strong> named <strong>main</strong>, that contains the <strong>statements</strong> (commands) to be executed.</p>
-        <pre><code>public class Hello {
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Hello, world!</h2>
+                <p>Every executable Java program consists of a <strong>class</strong>, that contains a <strong>method</strong> named <strong>main</strong>, that contains the <strong>statements</strong> (commands) to be executed.</p>
+                <pre><code>public class Hello {
     public static void main(String[] args) {
         System.out.println("Hello, world!");
     }
 }</code></pre>
-        <p>The above program has a class named <strong>Hello</strong>. It contains a <strong>main</strong> method which has only one statement:</p>
-        <pre><code>System.out.println("Hello, world!");</code></pre>
-        <p>When a Java run-time starts to execute a program, it looks for the <strong>main</strong> method in the public class that matches the program's name.</p>
-        <p>The body of a class and a method must be enclosed in paired curly braces <strong>{ }</strong>. Every Java statement must end with a semicolon <strong>;</strong>.</p>
-        <h3>Try it Yourself</h3>
-        <p>Write a Java program with a public class named <strong>LongerProgram</strong>. In the main method, use <strong>System.out.println</strong> to print out:</p>
-        <pre><code>Hello, world!
+                <p>The above program has a class named <strong>Hello</strong>. It contains a <strong>main</strong> method which has only one statement:</p>
+                <pre><code>System.out.println("Hello, world!");</code></pre>
+                <p>When a Java run-time starts to execute a program, it looks for the <strong>main</strong> method in the public class that matches the program's name.</p>
+                <p>The body of a class and a method must be enclosed in paired curly braces <strong>{ }</strong>. Every Java statement must end with a semicolon <strong>;</strong>.</p>
+                <h3>Try it Yourself</h3>
+                <p>Write a Java program with a public class named <strong>LongerProgram</strong>. In the main method, use <strong>System.out.println</strong> to print out:</p>
+                <pre><code>Hello, world!
 
 This program produces
 four lines of output.</code></pre>
-    </div>
-    <div class="editor">
-        <textarea id="codeEditorJava2" rows="10" cols="50">// write your Java code here</textarea>
-        <button onclick="runJavaCode('codeEditorJava2', 'outputJava2', 'resultJava2')">Run</button>
-        <div class="output">
-            <h3>Output</h3>
-            <pre id="outputJava2"></pre>
+            </div>
+            <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
         </div>
-        <div class="result">
-            <h3>Result</h3>
-            <pre id="resultJava2"></pre>
-        </div>
-    </div>
-</div>
 
         <!-- Exercise 3 -->
         <div id="exercise3" class="exercise" style="display: none;">
@@ -100,63 +92,54 @@ public class DebugExample {
         System.out.println("Hello, Java!)
     }
 }</textarea>
-                <button onclick="runJavaCode('codeEditorJava3', 'outputJava3', 'resultJava3')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="outputJava3"></pre>
-                </div>
-                <div class="result">
+            <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz" class="exercise" style="display: none; width: 100%;">
+            <div class="instructions" style="width: 100%;">
+                <h2>Java Basics Quiz</h2>
+                <form id="quizForm" style="width: 100%;">
+                    <div class="question" style="width: 100%;">
+                        <p>1. What is the correct syntax to output "Hello, World" in Java?</p>
+                        <input type="radio" name="q1" value="a"> System.out.println("Hello, World");<br>
+                        <input type="radio" name="q1" value="b"> echo("Hello, World");<br>
+                        <input type="radio" name="q1" value="c"> print("Hello, World");<br>
+                    </div>
+                    <div class="question" style="width: 100%;">
+                        <p>2. How do you start a single line comment in Java?</p>
+                        <input type="radio" name="q2" value="a"> <!-- This is a comment --><br>
+                        <input type="radio" name="q2" value="b"> // This is a comment<br>
+                        <input type="radio" name="q2" value="c"> # This is a comment<br>
+                    </div>
+                    <div class="question" style="width: 100%;">
+                        <p>3. Which data type is used to create a variable that should store text?</p>
+                        <input type="radio" name="q3" value="a"> myString<br>
+                        <input type="radio" name="q3" value="b"> String<br>
+                        <input type="radio" name="q3" value="c"> string<br>
+                    </div>
+                    <div class="question" style="width: 100%;">
+                        <p>4. How do you create a variable with the numeric value 5?</p>
+                        <input type="radio" name="q4" value="a"> int x = 5;<br>
+                        <input type="radio" name="q4" value="b"> num x = 5;<br>
+                        <input type="radio" name="q4" value="c"> x = 5;<br>
+                    </div>
+                    <div class="question" style="width: 100%;">
+                        <p>5. Which method can be used to find the length of a string?</p>
+                        <input type="radio" name="q5" value="a"> getLength()<br>
+                        <input type="radio" name="q5" value="b"> len()<br>
+                        <input type="radio" name="q5" value="c"> length()<br>
+                    </div>
+                    <button type="button" onclick="submitQuiz()">Submit</button>
+                </form>
+                <div class="output" style="width: 100%;">
                     <h3>Result</h3>
-                    <pre id="resultJava3"></pre>
+                    <pre id="quizResult"></pre>
                 </div>
             </div>
         </div>
 
-        <div class="exercise-container">
-            <!-- Quiz -->
-            <div id="quiz" class="exercise" style="display: none;">
-                <div class="instructions">
-                    <h2>Java Basics Quiz</h2>
-                    <form id="quizForm">
-                        <div class="question">
-                            <p>1. What is the correct syntax to output "Hello, World" in Java?</p>
-                            <input type="radio" name="q1" value="a"> System.out.println("Hello, World");<br>
-                            <input type="radio" name="q1" value="b"> echo("Hello, World");<br>
-                            <input type="radio" name="q1" value="c"> print("Hello, World");<br>
-                        </div>
-                        <div class="question">
-                            <p>2. How do you start a single line comment in Java?</p>
-                            <input type="radio" name="q2" value="a"> <!-- This is a comment --><br>
-                            <input type="radio" name="q2" value="b"> // This is a comment<br>
-                            <input type="radio" name="q2" value="c"> # This is a comment<br>
-                        </div>
-                        <div class="question">
-                            <p>3. Which data type is used to create a variable that should store text?</p>
-                            <input type="radio" name="q3" value="a"> myString<br>
-                            <input type="radio" name="q3" value="b"> String<br>
-                            <input type="radio" name="q3" value="c"> string<br>
-                        </div>
-                        <div class="question">
-                            <p>4. How do you create a variable with the numeric value 5?</p>
-                            <input type="radio" name="q4" value="a"> int x = 5;<br>
-                            <input type="radio" name="q4" value="b"> num x = 5;<br>
-                            <input type="radio" name="q4" value="c"> x = 5;<br>
-                        </div>
-                        <div class="question">
-                            <p>5. Which method can be used to find the length of a string?</p>
-                            <input type="radio" name="q5" value="a"> getLength()<br>
-                            <input type="radio" name="q5" value="b"> len()<br>
-                            <input type="radio" name="q5" value="c"> length()<br>
-                        </div>
-                        <button type="button" onclick="submitQuiz()">Submit</button>
-                    </form>
-                    <div class="output">
-                        <h3>Result</h3>
-                        <pre id="quizResult"></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
     
         <script>
             function showExercise(exerciseId) {
@@ -164,119 +147,8 @@ public class DebugExample {
                 exercises.forEach(exercise => {
                     exercise.style.display = 'none';
                 });
-                document.getElementById(exerciseId).style.display = 'block';
-            }
-    
-            function submitQuiz() {
-                const quizForm = document.getElementById('quizForm');
-                const quizResult = document.getElementById('quizResult');
-                let score = 0;
-    
-                if (quizForm.q1.value === "a") score++;
-                if (quizForm.q2.value === "b") score++;
-                if (quizForm.q3.value === "b") score++;
-                if (quizForm.q4.value === "a") score++;
-                if (quizForm.q5.value === "c") score++;
-    
-                quizResult.textContent = `You scored ${score} out of 5`;
+                document.getElementById(exerciseId).style.display = 'flex';
             }
         </script>
-    </body>
-    </html>
-
-        <!-- Project -->
-        <div id="project" class="exercise" style="display: none;">
-            <div class="instructions">
-                <h2>Project: Art Project</h2>
-                <p>Use this space to create your own design using <strong>System.out.println</strong> statements.</p>
-                <p>Remember that anything you input between the parentheses will be printed!</p><br>
-                <p>Here is mine: \_('_')_/ </p>
-                <p>What's yours? Get creative with it!</p>
-            </div>
-            <div class="editor">
-                <textarea id="codeEditorJavaProject" rows="20" cols="100">// start your project here, write a story or create artwork!</textarea>
-                <button onclick="runJavaCode('codeEditorJavaProject', 'outputJavaProject', 'resultJavaProject')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="outputJavaProject"></pre>
-                </div>
-                <div class="result">
-                    <h3>Result</h3>
-                    <pre id="resultJavaProject"></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function showExercise(exerciseId) {
-            const exercises = document.querySelectorAll('.exercise');
-            exercises.forEach(exercise => {
-                exercise.style.display = 'none';
-            });
-            document.getElementById(exerciseId).style.display = 'flex';
-        }
-
-        function builtinRead(x) {
-            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
-                throw "File not found: '" + x + "'";
-            }
-            return Sk.builtinFiles["files"][x];
-        }
-
-        async function runJavaCode(editorId, outputId, resultId, expectedOutput = null) {
-            const code = document.getElementById(editorId).value;
-            const outputElement = document.getElementById(outputId);
-            const resultElement = document.getElementById(resultId);
-            outputElement.textContent = "";
-            resultElement.textContent = "";
-
-            const isEffectiveCode = code.split('\n').some(line => {
-                const strippedLine = line.trim();
-                return strippedLine && !strippedLine.startsWith('//');
-            });
-
-            if (!isEffectiveCode) {
-                resultElement.textContent = "Error: No effective code provided";
-                return;
-            }
-
-            // Make an API call to compile and run Java code
-            try {
-                const response = await fetch('https://api.jdoodle.com/v1/execute', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        script: code,
-                        language: "java",
-                        versionIndex: "3",
-                        clientId: 'YOUR_CLIENT_ID',
-                        clientSecret: 'YOUR_CLIENT_SECRET'
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-
-                const data = await response.json();
-                const actualOutput = data.output.trim();
-
-                outputElement.textContent = actualOutput;
-                if (actualOutput === "") {
-                    resultElement.textContent = "Error: No output generated";
-                } else if (expectedOutput === null) {
-                    resultElement.textContent = "Success";
-                } else if (actualOutput === expectedOutput) {
-                    resultElement.textContent = "Success";
-                } else {
-                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
-                }
-            } catch (error) {
-                resultElement.textContent = `Error: ${error.toString()}`;
-            }
-        }
-    </script>
 </body>
 </html>
