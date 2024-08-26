@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Tutorial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        /* Ensure that all exercises take up the full width of the page */
+        .exercise {
+            width: 100%;
+            box-sizing: border-box; /* Include padding and border in the element's width and height */
+        }
+        
+        /* Ensure that iframes take up the full width of their container */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 0; /* Remove border if not needed */
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2 Exercises</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Lesson 2 Practice</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button> <!--variables-->
+        <button onclick="showExercise('exercise2')">Exercise 2</button> <!--intro to data types-->
+        <button onclick="showExercise('exercise3')">Exercise 3</button> <!--printing variables-->
+        <button onclick="showExercise('exercise4')">Exercise 4</button> <!--operations + mismatched data types-->
+        <button onclick="showExercise('exercise5')">Exercise 5</button> <!--concatenation-->
+        <button onclick="showExercise('project')">Project</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+    </div>
+    
+    <div class="exercise-container">
+        <!-- Exercise 4 -->
+        <div id="exercise4" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 4: Understanding Variables</h2>
+                <p>Variables are where information is stored in a computer's memory. Here’s an example of how to create a variable:</p>
+                <pre><code>int num = 100;</code></pre>
+                <p>Now, let's try creating a variable named <strong>my_variable</strong> with a value of <strong>50</strong>.</p>
+                <p>Write your code below. Once you are done, copy the code into the Java environment.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50">** create a variable named my_variable with a value of 50.
+
+** declare the class, and in the main method, declare the variable     
+
+System.out.println(my_variable); ** keep this code, below the variable declaration. This will print your variable so you can confirm if you are correct!
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Data Types</h2>
+                <p>In Java, primitive data types are the most basic types of data. There are several different types, each serving a specific purpose.</p>
+        
+                <h3>Primitive Types:</h3>
+        
+                <p><strong>int:</strong> The <code>int</code> data type is used to store integers, which are whole numbers without a decimal point.</p>
+                <pre><code>int number = 10;</code></pre>
+                <p>This data type is used when you need to perform operations with whole numbers, such as counting or indexing.</p>
+                <p><strong>double:</strong> The <code>double</code> data type is used to store decimal numbers. It's great for precision in calculations where fractions are involved.</p>
+                <pre><code>double pi = 3.14159;</code></pre>
+                <p>Use <code>double</code> when you need to store numbers with decimals, such as measurements or calculations that require accuracy.</p>
+                <p><strong>boolean:</strong> The <code>boolean</code> data type stores only two possible values: <code>true</code> or <code>false</code>. It's typically used in conditional statements to make decisions in the code.</p>
+                <pre><code>boolean isJavaFun = true;</code></pre>
+                <p>Use <code>boolean</code> when you need a simple yes/no or true/false condition.</p>
+                <p><strong>char:</strong> The <code>char</code> data type is used to store a single character, like a letter, number, or symbol. Char values are surrounded by single quotes.</p>
+                <pre><code>char grade = 'A';</code></pre>
+                <p>This data type is useful when you need to handle individual characters, such as a letter grade or a single digit.</p>
+
+                
+                <h3>Non-Primitive Type:</h3>
+                
+                <p><strong>String:</strong> Although not a primitive data type, <code>String</code> is a special kind of data in Java that is used to store text. Strings are sequences of characters enclosed in double quotes.</p>
+                <pre><code>String greeting = "Hello, World!";</code></pre>
+                <p>Strings can contain letters, numbers, and symbols, and they are commonly used for displaying text and handling user input.</p>
+                
+                <br>
+                <p>Now fix the non-examples for each data type in the code editor below:</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor2" rows="10" cols="50">/* fix the variables that have mismatched data types */
+int number = 30;
+double pi = "hello";
+String str = 3.14;
+double fraction = 8.56;
+int count = "pi";
+String message = "I like coding";
+System.out.println(message);
+                </textarea>
+
+            </div>
+        </div>
+        
+
+
+         <!-- Exercise 5 -->
+         <div id="exercise5" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 5: Printing Variables</h2>
+                <p>To print the value of a variable, simply include the variable name in the print function:</p>
+                <pre><code>int x = 100;</code></pre>
+                <pre><code>System.out.println(x);</code></pre>
+                <p>Let's print a variable that contains a double value.</p>
+                <p>Write your code below and test it within the Java environment.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50">
+public class Concatenation {
+    public static void main(String[] args) {
+        # TODO
+    }
+}
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+       
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 2: Integer and Double Operations</h2>
+                <p>In Java, integers and doubles can be used in various mathematical operations. These operations include:</p>
+
+                <p><strong>Addition (+):</strong> Adds two numbers together.</p>
+                <pre><code>int sum = 10 + 5;  // sum is 15</code></pre>
+
+                <p><strong>Subtraction (-):</strong> Subtracts one number from another.</p>
+                <pre><code>int difference = 10 - 5;  // difference is 5</code></pre>
+
+                <p><strong>Multiplication (*):</strong> Multiplies two numbers together.</p>
+                <pre><code>int product = 10 * 5;  // product is 50</code></pre>
+
+                <p><strong>Division (/):</strong> Divides one number by another.</p>
+                <pre><code>int quotient = 10 / 5;  // quotient is 2</code></pre>
+
+                <p><strong>Modulus (%):</strong> Returns the remainder of a division operation.</p>
+                <pre><code>int remainder = 10 % 3;  // remainder is 1</code></pre>
+
+                <p>These operations can be used with both <strong>int</strong> and <strong>double</strong> data types. When using them with different types, the result will be automatically cast to the appropriate type. For example:</p>
+                <pre><code>int integer_variable = 10;
+double double_variable = 5.5;
+double result = integer_variable + double_variable;
+System.out.println(result);  // result is 15.5</code></pre>
+
+                <p>Look at the text editor below, and follow the instructions.</p>
+                <p>Write your code in the Java environment and click "Run".</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50">
+public class Operations {
+    public static void main(String[] args) {
+        int num = 100
+        // TO DO: multiply the number
+        // TO DO: add the number
+        // TO DO: find the remainder of the number when dividing by 10
+        // TO DO: divide the number
+        // TO DO: subtract a number
+        System.out.println(num); // this code prints out the variable
+    }
+}
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+
+        <!-- Exercise 5 -->
+        <div id="exercise3" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 3: String Operations</h2>
+                <p>Strings, and other values such as int and double can be combined using the <strong>+</strong> operator. This is called string concatenation. For example:</p>
+                <pre><code>String first_string = "Hello, ";
+String second_string = "World!";
+String full_string = first_string + second_string;
+System.out.println(full_string); // will print Hello, World!</code></pre>
+                <p>Run the following code in the environment below.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50">
+public class Poster {
+     public static void main(String[] args) {
+        int length = 40;
+        int width = 50;
+        System.out.print("length: " + length + " inches, ");
+        System.out.print("width: " + width + " inches, ");
+        System.out.println("total area: " + length * width + " sq inches");
+    }
+}
+                    
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+
+        <!-- Project -->
+        <div id="project" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Project: Art Project</h2>
+                <p>Use this space to create your own design using <strong> print </strong> statements.</p>
+                <p>Remember that anything you input between the parentheses gets printed!</p><br>
+                <p>Here is mine: \_('_')_/ </p>
+                <p>What's yours? Get creative with it!</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditorProject" rows="20" cols="100"># start your project here, write a story or create artwork!</textarea>
+                <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="outputProject"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="resultProject"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'flex';
+        }
+
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null) {
+                    resultElement.textContent = "Success";
+                } else if (actualOutput === expectedOutput) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+    </script>
+            <script>
+                function goToHomepage() {
+                    window.location.href = 'java_tutorials.html';  
+                }
+            </script>
+</body>
+</html>

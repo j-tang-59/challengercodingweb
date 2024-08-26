@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 1 Class - Guided Exercise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 1 Class - Guided Exercise</h1>
+        <h2>Lesson 6 Guide - Boolean Statements and Operators</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('review')">Lesson Overview and Review</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('homework')">Homework and Exercises</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+    <!-- Review -->
+    <div id="review" class="exercise-container" style="display: block;">
+        <div class="handout">
+            <h3>Vocabulary:</h3>
+            <div class="vocab-section">
+                <ul>
+                    <li><strong>Boolean:</strong> A Boolean is a data type that can only have two possible values: true or false.</li>
+                    <li><strong>Operator:</strong> An operator is a symbol or function that performs an operation on one or more values. In Scratch, operators are used to perform arithmetic, comparisons, and logical operations.</li>
+                </ul>
+            </div>
+
+            <h3>Blocks Used/Introduced Today:</h3>
+            <div class="blocks-section">
+                <ul>
+                    <li>
+                        <img src="path_to_image/and_operator.png" alt="And Operator">
+                        <p><strong>And Operator:</strong> This block checks if both conditions are true. If both are true, the result is true; otherwise, it is false.</p>
+                    </li>
+                    <li>
+                        <img src="path_to_image/or_operator.png" alt="Or Operator">
+                        <p><strong>Or Operator:</strong> This block checks if at least one of the conditions is true. If either one or both are true, the result is true; if both are false, the result is false.</p>
+                    </li>
+                    <li>
+                        <img src="path_to_image/not_operator.png" alt="Not Operator">
+                        <p><strong>Not Operator:</strong> This block reverses the condition. If the condition is true, the result is false; if the condition is false, the result is true.</p>
+                    </li>
+                    <li>
+                        <img src="path_to_image/equal_operator.png" alt="Equal Operator">
+                        <p><strong>Equal Operator:</strong> This block checks if two values are equal. If they are, the result is true; otherwise, it is false.</p>
+                    </li>
+                    <li>
+                        <img src="path_to_image/greater_than_operator.png" alt="Greater Than Operator">
+                        <p><strong>Greater Than Operator:</strong> This block checks if the first value is greater than the second value. If it is, the result is true; otherwise, it is false.</p>
+                    </li>
+                    <li>
+                        <img src="path_to_image/less_than_operator.png" alt="Less Than Operator">
+                        <p><strong>Less Than Operator:</strong> This block checks if the first value is less than the second value. If it is, the result is true; otherwise, it is false.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!--Exercise 1-->
+<div id="exercise1" class="exercise-container">
+    <div class="handout">
+        <h3>Exercise 1: Exploring Boolean Operators in Scratch</h3>
+        <p>In this exercise, you will learn about Boolean operators and how to use them to create complex conditions in your Scratch projects.</p>
+        <br>
+        <p>Boolean operators allow you to combine multiple conditions to control how your program behaves. These operators are essential for making decisions in your code.</p>
+        <br>
+        
+        <p><strong>Start with the "And" Operator:</strong></p>
+        <p>The "And" block checks if two conditions are both true. If both conditions are met, the result is true; otherwise, it's false.</p>
+        <p>Example: Imagine your sprite needs to collect a key and reach a door to unlock it. Use the "And" block to check if the sprite is "touching the key" and "touching the door" at the same time. The door will only open if both conditions are true.</p>
+        <br>
+        
+        <p><strong>Next, explore the "Or" Operator:</strong></p>
+        <p>The "Or" block checks if at least one of two conditions is true. The result is true if either condition is met.</p>
+        <p>Example: Suppose you want your sprite to move if it touches either a green flag or a blue button. Use the "Or" block to combine "touching green flag" or "touching blue button". The sprite will move if it touches either one.</p>
+        <br>
+        
+        <p><strong>Now, let's try the "Not" Operator:</strong></p>
+        <p>The "Not" block reverses a condition. If the condition is true, "Not" makes it false, and vice versa.</p>
+        <p>Example: Use "Not touching lava" to ensure your sprite keeps moving as long as it avoids touching the lava. The sprite stops if it touches the lava.</p>
+        <br>
+        
+        <p><strong>Practice combining these operators:</strong></p>
+        <p>Combine "And", "Or", and "Not" blocks to create complex conditions. For example, create a condition where the sprite can collect a treasure if it is "not touching an enemy" and "either touching the treasure chest or a hidden switch".</p>
+        <p>Example: Use "Not touching enemy" and "Or (touching treasure chest or touching hidden switch)". The sprite will collect the treasure only if it's not touching the enemy and is touching either the chest or the switch.</p>
+        <br>
+        
+        <p><strong>Apply these concepts to your Scratch projects:</strong></p>
+        <p>Try using Boolean operators in your own projects to create more advanced and interactive experiences. Experiment with different combinations and see how they affect your sprite's behavior.</p>
+        <br>
+    </div>
+</div>
+
+    <!--Exercise 2-->
+    <div id="exercise2" class="exercise-container">
+        <div class="handout">
+            <h3>Exercise 2: Working with Numerical Operators in Scratch</h3>
+            <p>In this exercise, you'll explore how to use numerical operators and arithmetic operations in Scratch to perform calculations and make decisions based on numbers.</p>
+            <br>
+            <p>Numerical operators are essential for creating conditions based on numbers. They allow you to compare values and perform arithmetic operations.</p>
+            <br>
+
+            <p><strong>Start with the Comparison Operators:</strong></p>
+            <p>Comparison operators allow you to compare two numbers and check their relationship. These operators include:</p>
+            <br>
+
+            <p><strong>Less Than ("&lt;"):</strong></p>
+            <p>Use this operator to check if one value is less than another.</p>
+            <p>Example: Create a game where your sprite can only move if its score is less than 10. Use the "&lt;" block to compare the score with 10.</p>
+            <br>
+
+            <p><strong>Greater Than ("&gt;"):</strong></p>
+            <p>This operator checks if one value is greater than another.</p>
+            <p>Example: In a racing game, use the "&gt;" block to check if a player's speed is greater than 5. If it is, increase the difficulty level.</p>
+            <br>
+
+            <p><strong>Equal To ("="):</strong></p>
+            <p>Use this operator to check if two values are equal.</p>
+            <p>Example: Create a quiz game where the sprite only gives feedback if the answer is correct. Use the "=" block to compare the player's answer with the correct answer.</p>
+            <br>
+
+            <p><strong>Move on to Arithmetic Operators:</strong></p>
+            <p>Arithmetic operators allow you to perform mathematical calculations in Scratch. These include addition, subtraction, multiplication, and division.</p>
+            <br>
+
+            <p><strong>Addition ("+"):</strong></p>
+            <p>Use the "+" block to add two numbers together.</p>
+            <p>Example: Create a game where the player collects coins. Use the "+" block to add the value of each coin to the total score whenever a coin is collected.</p>
+            <br>
+
+            <p><strong>Subtraction ("-"):</strong></p>
+            <p>This block subtracts one number from another.</p>
+            <p>Example: In a health-based game, use the "-" block to decrease the player's health when they take damage.</p>
+            <br>
+
+            <p><strong>Multiplication ("*"):</strong></p>
+            <p>Use the "*" block to multiply two numbers.</p>
+            <p>Example: In a game with power-ups, use the "*" block to double the player's score when they collect a special item.</p>
+            <br>
+
+            <p><strong>Division ("/"):</strong></p>
+            <p>This block divides one number by another.</p>
+            <p>Example: In a game where the player needs to distribute items evenly, use the "/" block to calculate how many items each player should receive.</p>
+            <br>
+
+            <p><strong>Practice Combining Operators:</strong></p>
+            <p>Combine comparison and arithmetic operators to create complex conditions and calculations.</p>
+            <p>Example: Create a game where the sprite moves faster as the player's score increases. Use the "+" block to add a speed value based on the score, and the "&gt;" block to increase the speed when the score exceeds a certain threshold.</p>
+            <br>
+
+            <p><strong>Apply these concepts to your Scratch projects:</strong></p>
+            <p>Use numerical operators in your own Scratch projects to control movement, scoring, and game logic. Experiment with different combinations to see how they can enhance your game mechanics.</p>
+            <br>
+        </div>
+    </div>
+
+    <!-- Homework Section -->
+    <div id="homework" class="exercise-container">
+        <div class="handout">
+            <h3>Homework and Exercises:</h3>
+            <div class="homework-section">
+                <ul>
+                    <li>
+                        <h4>Exercise 1: Basic Calculations</h4>
+                        <p>- Create a simple calculator in Scratch that can perform addition, subtraction, multiplication, and division. Use the "+" block to add two numbers, the "-" block to subtract, the "*" block to multiply, and the "/" block to divide.</p>
+                        <p>- Challenge: Extend your calculator to include comparison operations (e.g., checking if one number is greater than or less than another).</p>
+                    </li>
+                    <li>
+                        <h4>Exercise 2: Score Tracker</h4>
+                        <p>- Design a game where the player's score is displayed on the screen. Use arithmetic operators to increase or decrease the score based on the player's actions.</p>
+                        <p>- Implement a condition where the player receives a bonus if their score exceeds a certain value.</p>
+                    </li>
+                    <li>
+                        <h4>Exercise 3: Quiz Game</h4>
+                        <p>- Create a quiz game that asks the player a series of math questions. Use the "=" block to check if the player's answer is correct and display a message if it is.</p>
+                        <p>- Include different levels of difficulty by adjusting the types of arithmetic operations used in the questions.</p>
+                    </li>
+                    <li>
+                        <h4>Exercise 4: Speed Control</h4>
+                        <p>- Develop a game where the speed of a moving sprite increases or decreases based on the player's score. Use the "+" and "-" blocks to modify the speed value, and the "&gt;" block to trigger changes when the score reaches certain thresholds.</p>
+                    </li>
+                    <li>
+                        <h4>Challenge: Create a Shop System</h4>
+                        <p>- Design a simple shop system where players can purchase items using in-game currency. Use arithmetic operators to deduct the item cost from the player's total currency and conditionals to check if the player has enough currency to make a purchase.</p>
+                        <p>- Include a feature where the shop offers discounts if the player’s currency exceeds a certain amount.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch_tutorials.html';  
+            }
+        </script>
+    
+    
+        <script>
+            function showExercise(exerciseId) {
+                const exercises = document.querySelectorAll('.exercise-container');
+                exercises.forEach(exercise => {
+                    exercise.style.display = 'none';
+                });
+                document.getElementById(exerciseId).style.display = 'block';
+            }
+        </script>
+    </body>
+    </html>
+
+
+

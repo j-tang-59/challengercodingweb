@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 1 Class - Guided Exercise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 2 Class - Guided Exercise</h1>
+        <h2>Lesson 2 Guide</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('review')">Lesson Overview and Review</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('exercise3')">Exercise 3</button>
+            <button onclick="showExercise('homework')">Homework and Exercises</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <!-- Review -->
+        <div id="review" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Vocabulary:</h3>
+                <div class="vocab-section">
+                    <ul> <!--need to add the images to help students visualize-->
+                        <li><strong>Coordinate Plane:</strong> The numbering system that gives each position in a plane an assigned coordinate .</li>
+                        <li><strong>Coordinate:</strong> Numbers that indicate the position of a point on the coordinate plane.</li>
+                        <li><strong>X Coordinate:</strong> The “X” value, or measure of the horizontal, left right position. When looking at the coordinate plane, the horizontal line.</li>
+                        <li><strong>Y Coordinate:</strong> The “Y” value, or measure of the vertical, up down position. When looking at the coordinate plane, the vertical line.</li>
+                    </ul>
+                </div>
+
+                <h3>Blocks Used/Introduced Today:</h3>
+                <div class="blocks-section">
+                    <ul>
+                        <li>
+                            <img src="path_to_image/when_clicked.png" alt="Go to X, Y">
+                            <p>This code block moves your sprite to the specified X and Y coordinate. You cannot see the movement visually.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/move_steps.png" alt="Change X by">
+                            <p>This code block moves a sprite left or right by changing the X coordinate value.</p>
+                        </li>
+                        
+                        <li>
+                            <img src="path_to_image/forever.png" alt="Change Y by">
+                            <p>This code block moves a sprite up or down by changing the Y coordinate value.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/turn_right.png" alt="Glide ___ Seconds to X, Y">
+                            <p>This code block moves sprite to the specified X and Y coordinate. You can see the movement visually.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/turn_right.png" alt="Glide to Mouse Pointer">
+                            <p>This code block instructs the sprite to glide to the X, Y location of your Mouse Pointer.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 1: Mastering the Coordinate Plane</h3>
+                <p>In this exercise, you will understand and master the coordinate plane.</p>
+                <br>
+        
+                <p>Below is an image of the coordinate plane.</p>
+                <img src="path/to/hello_world_icon.png" alt="Hello World Icon"> <!-- Add the image for coordinate plane-->
+                <p>Observe how there are many <strong>intersection of lines.</strong> In the coordinate plane, we can identify <strong>specific locations</strong>> thanks to these intersections of lines. </p>
+
+                <br>
+                <img src="path/to/hello_world_icon.png" alt="Hello World Icon"> <!-- Add the image for identifying points on the plane-->
+                <p>To label our coordinate points, we look at the <strong>numerical value the lines correspond to.</strong></p>
+                <br>
+                <p>First, we look at the left-right, horizontal position. This is known as the <strong>X coordinate.</strong></p>
+                <br>
+                <p>Then, we look at the up-down, vertical position. This is known as the <strong>Y coordinate.</strong></p>
+                <p>Now you know how to label points! Let's learn about trends and patterns of the coordinate plane.</p>
+
+                <br>
+                <p>Before we start, remember that the <strong>X coordinate is left-right,</strong> while the <strong>Y coordinate is up-down.</strong></p>
+                <p></p>
+                <!-- Additional content for Exercise 2 -->
+            </div>
+        </div>
+
+        <!--Exercise 2-->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 2: Using the Coordinate Plane in Scratch</h3>
+                <p>In this exercise, you will apply your knowledge of the coordinate plane to create movements in Scratch.</p>
+                
+
+                <p> Use the "Change X by __" block to move the sprite horizontally by changing the X coordinate of the sprite. </p>
+                <br>
+                <p>Play around with the numbers to figure out the rules to make the sprite move left, and the rules to make the sprite move right.</p>
+                <br>
+                <p>Use the "Change Y by __" block to move the sprite vertically by changing the Y coordinate of the sprite.</p>  
+                <br>
+                <p>Play around with the values in these blocks to see how they affect the sprite's movement on the coordinate plane. Figure out the rules to moving the sprite up, or down! </p>  
+                </ol>
+            </div>
+        </div>
+
+
+        <!--Exercise 3-->
+        <div id="exercise3" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 3: Usages of "move" and "glide"</h3>
+                <p>In this exercise, you will explore the differences between "move" and "glide" blocks in Scratch.</p>
+                <br>
+
+                <p>Drag the "Go to X: __ Y: __" block to the workspace, under the when green flag clicked block. </p>
+                <br>
+                <p>Set the X and Y values to move the sprite to different locations on the stage. Observe how the sprite jumps directly to the specified coordinates.</p>
+                <p>Keep experimenting to figure out the general trends for specific positions. For example, for anything on the right side of the backdrop, the X coordinate is a big positive value.</p>
+                <br>
+                <p>Use the "Glide __ seconds to X: __ Y: __" block to make the sprite smoothly move to a specific location on the stage over a specified period of time.</p> 
+                <p>Try different X, Y coordinates and timing values to see how the sprite's movement changes.</p>
+                <br>
+                <p>Use the "Glide to mouse pointer" block to make the sprite glide to wherever the mouse pointer is located. This is particularly useful for interactive projects where the sprite follows the user's mouse movements.</p>
+                
+            </div>
+        </div>
+              
+
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Exercise 1: Race Two Sprites</h4>
+                            <p>- First, program your first sprite to move from one side of the backdrop to the other.</p>
+                            <p>- Next, create a second sprite.</p>
+                            <p>- Program the second sprite to move from one side of the backdrop to the other.</p>
+                            <p>- Play around with the blocks to make one sprite move faster than the other!</p>
+                        </li>
+                        <li>
+                            <h4>Exercise 2: Dancing Cat</h4>
+                            <p>- For this exercise, use the blocks that you know to animate the sprite. Play around with the numbers and see what happens! Get creative with it.</p>
+                        </li>
+                        <li>
+                            <h4>Exercise 3: Treasure Hunt</h4>
+                            <p>- For this exercise, please draw this backdrop:</p>
+                            <img src="path_to_image/treasure_hunt_backdrop.png" alt="Treasure Hunt Backdrop">
+                            <p>- Refer to this tutorial if needed: <a href="https://www.youtube.com/watch?v=CQ4SldacxG4" target="_blank">https://www.youtube.com/watch?v=CQ4SldacxG4</a></p>
+                            <p>- Please program the sprite so that it will touch every “X”.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+    </script>
+    
+    <script>
+        function goToHomepage() {
+            window.location.href = 'scratch_tutorials.html';  
+        }
+    </script>
+</body>
+</html>

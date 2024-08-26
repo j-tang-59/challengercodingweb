@@ -2,36 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 1 Exercises</title>
+    <title>Lesson 8: File Handling Practice</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
     <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
 </head>
 <body>
-    <h1>Lesson 1 Practice</h1>
+    <h1>Lesson 8: Conditionals Practice</h1>
     <div class="button-container">
         <button onclick="showExercise('exercise1')">Exercise 1</button>
         <button onclick="showExercise('exercise2')">Exercise 2</button>
         <button onclick="showExercise('exercise3')">Exercise 3</button>
         <button onclick="showExercise('project')">Project</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
     </div>
-    
+
     <div class="exercise-container">
+        <!-- Exercise 1 -->
         <div id="exercise1" class="exercise">
             <div class="instructions">
-                <h2>Exercise 1: Say hello</h2>
-                <p>The very first program you will learn to write is <strong>hello, world</strong>. In Python, the command to display <strong>hello, world</strong> on the screen is simply:</p>
-                <pre><code>print('hello, world')</code></pre>
-                <br>
-                <p>Try printing the following statement:</p>
-                <pre><code>hello, world</code></pre>
-                <br>
-                <p>Then hit the <strong>Run</strong> button to validate.</p>
+                <h2>Exercise 1: Introduction to Conditionals</h2>
+                <p>Conditionals are simply statements that say that if something happens, the computer must do this, otherwise, the computer should do something else.</p>
+                <p>Think of it as your mom telling you to finish your chores. If you finish your chores, you will get your allowance. But if you don’t, your mom will get mad at you.</p>
+                
+                <pre><code>if choresComplete:
+    # receiveAllowance
+else:
+    # you get yelled at
+                </code></pre>
+
+                <p>There are three types of conditional statements:</p>
+                
+                <p><strong>If statement:</strong> The if statement starts off the conditional.</p>  
+                <p><strong>Elif statement:</strong> This is the middle, it says that if the previous conditions didn't happen, but this one does, then do the following function.</p>
+                <p><strong>Else statement:</strong> This ends the conditional, saying that if nothing above happened, then do the following.</p>
+
+                <pre><code>if condition:
+    # do something
+elif another_condition:
+    # do something else
+else:
+    # do something if none of the above conditions are true
+                </code></pre>
+
+
+
+                <h3>Try it Yourself</h3>
+                <p>Write a Python program that uses if, elif, and else statements.</p>
             </div>
-            <div class="editor"> 
-                <textarea id="codeEditor1" rows="10" cols="50"># write code to print hello, world</textarea>
-                <button onclick="runCode('codeEditor1', 'output1', 'result1', 'hello, world')">Run</button>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50"># this is a provided code snippet. This program checks if the person's credit score is high enough to qualify for a loan.
+creditScore = 800
+
+if creditScore > 600:
+    print("you get the loan!")
+# TODO - write the else statement
+
+                </textarea>
+                <button onclick="runCode('codeEditor1', 'output1', 'result1')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
                     <pre id="output1"></pre>
@@ -42,21 +72,35 @@
                 </div>
             </div>
         </div>
-        
+
+        <!-- Exercise 2 -->
         <div id="exercise2" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Exercise 2: Print your name</h2>
-                <p>Write a Python program to print your name. For example, if your name is John, the command to display <strong>John</strong> on the screen is:</p>
-                <pre><code>print('John')</code></pre>
-                <p><strong>print</strong> tells the computer program to display whatever is inside the parentheses.</p>
-                <p>You can print anything as long as there is text between the parentheses!</p>
-                <pre><code>print('<strong>John</strong>')</code></pre>
-                <p> Practice by writing code to print your name:</p>
-                <pre><code>Your Name</code></pre>
-                <p>Then click the <strong>Run</strong> button to validate.</p>
+                <h2>Exercise 2: Conditions</h2>
+                <p>Conditions are the part of the conditional which state what is supposed to happen.</p>
+                <p>For math:</p>
+                <ul>
+                    <li>Equal to: <code>==</code></li>
+                    <li>Not equal to: <code>!=</code></li>
+                    <li>Less than: <code><</code></li>
+                    <li>Greater than: <code>></code></li>
+                    <li>Less than or Equal to: <code><=</code></li>
+                    <li>Greater than or equal to: <code>>=</code></li>
+                </ul>
+                <p>For strings, you can use equal (==) and not equal (!=) to determine whether the string is the same or not the same as the other string that it is compared to.</p>
+                <h3>Example of Conditions:</h3>
+                <pre><code>if age == 18:
+    print("You are 18 years old")
+if name != "John":
+    print("You are not John")
+if height > 160:
+    print("You are tall")
+</code></pre>
+                <h3>Try it Yourself</h3>
+                <p>Write a Python program using different conditions.</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor2" rows="10" cols="50"># write code to print your name</textarea>
+                <textarea id="codeEditor2" rows="10" cols="50"># practice using conditions</textarea>
                 <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -69,18 +113,31 @@
             </div>
         </div>
 
+        <!-- Exercise 3 -->
         <div id="exercise3" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Exercise 3: Debugging</h2>
-                <p>Find and fix the error in the following Python code:</p>
-                <pre><code>print("Hello, World!)</code></pre>
-                <br>
-                <p>The code above contains a syntax error. Try to fix it and run the corrected code.</p>
+                <h2>Exercise 3: Debugging Conditionals</h2>
+                <p>Conditionals must have proper syntax to work correctly. This includes correct use of tabs/4 spaces.</p>
+                <p>Fix the error in the following Python code:</p>
+                <pre><code>if age > 18:
+print("You are an adult")
+    elif age == 18:
+print("You just became an adult")
+else:
+print("You are not an adult yet")
+</code></pre>
+                <h3>Try it Yourself</h3>
+                <p>Debug the code above to make it work correctly.</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor3" rows="10" cols="50"># fix the error in the code below
-print("Hello, World!)</textarea>
-                <button onclick="runCode('codeEditor3', 'output3', 'result3', 'Hello, World!')">Run</button>
+                <textarea id="codeEditor3" rows="10" cols="50"># debug the code below
+if age > 18:
+print("You are an adult")
+    elif age == 18:
+print("You just became an adult")
+else:
+print("You are not an adult yet")</textarea>
+                <button onclick="runCode('codeEditor3', 'output3', 'result3')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
                     <pre id="output3"></pre>
@@ -92,16 +149,16 @@ print("Hello, World!)</textarea>
             </div>
         </div>
 
+        <!-- Project: File-Based Data Processing -->
         <div id="project" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Project: Art Project</h2>
-                <p>Use this space to create your own design using <strong> print </strong> statements.</p>
-                <p>Remember that anything you input between the parantheses get printed!</p><br>
-                <p>Here is mine: \_('_')_/ </p>
-                <p>What's yours? Get creative with it!</p>
+                <h2>Project: File-Based Data Processing</h2>
+                <p>Create a Python program that reads data from a text or CSV file, processes it (e.g., filtering, summarizing), and writes the results to a new file.</p>
+                <h3>Example Project Idea:</h3>
+                <p>Read a list of names and scores from a file, calculate the average score, and write the names of students who scored above the average to a new file.</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditorProject" rows="20" cols="100"># start your project here, write a story or create artwork!</textarea>
+                <textarea id="codeEditorProject" rows="20" cols="100"># Start your file-based data processing project here!</textarea>
                 <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -172,5 +229,10 @@ print("Hello, World!)</textarea>
             }
         }
     </script>
+        <script>
+            function goToHomepage() {
+                window.location.href = 'python_tutorials.html';  
+            }
+        </script>
 </body>
-</html>
+<html>

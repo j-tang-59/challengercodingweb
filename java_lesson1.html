@@ -29,6 +29,7 @@
         <button onclick="showExercise('exercise3')">Exercise 3</button>
         <button onclick="showExercise('quiz')">Quiz</button>
         <button onclick="showExercise('project')">Project</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
     </div>
     
     <div class="exercise-container">
@@ -45,7 +46,7 @@
                 <p>If you know Python, it is basically doing the same thing as the following Python code:</p>
                 <pre><code>print("Hello, Java!")</code></pre>
                 <h3>Try it Yourself</h3>
-                <p>Write a Java program with a public class named <strong>MyFirstClass</strong>. In the main method, use <strong>System.out.println</strong> to print out: Welcome to CS Wonders Java class!</p>
+                <p>Write a Java program with a public class named <strong>MyFirstClass</strong>. In the main method, use <strong>System.out.println</strong> to print out: Welcome to Java class!</p>
             </div>
             <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
         </div>
@@ -53,7 +54,7 @@
         <!-- Exercise 2 -->
         <div id="exercise2" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Hello, world!</h2>
+                <h2>Syntax and Java Basics</h2>
                 <p>Every executable Java program consists of a <strong>class</strong>, that contains a <strong>method</strong> named <strong>main</strong>, that contains the <strong>statements</strong> (commands) to be executed.</p>
                 <pre><code>public class Hello {
     public static void main(String[] args) {
@@ -63,7 +64,7 @@
                 <p>The above program has a class named <strong>Hello</strong>. It contains a <strong>main</strong> method which has only one statement:</p>
                 <pre><code>System.out.println("Hello, world!");</code></pre>
                 <p>When a Java run-time starts to execute a program, it looks for the <strong>main</strong> method in the public class that matches the program's name.</p>
-                <p>The body of a class and a method must be enclosed in paired curly braces <strong>{ }</strong>. Every Java statement must end with a semicolon <strong>;</strong>.</p>
+                <p>The body of a class and a method must be enclosed in paired curly braces <strong>{ }</strong>. <strong>Every Java statement must end with a semicolon</strong> <strong>;</strong>.</p>
                 <h3>Try it Yourself</h3>
                 <p>Write a Java program with a public class named <strong>LongerProgram</strong>. In the main method, use <strong>System.out.println</strong> to print out:</p>
                 <pre><code>Hello, world!
@@ -150,5 +151,10 @@ public class DebugExample {
                 document.getElementById(exerciseId).style.display = 'flex';
             }
         </script>
+                    <script>
+                        function goToHomepage() {
+                            window.location.href = 'java_tutorials.html';  
+                        }
+                    </script>
 </body>
 </html>

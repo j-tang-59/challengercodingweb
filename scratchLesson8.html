@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 1 Class - Guided Exercise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 1 Class - Guided Exercise</h1>
+        <h2>Lesson 7 Guide - Variables and Parameters</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('review')">Lesson Overview and Review</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('homework')">Homework and Exercises</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <div id="review" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Vocabulary:</h3>
+                <div class="vocab-section">
+                    <ul>
+                        <li><strong>Broadcasting:</strong> Broadcasting in Scratch is like shouting out a message that other sprites can hear. When a broadcast is sent, any sprite that is set to listen for that message will immediately respond. Imagine a teacher clapping to get the attention of the whole class—that’s what broadcasting does in Scratch.</li>
+                        <li><strong>Event:</strong> An event is something that happens in your program that triggers a specific block of code. It's like ringing a doorbell, which signals someone to come to the door. In Scratch, events trigger code to run.</li>
+                    </ul>
+                </div>
+        
+                <h3>Blocks Used/Introduced Today:</h3>
+                <div class="blocks-section">
+                    <ul>
+                        <li>
+                            <img src="path_to_image/when_clicked.png" alt="When Green Flag Clicked">
+                            <p><strong>When Green Flag Clicked:</strong> This block starts the code when you click the green flag. It's like pressing "play" on a remote control to start your favorite show.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/broadcast.png" alt="Broadcast">
+                            <p><strong>Broadcast [message]:</strong> This block sends out a broadcast message. Think of it as sending an announcement over the school's PA system, which all classrooms can hear.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/when_i_receive.png" alt="When I Receive">
+                            <p><strong>When I Receive [message]:</strong> This block waits until a specific broadcast message is received, and then it runs the code attached to it. Imagine it like listening for your name to be called, and when you hear it, you raise your hand.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/when_sprite_clicked.png" alt="When This Sprite Clicked">
+                            <p><strong>When This Sprite Clicked:</strong> This block triggers the code when the sprite is clicked. It's like pressing a button to make something happen.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/when_backdrop_switches.png" alt="When Backdrop Switches">
+                            <p><strong>When Backdrop Switches to [backdrop]:</strong> This block runs the code when the backdrop changes. It’s like changing the scene in a play, where new actions start based on the new setting.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/when_timer.png" alt="When Timer Expires">
+                            <p><strong>When Timer Expires:</strong> This block runs the code when a set amount of time has passed. Imagine setting a timer in the kitchen, and when it dings, you know it's time to take the cookies out of the oven.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 1: Understanding and Implementing Broadcasting</h3>
+                <p>Broadcasting in Scratch can be thought of as sending out a message that any sprite or part of the project can respond to. It’s like sending an announcement over a loudspeaker that everyone in the room can hear and react to.</p>
+                <p>For example, think about a game where you have multiple characters that need to react when something specific happens, like when a player wins. You’d use broadcasting to send out a message, such as "Player Wins," and every sprite that needs to react to this will do so once they receive that message.</p>
+
+                <h4>Coding Scenario:</h4>
+                
+                <p><strong>Step 1:</strong> Create two sprites: one will act as the "button" (you can name it "Start Button"), and the other will be the sprite that reacts to the broadcast (you can name it "Character"). Add a backdrop to make your game look visually appealing.</p>
+                <p><strong>Step 2:</strong> Program the "Start Button" sprite:</p>
+                <p>Go to the "Events" tab and drag the "When this sprite clicked" block into the script area. Under the "Control" tab, drag the "broadcast [message1]" block into the script. Rename "message1" to "Start Game".</p>
+                <p>Now, whenever the player clicks on the button, it will broadcast the message "Start Game".</p>
+                <br>
+                <p><strong>Step 3:</strong> Program the "Character" sprite:</p>
+                <p>Go to the "Events" tab and drag the "When I receive [Start Game]" block into the script area. Under the "Looks" tab, drag the "say [Hello!] for [2] seconds" block and connect it to the "When I receive [Start Game]" block.</p>
+                <p>Now, whenever the character receives the "Start Game" broadcast, it will say "Hello!" for 2 seconds.</p>
+                <br>
+                <p><strong>Step 4:</strong> Test the Game:</p>
+                <p>Click on the "Start Button" sprite in the game to see if the broadcast works correctly. The character should say "Hello!" once the button is clicked.</p>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 2: Understanding Event Blocks</h3>
+                <p>In Scratch, event blocks are like the triggers that start different parts of your program. You can think of them as conditions that have to be met for something to happen, just like the conditionals you've learned about before. But instead of using a block that checks a condition, like "if touching color," events automatically check for things like key presses, clicks, or broadcasts, and then execute the code attached to them.</p>
+                <br>
+                <h4>Example Event Blocks and Their Functions:</h4>
+                <p><strong>When green flag clicked:</strong> This block starts the program when the green flag is clicked. It’s similar to a conditional "if the green flag is clicked, then start the program."</p>
+                <p><strong>When [space] key pressed:</strong> This block starts a script when a specific key is pressed. It’s like saying, "if the space key is pressed, then execute the following actions."</p>
+                <p><strong>When this sprite clicked:</strong> This block starts the script when the specific sprite is clicked. Similar to "if this sprite is clicked, then perform these actions."</p>
+                <p><strong>When backdrop switches to [backdrop1]:</strong> This block triggers a script when the backdrop switches to a specific one, like "if the backdrop changes to 'night', then start the nighttime events."</p>
+                <br>
+                <h4>Coding Scenario:</h4>
+                <p><strong>Objective:</strong> Create a program where different actions are triggered by different event blocks.</p>
+                <p><strong>Step 1:</strong> Create a sprite and a backdrop in Scratch.</p>
+                <p><strong>Step 2:</strong> Use the "When green flag clicked" block to start an introductory animation. For example, the sprite could say, "Welcome to my game!" for 2 seconds.</p>
+                <p><strong>Step 3:</strong> Use the "When [space] key pressed" block to make the sprite jump. You can use a motion block like "change y by 10" to simulate a jump.</p>
+                <p><strong>Step 4:</strong> Use the "When this sprite clicked" block to change the sprite's costume. For example, switch to a different costume that looks like the sprite is waving.</p>
+                <p><strong>Step 5:</strong> Use the "When backdrop switches to [backdrop1]" block to start a nighttime sequence. Change the sprite’s color or appearance to look like it’s night, or play a sound effect.</p>
+                <p><strong>Step 6:</strong> Test the program to make sure each event works as expected.</p>
+            </div>
+        </div>
+
+
+
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework and Practice Exercises:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Exercise 1: Create an Interactive Story</h4>
+                            <p>- Use broadcasting to switch between scenes in your story. Create at least three different scenes, and use the "When I Receive [message]" block to trigger actions in each scene.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Exercise 2: Reaction Game</h4>
+                            <p>- Create a reaction game using the "When Timer Expires" block. The game should wait for a random amount of time before prompting the player to click a sprite. Use the timer to measure how fast the player reacts.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Exercise 3: Complex Interactions</h4>
+                            <p>- Combine different event blocks to create complex interactions between sprites. For example, make one sprite move when another sprite is clicked, or change the backdrop after a certain time.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Challenge: Simon Says Game</h4>
+                            <p>- Create a "Simon Says" style game where the player has to follow the instructions given by a sprite. Use broadcasting to communicate between sprites and event blocks to trigger the next step based on the player's actions.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>        
+
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch_tutorials.html';  
+            }
+        </script>
+    
+    
+        <script>
+            function showExercise(exerciseId) {
+                const exercises = document.querySelectorAll('.exercise-container');
+                exercises.forEach(exercise => {
+                    exercise.style.display = 'none';
+                });
+                document.getElementById(exerciseId).style.display = 'block';
+            }
+        </script>
+    </body>
+    </html>
+
+
+

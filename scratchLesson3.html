@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 1 Class - Guided Exercise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 1 Class - Guided Exercise</h1>
+        <h2>Lesson 3 Guide</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('review')">Lesson Overview and Review</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('exercise3')">Exercise 3</button>
+            <button onclick="showExercise('homework')">Homework and Exercises</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <!-- Review -->
+        <div id="review" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Vocabulary:</h3>
+                <div class="vocab-section">
+                    <ul>
+                        <li><strong>Animation:</strong> Bringing a sprite to life by creating the illusion of movement.</li>
+                        <li><strong>Costume:</strong> The different appearances or "outfits" a sprite can wear.</li>
+                        <li><strong>Backdrop:</strong> The background image that sets the stage for your story or game.</li>
+                    </ul>
+                </div>
+
+                <h3>Blocks Used/Introduced Today:</h3>
+                <div class="blocks-section">
+                    <ul>
+                        <li>
+                            <img src="path_to_image/switch_costume.png" alt="Switch Costume">
+                            <p>This block changes the sprite's costume to a specific one.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/next_costume.png" alt="Next Costume">
+                            <p>This block changes the sprite's costume to the next one in the sequence.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/wait.png" alt="Wait Block">
+                            <p>This block pauses the action for a specified number of seconds.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 1: Animating a Sprite</h3>
+                <p>Grab a sprite with multiple costumes.</p>
+                <br>
+                <p>Use the "Switch Costume" block to change its appearance.</p>
+                <br>
+                <p>Follow it with a "Wait" block to control the speed of the change.</p>
+                <br>
+                <p>Add the "Next Costume" block to create a simple animation.</p>
+                <br>
+                <p>Try running your code to see the sprite come to life!</p>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 2: Creating a Story</h3>
+                <p>Pick a sprite to be your main character.</p>
+                <br>
+                <p>Set up a scene with the "Switch Backdrop" block.</p>
+                <br>
+                <p>Make the sprite talk using the "Say" block.</p>
+                <br>
+                <p>Add costume changes to show emotions or actions.</p>
+                <br>
+                <p>Switch scenes with the "Next Backdrop" block.</p>
+                <br>
+                <p>Now you’re telling a story!</p>
+            </div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div id="exercise3" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 3: Bringing it All Together</h3>
+                <p>Set up your first scene with a backdrop and sprite.</p>
+                <br>
+                <p>Use "Switch Costume" and "Next Costume" to animate your sprite.</p>
+                <br>
+                <p>Add dialogue with "Say" and "Think" blocks.</p>
+                <br>
+                <p>Move between scenes with the "Next Backdrop" block.</p>
+                <br>
+                <p>Create a mini-movie by combining all these elements!</p>
+            </div>
+        </div>
+
+
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Exercise 1: Create Your Own Animation</h4>
+                            <p>Animate a sprite by switching its costumes. Experiment with different speeds and costume sequences.</p>
+                        </li>
+                        <li>
+                            <h4>Exercise 2: Build a Story</h4>
+                            <p>Use sprites, costumes, and backdrops to create a short story. Include dialogue and scene changes.</p>
+                        </li>
+                        <li>
+                            <h4>Exercise 3: Combine Animation and Storytelling</h4>
+                            <p>Create a mini-movie that combines everything you've learned about animation and storytelling in Scratch.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function goToHomepage() {
+            window.location.href = 'scratch_tutorials.html';  
+        }
+    </script>
+
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

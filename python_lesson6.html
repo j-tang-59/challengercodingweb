@@ -15,6 +15,7 @@
         <button onclick="showExercise('exercise2')">Exercise 2</button>
         <button onclick="showExercise('exercise3')">Exercise 3</button>
         <button onclick="showExercise('exercise4')">Exercise 4</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
     </div>
     
     <div class="exercise-container">
@@ -207,6 +208,11 @@ for fruit in fruits:
                 resultElement.textContent = `Error: ${error.toString()}`;
             }
         }
+</script>
+<script>
+    function goToHomepage() {
+        window.location.href = 'python_tutorials.html';  
+    }
 </script>
 
         

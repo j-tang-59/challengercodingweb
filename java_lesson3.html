@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Tutorial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        /* Ensure that all exercises take up the full width of the page */
+        .exercise {
+            width: 100%;
+            box-sizing: border-box; /* Include padding and border in the element's width and height */
+        }
+        
+        /* Ensure that iframes take up the full width of their container */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 0; /* Remove border if not needed */
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3 Exercises</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Lesson 3: Conditionals Practice</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button>
+        <button onclick="showExercise('exercise2')">Exercise 2</button>
+        <button onclick="showExercise('exercise3')">Exercise 3</button>
+        <button onclick="showExercise('project')">Project</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+    </div>
+
+    <div class="exercise-container">
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Introduction to Conditionals in Java</h2>
+                <p>Conditionals are statements in Java that allow you to execute certain blocks of code depending on whether a boolean condition is true or false.</p>
+                <p>In programming, a conditional statement evaluates to either <strong>true</strong> or <strong>false</strong>. If your conditional statement evaluates to true, the associated block of code will run. If not, the program will skip it or execute an alternative block of code.</p>
+    
+                <p>Think of it as your mom telling you to finish your chores. If you finish your chores, you will get your allowance. If you don’t, you won’t get anything.</p>
+    
+                <pre><code>boolean choresComplete = true;
+    if (choresComplete) {
+        // receive allowance
+    } else {
+        // no allowance
+    }
+                </code></pre>
+    
+                <p>In Java, there are three types of conditional statements:</p>
+                
+                <p><strong>If statement:</strong> The <code>if</code> statement begins the conditional check. If the condition inside the parentheses is true, the code inside the block runs.</p>  
+                <p><strong>Else if statement:</strong> This is the middle statement that checks another condition if the previous <code>if</code> condition was false. It is optional and can be used multiple times.</p>
+                <p><strong>Else statement:</strong> This ends the conditional chain. If none of the above conditions were true, the code inside the <code>else</code> block will run.</p>
+    
+                <pre><code>int score = 75;
+    
+    if (score >= 90) {
+        System.out.println("A grade");
+    } else if (score >= 80) {
+        System.out.println("B grade");
+    } else if (score >= 70) {
+        System.out.println("C grade");
+    } else {
+        System.out.println("Failed");
+    }
+                </code></pre>
+    
+                <p>Additionally, Java uses boolean expressions in conditions. These expressions evaluate to either <strong>true</strong> or <strong>false</strong>. Common boolean expressions include:</p>
+    
+                <ul>
+                    <li><code>==</code> (Equal to)</li>
+                    <li><code>!=</code> (Not equal to)</li>
+                    <li><code>&gt;</code> (Greater than)</li>
+                    <li><code>&gt;=</code> (Greater than or equal to)</li>
+                    <li><code>&lt;</code> (Less than)</li>
+                    <li><code>&lt;=</code> (Less than or equal to)</li>
+                </ul>
+    
+                <h3>Try it Yourself</h3>
+                <p>Write a Java program that uses <code>if</code>, <code>else if</code>, and <code>else</code> statements. Please copy the code below into the java editor and continue.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50">
+
+public class GradeCalculator {
+    public static void main(String[] args) {
+
+        int score = 70;                     
+        // Step 2: Determine the grade using if-else statements
+        char grade;
+                            
+        // write the if-statements
+
+        System.out.println(grade); // prints the variable grade
+    }
+}
+                    
+        </textarea>
+        <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+    </div>
+</div>
+    
+
+<div class="exercise-container">
+    <!-- Exercise 2 -->
+    <div id="exercise2" class="exercise" style="display: none;">
+        <div class="instructions">
+            <h2>Exercise 2: Working with Nested If Statements in Java</h2>
+            <p>In Java, a nested <code>if</code> statement is an <code>if</code> statement inside another <code>if</code> or <code>else</code> statement. Nested <code>if</code> statements allow you to check multiple conditions in a more complex decision-making process.</p>
+            <p>Imagine you’re baking a cake and you want to check if you have the right ingredients and enough time to bake. You would first check if you have all the ingredients, and if that’s true, you would then check if you have enough time to bake the cake.</p>
+
+            <pre><code>boolean hasIngredients = true;
+boolean hasTime = false;
+
+if (hasIngredients) {
+    if (hasTime) {
+        System.out.println("You can bake the cake!");
+    } else {
+        System.out.println("You don't have enough time to bake the cake.");
+    }
+} else {
+    System.out.println("You don't have the necessary ingredients.");
+}
+            </code></pre>
+
+            <p>Notice how the second <code>if</code> statement is nested inside the first <code>if</code> statement. This structure allows for more detailed condition checks.</p>
+
+            <h3>Try it Yourself</h3>
+            <p>In this exercise, you will write a Java program that uses nested <code>if</code> statements to determine the category of a movie ticket price based on the age and whether it’s a weekday or weekend. Copy the code below into the Java editor and test it out when completed!</p>
+        </div>
+        <div class="editor">
+            <textarea id="codeEditor2" rows="10" cols="50">
+
+public class MovieTicketPrice {
+    public static void main(String[] args) {
+
+        int age = 20;                      // Step 1: Set the age
+        boolean isWeekend = true;          // Step 2: Set if it's a weekend or not
+        double ticketPrice;
+
+        // Step 3: Determine ticket price using nested if statements
+
+        System.out.println("Ticket Price: " + ticketPrice); // prints the ticket price
+    }
+}
+
+            </textarea>
+            <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+        </div>
+    </div>
+</div>
+
+
+<div class="exercise-container">
+    <!-- Exercise 3 -->
+    <div id="exercise3" class="exercise" style="display: none;">
+        <div class="instructions">
+            <h2>Exercise 3: Using Logical Operators in Java</h2>
+            <p>Logical operators in Java are used to combine multiple conditions in a conditional statement. The most common logical operators are:</p>
+
+            <ul>
+                <li><strong>AND (&&):</strong> The code inside the if statement will execute only if both conditions are true.</li>
+                <li><strong>OR (||):</strong> The code inside the if statement will execute if at least one of the conditions is true.</li>
+                <li><strong>NOT (!):</strong> The code inside the if statement will execute if the condition is false.</li>
+            </ul>
+
+            <pre><code>int age = 20;
+boolean hasTicket = true;
+
+if (age >= 18 && hasTicket) {
+    System.out.println("You can watch the movie.");
+} else {
+    System.out.println("You cannot watch the movie.");
+}
+            </code></pre>
+
+            <p>In this example, both conditions must be true for the person to watch the movie. If either condition is false, they cannot watch the movie.</p>
+
+            <h3>Try it Yourself</h3>
+            <p>Write a Java program that uses logical operators to check multiple conditions. For example, you could check if a person is eligible for a discount based on their age and membership status.</p>
+        </div>
+        <div class="editor">
+            <textarea id="codeEditor3" rows="10" cols="50">
+
+public class DiscountEligibility {
+    public static void main(String[] args) {
+
+        int age = 30;                  // Step 1: Set the age
+        boolean isMember = false;      // Step 2: Set if the person is a member
+        boolean eligibleForDiscount;
+
+        // Step 3: Use logical operators to determine discount eligibility
+
+        System.out.println("Eligible for Discount: " + eligibleForDiscount); // prints the eligibility status
+    }
+}
+
+            </textarea>
+            <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Project: File-Based Data Processing -->
+        <div id="project" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Project: File-Based Data Processing</h2>
+                <p>Create a Python program that reads data from a text or CSV file, processes it (e.g., filtering, summarizing), and writes the results to a new file.</p>
+                <h3>Example Project Idea:</h3>
+                <p>Read a list of names and scores from a file, calculate the average score, and write the names of students who scored above the average to a new file.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditorProject" rows="20" cols="100"># Start your file-based data processing project here!</textarea>
+                <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="outputProject"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="resultProject"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'flex';
+        }
+
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null) {
+                    resultElement.textContent = "Success";
+                } else if (actualOutput === expectedOutput) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+    </script>
+        <script>
+            function goToHomepage() {
+                window.location.href = 'java_tutorials.html';  
+            }
+        </script>
+</body>
+<html>

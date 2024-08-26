@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Tutorial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        /* Ensure that all exercises take up the full width of the page */
+        .exercise {
+            width: 100%;
+            box-sizing: border-box; /* Include padding and border in the element's width and height */
+        }
+        
+        /* Ensure that iframes take up the full width of their container */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 0; /* Remove border if not needed */
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4 Exercises</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+    <h1>Lesson 4: Intro to Loops</h1>
+    <div class="button-container">
+        <button onclick="showExercise('exercise1')">Exercise 1</button>
+        <button onclick="showExercise('exercise2')">Exercise 2</button>
+        <button onclick="showExercise('exercise3')">Exercise 3</button>
+        <button onclick="showExercise('exercise4')">Exercise 4</button>
+        <button onclick="showExercise('project')">Project</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+    </div>
+
+    <div class="exercise-container">
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise">
+            <div class="instructions">
+                <h2>Exercise 1: Understanding Incrementing and Decrementing in Java</h2>
+                <p>In Java, incrementing and decrementing are operations that allow you to increase or decrease the value of a variable by a certain amount. These operations are commonly used in loops and iterative processes.</p>
+    
+                <h3>Incrementing</h3>
+                <p>Incrementing is the process of increasing the value of a variable. The most common ways to increment a variable are:</p>
+                <ul>
+                    <li><code>i++:</code> Increases the value of <code>i</code> by 1.</li>
+                    <li><code>i += n:</code> Increases the value of <code>i</code> by <code>n</code>, where <code>n</code> is any integer.</li>
+                    <li><code>i *= n:</code> Multiplies the value of <code>i</code> by <code>n</code>.</li>
+                </ul>
+    
+                <pre><code>int i = 5;
+i++;        // i is now 6
+i += 3;     // i is now 9
+i *= 2;     // i is now 18
+                </code></pre>
+    
+                <h3>Decrementing</h3>
+                <p>Decrementing is the process of decreasing the value of a variable. The most common ways to decrement a variable are:</p>
+                <ul>
+                    <li><code>i--:</code> Decreases the value of <code>i</code> by 1.</li>
+                    <li><code>i -= n:</code> Decreases the value of <code>i</code> by <code>n</code>.</li>
+                    <li><code>i /= n:</code> Divides the value of <code>i</code> by <code>n</code> (assuming <code>n</code> is not zero).</li>
+                </ul>
+    
+                <pre><code>int i = 10;
+i--;        // i is now 9
+i -= 4;     // i is now 5
+i /= 2;     // i is now 2
+                </code></pre>
+    
+                <h3>Try it Yourself</h3>
+                <p>Write a Java program that uses incrementing and decrementing operations on a variable. Try increasing and decreasing the value using different operators.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor1" rows="10" cols="50">
+    
+public class IncrementDecrement {
+    public static void main(String[] args) {
+    
+        int num = 10;
+    
+        // Step 1: Increment num by 1 using the increment operator
+    
+        // Step 2: Multiply num by 2 using the multiplication assignment operator
+    
+        // Step 3: Decrement num by 3 using the decrement operator
+    
+        // Step 4: Divide num by 2 using the division assignment operator
+    
+        System.out.println("Final value of num: " + num);  // Prints the final value of num
+    }
+}
+    
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="exercise-container">
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 2: Introduction to the For Loop in Java</h2>
+                <p>A <strong>for loop</strong> in Java is a control flow statement that allows you to repeat a block of code a certain number of times. It's one of the most common ways to create loops and is especially useful when you know in advance how many times you want to execute a statement or a block of statements.</p>
+                <p>The basic structure of a for loop includes three parts:</p>
+                <ul>
+                    <li><strong>Initialization:</strong> This is where you set up your loop variable. It usually involves declaring and initializing a variable, like <code>int i = 0;</code></li>
+                    <li><strong>Condition:</strong> This is the condition that is checked before each iteration of the loop. If the condition is true, the loop continues; if it's false, the loop stops. For example, <code>i < 5</code>.</li>
+                    <li><strong>Update:</strong> This is where you update your loop variable, usually by incrementing or decrementing it. For example, <code>i++</code> increments the value of <code>i</code> by 1 after each iteration.</li>
+                </ul>
+                <p>Here's an example of a simple for loop that prints the numbers 0 through 4:</p>
+                <pre><code>for (int i = 0; i < 5; i++) {
+        System.out.println(i);
+    }</code></pre>
+                <p>In this example:</p>
+                <ul>
+                    <li><strong>Initialization:</strong> <code>int i = 0;</code> initializes the loop variable <code>i</code> to 0.</li>
+                    <li><strong>Condition:</strong> <code>i < 5;</code> ensures the loop runs as long as <code>i</code> is less than 5.</li>
+                    <li><strong>Update:</strong> <code>i++;</code> increments the value of <code>i</code> by 1 after each iteration.</li>
+                </ul>
+                <p>The loop will print the numbers 0, 1, 2, 3, and 4, each on a new line.</p>
+    
+                <h3>Try it Yourself</h3>
+                <p>Write a Java program that uses a for loop to print the numbers 1 to 10.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor2" rows="10" cols="50">
+    
+public class ForLoopExample {
+    public static void main(String[] args) {
+    
+        // Step 1: Create a for loop that starts at 1 and ends at 10
+        for (int i = 1; i <= 10; i++) {
+            // Step 2: Print the value of i
+        System.out.println(i);
+        }
+    }
+}
+    
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="exercise-container">
+        <!-- Exercise 3 -->
+        <div id="exercise3" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Exercise 3: Introduction to Nested For Loops</h2>
+                <p>Nested loops are loops inside another loop. They are often used when you need to work with multi-dimensional data structures, like matrices or grids, or when you want to perform repetitive tasks that require a loop within a loop.</p>
+                
+                <p>In a nested loop, the inner loop runs completely every time the outer loop runs once. Think of it like the hands of a clock: for every complete rotation of the hour hand, the minute hand makes 60 rotations.</p>
+    
+                <pre><code>for (int i = 1; i <= 3; i++) {
+        for (int j = 1; j <= 3; j++) {
+            System.out.println("i = " + i + ", j = " + j);
+        }
+    }</code></pre>
+    
+                <p>In the example above, for each iteration of the outer loop (i), the inner loop (j) runs from 1 to 3. So the output would be:</p>
+                <pre><code>i = 1, j = 1
+    i = 1, j = 2
+    i = 1, j = 3
+    i = 2, j = 1
+    i = 2, j = 2
+    i = 2, j = 3
+    i = 3, j = 1
+    i = 3, j = 2
+    i = 3, j = 3</code></pre>
+    
+                <p>Nested loops are powerful tools in Java. Now let's write a nested loop to print a 5x5 grid of asterisks (*).</p>
+    
+                <h3>Try it Yourself</h3>
+                <p>Write a Java program that uses a nested for loop to print a 5x5 grid of asterisks (*).</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditor3" rows="10" cols="50">
+    
+    public class GridPrinter {
+        public static void main(String[] args) {
+            // Outer loop for rows
+            for (int i = 1; i <= 5; i++) {
+                // Inner loop for columns
+                for (int j = 1; j <= 5; j++) {
+                    System.out.print("* ");
+                }
+                System.out.println(); // Move to the next line after each row
+            }
+        }
+    }
+                </textarea>
+                <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+            </div>
+        </div>
+    </div>
+    
+<div class="exercise-container">
+    <!-- Exercise 4 -->
+    <div id="exercise4" class="exercise" style="display: none;">
+        <div class="instructions">
+            <h2>Exercise 4: Introduction to While Loops</h2>
+            <p>A <strong>while loop</strong> in Java is used to repeatedly execute a block of code as long as a given condition is true. It’s like a "repeat until" structure, where the loop continues until the condition becomes false.</p>
+            
+            <p>Imagine you have a bucket filling with water. You will keep adding water until the bucket is full. Similarly, a `while` loop continues to execute the code block until the condition (bucket is full) is no longer true.</p>
+
+            <pre><code>int counter = 1;
+while (counter <= 5) {
+    System.out.println("Counter is: " + counter);
+    counter++;
+}</code></pre>
+
+            <p>In this example, the loop runs as long as `counter` is less than or equal to 5. Each time the loop runs, it prints the current value of `counter` and then increments it by 1. When `counter` exceeds 5, the loop stops.</p>
+
+            <h3>Try it Yourself</h3>
+            <p>Write a Java program using a `while` loop that prints numbers from 10 down to 1.</p>
+        </div>
+        <div class="editor">
+            <textarea id="codeEditor4" rows="10" cols="50">
+
+public class Countdown {
+    public static void main(String[] args) {
+        int number = 10; // Start from 10
+        
+        // While loop that runs until the number is greater than 0
+        while (number > 0) {
+            System.out.println(number);
+            number--; // Decrement the number by 1 each time
+        }
+        
+        System.out.println("Liftoff!"); // Print after the loop ends
+    }
+}
+            </textarea>
+            <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
+        </div>
+    </div>
+</div>
+    
+
+
+        <!-- Project: File-Based Data Processing -->
+        <div id="project" class="exercise" style="display: none;">
+            <div class="instructions">
+                <h2>Project: File-Based Data Processing</h2>
+                <p>Create a Python program that reads data from a text or CSV file, processes it (e.g., filtering, summarizing), and writes the results to a new file.</p>
+                <h3>Example Project Idea:</h3>
+                <p>Read a list of names and scores from a file, calculate the average score, and write the names of students who scored above the average to a new file.</p>
+            </div>
+            <div class="editor">
+                <textarea id="codeEditorProject" rows="20" cols="100"># Start your file-based data processing project here!</textarea>
+                <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
+                <div class="output">
+                    <h3>Output</h3>
+                    <pre id="outputProject"></pre>
+                </div>
+                <div class="result">
+                    <h3>Result</h3>
+                    <pre id="resultProject"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'flex';
+        }
+
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+
+        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
+            const code = document.getElementById(editorId).value;
+            const outputElement = document.getElementById(outputId);
+            const resultElement = document.getElementById(resultId);
+            outputElement.textContent = "";
+            resultElement.textContent = "";
+
+            const isEffectiveCode = code.split('\n').some(line => {
+                const strippedLine = line.trim();
+                return strippedLine && !strippedLine.startsWith('#');
+            });
+
+            if (!isEffectiveCode) {
+                resultElement.textContent = "Error: No effective code provided";
+                return;
+            }
+
+            try {
+                Sk.configure({ 
+                    output: function (text) {
+                        outputElement.textContent += text;
+                    },
+                    read: builtinRead
+                });
+                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
+                await promise;
+                const actualOutput = outputElement.textContent.trim();
+                if (actualOutput === "") {
+                    resultElement.textContent = "Error: No output generated";
+                } else if (expectedOutput === null) {
+                    resultElement.textContent = "Success";
+                } else if (actualOutput === expectedOutput) {
+                    resultElement.textContent = "Success";
+                } else {
+                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
+                }
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.toString()}`;
+            }
+        }
+    </script>
+        <script>
+            function goToHomepage() {
+                window.location.href = 'java_tutorials.html';  
+            }
+        </script>
+</body>
+<html>

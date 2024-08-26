@@ -2,39 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 8: File Handling Practice</title>
+    <title>Lesson 1 Exercises</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
     <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
 </head>
 <body>
-    <h1>Lesson 8: File Handling Practice</h1>
+    <h1>Lesson 1 Practice</h1>
     <div class="button-container">
         <button onclick="showExercise('exercise1')">Exercise 1</button>
         <button onclick="showExercise('exercise2')">Exercise 2</button>
         <button onclick="showExercise('exercise3')">Exercise 3</button>
         <button onclick="showExercise('project')">Project</button>
+        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
     </div>
-
+    
     <div class="exercise-container">
-        <!-- Exercise 1: Introduction to File Handling -->
         <div id="exercise1" class="exercise">
             <div class="instructions">
-                <h2>Exercise 1: Introduction to File Handling</h2>
-                <p>File handling in Python allows you to open, read, write, and close files on your computer. This is a crucial skill for many real-world applications.</p>
-                <h3>Example of Reading a File:</h3>
-                <pre><code>with open('filename.txt', 'r') as file:
-    content = file.read()
-    print(content)</code></pre>
-                <p>In this example, we open a file named 'filename.txt' in read mode ('r'), read its content, and print it.</p>
-                <h3>Try it Yourself</h3>
-                <p>Write a Python program that reads and prints the contents of a text file.</p>
+                <h2>Exercise 1: Say hello</h2>
+                <p>The very first program you will learn to write is <strong>hello, world</strong>. In Python, the command to display <strong>hello, world</strong> on the screen is simply:</p>
+                <pre><code>print('hello, world')</code></pre>
+                <br>
+                <p>Try printing the following statement:</p>
+                <pre><code>hello, world</code></pre>
+                <br>
+                <p>Then hit the <strong>Run</strong> button to validate.</p>
             </div>
-            <div class="editor">
-                <textarea id="codeEditor1" rows="10" cols="50"># Write code to read and print a file's contents</textarea>
-                <button onclick="runCode('codeEditor1', 'output1', 'result1')">Run</button>
+            <div class="editor"> 
+                <textarea id="codeEditor1" rows="10" cols="50"># write code to print hello, world</textarea>
+                <button onclick="runCode('codeEditor1', 'output1', 'result1', 'hello, world')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
                     <pre id="output1"></pre>
@@ -45,21 +43,21 @@
                 </div>
             </div>
         </div>
-
-        <!-- Exercise 2: Writing to a File -->
+        
         <div id="exercise2" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Exercise 2: Writing to a File</h2>
-                <p>You can also write data to a file in Python. This is useful for saving results or generating reports.</p>
-                <h3>Example of Writing to a File:</h3>
-                <pre><code>with open('output.txt', 'w') as file:
-    file.write('Hello, World!')</code></pre>
-                <p>In this example, we open a file named 'output.txt' in write mode ('w') and write the text "Hello, World!" to it.</p>
-                <h3>Try it Yourself</h3>
-                <p>Write a Python program that writes user input to a file.</p>
+                <h2>Exercise 2: Print your name</h2>
+                <p>Write a Python program to print your name. For example, if your name is John, the command to display <strong>John</strong> on the screen is:</p>
+                <pre><code>print('John')</code></pre>
+                <p><strong>print</strong> tells the computer program to display whatever is inside the parentheses.</p>
+                <p>You can print anything as long as there is text between the parentheses!</p>
+                <pre><code>print('<strong>John</strong>')</code></pre>
+                <p> Practice by writing code to print your name:</p>
+                <pre><code>Your Name</code></pre>
+                <p>Then click the <strong>Run</strong> button to validate.</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor2" rows="10" cols="50"># Write code to take user input and save it to a file</textarea>
+                <textarea id="codeEditor2" rows="10" cols="50"># write code to print your name</textarea>
                 <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -72,25 +70,18 @@
             </div>
         </div>
 
-        <!-- Exercise 3: Working with CSV Files -->
         <div id="exercise3" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Exercise 3: Working with CSV Files</h2>
-                <p>CSV (Comma-Separated Values) files are commonly used to store tabular data. Python's <code>csv</code> module makes it easy to work with CSV files.</p>
-                <h3>Example of Reading a CSV File:</h3>
-                <pre><code>import csv
-
-with open('data.csv', 'r') as file:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row)</code></pre>
-                <p>In this example, we open a CSV file named 'data.csv', read its contents using <code>csv.reader</code>, and print each row.</p>
-                <h3>Try it Yourself</h3>
-                <p>Write a Python program that reads data from a CSV file and prints it.</p>
+                <h2>Exercise 3: Debugging</h2>
+                <p>Find and fix the error in the following Python code:</p>
+                <pre><code>print("Hello, World!)</code></pre>
+                <br>
+                <p>The code above contains a syntax error. Try to fix it and run the corrected code.</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditor3" rows="10" cols="50"># Write code to read and print data from a CSV file</textarea>
-                <button onclick="runCode('codeEditor3', 'output3', 'result3')">Run</button>
+                <textarea id="codeEditor3" rows="10" cols="50"># fix the error in the code below
+print("Hello, World!)</textarea>
+                <button onclick="runCode('codeEditor3', 'output3', 'result3', 'Hello, World!')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
                     <pre id="output3"></pre>
@@ -102,16 +93,16 @@ with open('data.csv', 'r') as file:
             </div>
         </div>
 
-        <!-- Project: File-Based Data Processing -->
         <div id="project" class="exercise" style="display: none;">
             <div class="instructions">
-                <h2>Project: File-Based Data Processing</h2>
-                <p>Create a Python program that reads data from a text or CSV file, processes it (e.g., filtering, summarizing), and writes the results to a new file.</p>
-                <h3>Example Project Idea:</h3>
-                <p>Read a list of names and scores from a file, calculate the average score, and write the names of students who scored above the average to a new file.</p>
+                <h2>Project: Art Project</h2>
+                <p>Use this space to create your own design using <strong> print </strong> statements.</p>
+                <p>Remember that anything you input between the parantheses get printed!</p><br>
+                <p>Here is mine: \_('_')_/ </p>
+                <p>What's yours? Get creative with it!</p>
             </div>
             <div class="editor">
-                <textarea id="codeEditorProject" rows="20" cols="100"># Start your file-based data processing project here!</textarea>
+                <textarea id="codeEditorProject" rows="20" cols="100"># start your project here, write a story or create artwork!</textarea>
                 <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
                 <div class="output">
                     <h3>Output</h3>
@@ -182,5 +173,10 @@ with open('data.csv', 'r') as file:
             }
         }
     </script>
+            <script>
+                function goToHomepage() {
+                    window.location.href = 'python_tutorials.html';  
+                }
+            </script>
 </body>
-<html>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 1 Class - Guided Exercise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 1 Class - Guided Exercise</h1>
+        <h2>Lesson 5 Guide</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('review')">Lesson Overview and Review</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('tutorial')">Guided Tutorial</button>
+            <button onclick="showExercise('homework')">Homework and Exercises</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <!-- Review -->
+        <div id="review" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Vocabulary:</h3>
+                <div class="vocab-section">
+                    <ul>
+                        <li><strong>Conditional:</strong> A conditional is a statement that performs different actions based on whether a certain condition is true or false.</li>
+                        <li><strong>Boolean:</strong> A boolean is a data type that represents one of two values: true or false. Booleans are often used in conditionals to make decisions in code.</li>
+                        <li><strong>While Loop:</strong> A while loop is a type of loop that keeps repeating a set of instructions as long as a certain condition is true.</li>
+                        <li><strong>If Statement:</strong> An if statement is a type of conditional that executes a set of instructions only if a certain condition is true.</li>
+                        <li><strong>If Else Statement:</strong> An if-else statement is a type of conditional that executes one block of code if a condition is true and another block of code if the condition is false.</li>
+                    </ul>
+                </div>
+
+                <h3>Blocks Used/Introduced Today:</h3>
+                <div class="blocks-section">
+                    <ul>
+                        <li>
+                            <img src="path_to_image/while_loop.png" alt="While Loop">
+                            <p>The While Loop. Use this block to create the conditional to where the while loop will execute.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/if_conditional.png" alt="If Conditional">
+                            <p>If Conditional. If the conditional is met, the code inside will execute.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/if_else_conditional.png" alt="If Else Conditional">
+                            <p>If Else Conditional. Allows you to program the conditional if the conditional is not met.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/conditional_check.png" alt="Conditional Check">
+                            <p>This block lets your conditional be checked. The computer will check if the key you selected has been pressed or not.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/touching_color.png" alt="Touching Color">
+                            <p>Touching Color. This block checks if the sprite is touching a specified color. Often used in conditionals to trigger an action when the sprite interacts with a specific color on the stage.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/key_pressed.png" alt="Key Pressed">
+                            <p>Key Pressed. This block checks if a specific key on the keyboard is pressed. It is commonly used in conditionals to trigger actions based on user input.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/mouse_down.png" alt="Mouse Down">
+                            <p>Mouse Down. This block checks if the mouse button is being pressed. It can be used to create interactive elements where the sprite reacts to mouse clicks.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 1: Implementing Conditionals</h3>
+                <p>A conditional in coding is a statement that allows a program to execute a certain piece of code only if a specific condition is met.</p>
+                <p>Conditionals are very versatile and important. It allows programs to handle multiple scenarios and basically allows the computer to make decisions!</p>
+                <p>Examples include:</p> 
+                    <li>Computer log in with the correct password</li>
+                    <li>If temperature is too hot, stay inside</li>
+                <br>
+                <p><strong>A conditional check</strong> is when the computer "checks" whether a certain condition, like pressing a key, is met. <strong>Think of it when someone asks you a yes no question.</strong> This is how conditionals are executed.</p>
+
+                <br>
+                <p><strong>If Conditional:</strong> Use the "If" block to make a decision in your code. The sprite will only execute the action if the condition inside the block is true.</p>
+                <br>
+                <p><strong>If Else Conditional:</strong> Use the "If Else" block when you need the sprite to perform one action if the condition is true, and a different action if it is false.</p>
+                <br>
+                <p><strong>While Loop:</strong> Although the while loop is technically a loop, it is also a conditional. Use the "While" block when you want to repeat an action until a certain condition is no longer true.</p>
+            </div>
+        </div>
+
+        <!--Exercise 2-->
+        <div id="exercise2" class="exercise-container" style="display: none;">
+            <div class="handout">
+                <h3>Exercise 2: Implementing Common Conditionals in Scratch</h3>
+                <p>In this exercise, you'll learn how to use common conditional blocks in Scratch to make your sprite respond to different events and conditions.</p>
+                <br>
+
+                <h3>Understanding Conditionals:</h3>
+                <p>A conditional is like a decision-maker in your program. It helps the computer decide what to do next based on whether a certain condition is true or false.</p>
+                <br>
+
+                <p>For example, if you want your sprite to move only when the space key is pressed, you would use a conditional to check if the space key is pressed before moving the sprite.</p>
+                <br>
+
+                <h3>Step 1: Using the "Key Pressed" Conditional</h3>
+                <p>Let's start by making your sprite move when a key is pressed:</p>
+                <p><strong>1. Drag the "When Green Flag Clicked" block to the workspace.</strong></p>
+                <p><strong>2. Go to the "Control" category and drag the "If" block into the workspace.</strong></p>
+                <p><strong>3. In the "Sensing" category, find the "Key [space] pressed?" block and drag it into the hexagon space in the "If" block.</strong></p>
+                <p><strong>4. Inside the "If" block, add a "Move 10 steps" block from the "Motion" category.</strong></p>
+                <br>
+                <p>Now, when you press the space key, your sprite will move 10 steps!</p>
+                <br>
+
+                <h3>Step 2: Using the "Touching Color" Conditional</h3>
+                <p>Next, let's make your sprite change direction when it touches a specific color:</p>
+                <p><strong>1. Below your previous "If" block, add another "If" block.</strong></p>
+                <p><strong>2. Go to the "Sensing" category, and find the "Touching color [ ] ?" block.</strong></p>
+                <p><strong>3. Drag this block into the hexagon space in the new "If" block. Click the color box and choose a color that your sprite will interact with.</strong></p>
+                <p><strong>4. Inside this "If" block, add a "Turn 15 degrees" block from the "Motion" category.</strong></p>
+                <br>
+                <p>Now, whenever your sprite touches the specified color, it will turn 15 degrees!</p>
+                <br>
+
+                <h3>Step 3: Combining Conditionals with Loops</h3>
+                <p>Finally, let's combine what we've learned with a loop:</p>
+                <p><strong>1. Wrap both of your "If" blocks inside a "Forever" loop from the "Control" category.</strong></p>
+                <p><strong>2. This way, the conditions will be continuously checked, and your sprite will keep responding to key presses and touching colors as long as the program runs.</strong></p>
+                <br>
+                <p>Your sprite is now interactive! It moves when you press the space key and changes direction when it touches a certain color, all thanks to conditionals and loops.</p>
+            </div>
+        </div>
+
+        <!-- Tutorial -->
+        <div id="tutorial" class="exercise-container" style="display: none;">
+            <div class="handout">
+                <h3>Maze Game Enhancement: Adding Arrow Keys and "Death" by Touching Walls</h3>
+                <p>In this tutorial, you’ll enhance your maze game by adding controls with the arrow keys and a feature where the sprite "dies" (or restarts) if it touches the walls of the maze.</p>
+                <br>
+
+                <h3>Step 1: Setting Up the Arrow Keys</h3>
+                <p>Let's start by making your sprite move with the arrow keys:</p>
+                <br>
+                <p><strong>1. Drag the "When Green Flag Clicked" block to the workspace.</strong></p>
+                <p><strong>2. Go to the "Control" category and drag a "Forever" loop into the workspace. This will keep the sprite moving as long as the program runs.</strong></p>
+                <br>
+                <p><strong>3. Inside the "Forever" loop, add four "If" blocks from the "Control" category.</strong></p>
+                <p><strong>4. Go to the "Sensing" category, and in each "If" block, add a "Key [arrow] pressed?" block. Set the first block to "Key Up arrow pressed?", the second to "Key Down arrow pressed?", the third to "Key Right arrow pressed?", and the fourth to "Key Left arrow pressed?".</strong></p>
+                <br>
+                <p><strong>5. Inside each "If" block, add a "Move 10 steps" block from the "Motion" category. For the "Up" and "Down" arrows, also add a "Point in direction" block and set it to 0 (Up) and 180 (Down) degrees, respectively. Set the "Right" arrow to 90 degrees and the "Left" arrow to -90 degrees.</strong></p>
+                <br>
+                <p>Now, your sprite should move in the direction of the arrow key you press!</p>
+                <br>
+
+                <h3>Step 2: Adding Walls to the Maze</h3>
+                <p>Next, ensure your maze has walls that the sprite cannot pass through:</p>
+                <br>
+                <p><strong>1. Draw or update your maze backdrop to include clear walls.</strong></p>
+                <p><strong>2. Go to the "Costumes" tab for your sprite, and draw your sprite (or use an existing one).</strong></p>
+                <br>
+                <p>Make sure the walls and sprite are distinct colors for easy detection.</p>
+                <br>
+
+                <h3>Step 3: Adding the "Death" Functionality</h3>
+                <p>Now, let’s make your sprite "die" (or restart) when it touches the walls:</p>
+                <br>
+                <p><strong>1. Inside the "Forever" loop, under your arrow key conditions, add another "If" block.</strong></p>
+                <p><strong>2. Go to the "Sensing" category, and add a "Touching color [ ]?" block into the "If" block. Click the color box and choose the color of your maze walls.</strong></p>
+                <br>
+                <p><strong>3. Inside the "If" block, add a "Go to [start position]" block from the "Motion" category. Set the X and Y coordinates to the starting position of your maze.</strong></p>
+                <p><strong>4. Optionally, you can add a "Play sound [sound]" block to play a sound when the sprite "dies."</strong></p>
+                <br>
+                <p>Now, if the sprite touches the walls, it will restart at the beginning of the maze!</p>
+                <br>
+
+                <h3>Step 4: Testing Your Maze Game</h3>
+                <p>Test your game by pressing the green flag and using the arrow keys to navigate your sprite through the maze. Make sure the sprite correctly "dies" and restarts if it touches the walls.</p>
+                <br>
+                <p>Congratulations! You’ve now enhanced your maze game with arrow key controls and a "death" mechanic when touching the walls!</p>
+            </div>
+        </div>
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch_tutorials.html';  
+            }
+        </script>
+    
+    
+        <script>
+            function showExercise(exerciseId) {
+                const exercises = document.querySelectorAll('.exercise-container');
+                exercises.forEach(exercise => {
+                    exercise.style.display = 'none';
+                });
+                document.getElementById(exerciseId).style.display = 'block';
+            }
+        </script>
+    </body>
+    </html>
+
+
+

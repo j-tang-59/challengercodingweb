@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 1 Class - Guided Exercise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 1 Class - Guided Exercise</h1>
+        <h2>Lesson 7 Guide - Variables and Parameters</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('review')">Lesson Overview and Review</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('homework')">Homework and Exercises</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <!-- Review Section -->
+        <div id="review" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Vocabulary:</h3>
+                <div class="vocab-section">
+                    <ul>
+                        <li><strong>Variable:</strong> Think of a variable like a "box" that you can put anything into. It can store numbers, words, or even the score of a game. This box can be opened, and its contents can be changed at any time. For example, if the box is named "Score," you can put a number in it that represents the player's score, and then change it whenever the player earns or loses points.</li>
+                        <li><strong>Parameter:</strong> A parameter is like a placeholder in a block that can hold different values each time the block is used. In Scratch, round blocks represent parameters. For example, a "pick random" block is a parameter that picks a random number between two values you set. It's like asking, "What number should I use here?" and Scratch answers with a random number.</li>
+                    </ul>
+                </div>
+
+                <h3>Blocks Used/Introduced Today:</h3>
+                <div class="blocks-section">
+                    <ul>
+                        <li>
+                            <img src="path_to_image/make_variable.png" alt="Make a Variable">
+                            <p><strong>Make a Variable:</strong> This block creates a new "box" (variable) that you can name. You can use this box to store any value, like the score in a game or the number of lives left.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/set_variable.png" alt="Set Variable">
+                            <p><strong>Set [Variable] to [Value]:</strong> This block tells Scratch to put something into your "box." For example, you can set the score to 0 at the beginning of a game.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/change_variable.png" alt="Change Variable">
+                            <p><strong>Change [Variable] by [Value]:</strong> This block changes the value in your box by a certain amount. For example, you can add 1 to the score every time the player collects a coin.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/show_variable.png" alt="Show Variable">
+                            <p><strong>Show/Hide Variable:</strong> These blocks let you decide whether the "box" (variable) is visible on the screen or not. For example, you can choose to show the score to the player or keep it hidden.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/pick_random.png" alt="Pick Random">
+                            <p><strong>Pick Random [1 to 10]:</strong> This block is like rolling a die; it picks a random number between two values you set. It's useful for creating surprise elements in your game, like randomly placing objects.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/timer.png" alt="Timer">
+                            <p><strong>Timer:</strong> This block keeps track of time. It's like a stopwatch that starts as soon as your project begins. You can use it to make things happen after a certain amount of time or to create timed challenges.</p>
+                        </li>
+                        <li>
+                            <img src="path_to_image/ask_and_wait.png" alt="Ask and Wait">
+                            <p><strong>Ask [What’s Your Name?] and Wait:</strong> This block is like asking a question and waiting for the answer. It's great for getting input from the player, like asking them to enter their name.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 1: Understanding Variables</h3>
+                <p>In this exercise, you will learn what variables are and how to use them in Scratch.</p>
+                <br>
+
+                <p>Imagine you have a box where you can store anything you want: a number, a word, or even your score in a game. This box is what we call a <strong>variable</strong> in coding.</p>
+                <br>
+
+                <p><strong>Step 1: Creating Your First Variable</strong></p>
+                <p>Let's start by creating a variable. In Scratch, go to the orange "Variables" section and click "Make a Variable." Name your variable "Score."</p>
+                <img src="path_to_image/make_variable.png" alt="Make a Variable">
+                <br>
+
+                <p><strong>Step 2: Setting the Initial Value</strong></p>
+                <p>Once you've created the "Score" variable, let's set its value. Drag the block "Set [Score] to [0]" into your workspace. This block puts the number 0 into your "Score" box, so your game starts with a score of 0.</p>
+                <img src="path_to_image/set_variable.png" alt="Set Variable">
+                <br>
+
+                <p><strong>Step 3: Changing the Variable</strong></p>
+                <p>Now, let's make the score go up when something good happens in the game. Drag the block "Change [Score] by [1]" into your workspace. This block will add 1 to the score every time it runs.</p>
+                <img src="path_to_image/change_variable.png" alt="Change Variable">
+                <br>
+
+                <p><strong>Step 4: Showing the Variable on the Screen</strong></p>
+                <p>If you want players to see their score, use the "Show Variable [Score]" block. This will display the score on the screen while your game is running.</p>
+                <img src="path_to_image/show_variable.png" alt="Show Variable">
+                <br>
+
+                <p><strong>Example:</strong> Let's say you're making a game where a cat collects coins. Every time the cat touches a coin, the score goes up by 1. You can use the blocks you've learned to create this functionality:</p>
+                <ul>
+                    <li>Start with "Set [Score] to [0]" to initialize the score at the beginning of the game.</li>
+                    <li>Then, use "Change [Score] by [1]" every time the cat touches a coin.</li>
+                    <li>Finally, use "Show Variable [Score]" to display the score on the screen for the player to see.</li>
+                </ul>
+                <br>
+
+                <p>Now that you've created and used a variable, you can use them to keep track of anything in your game: the number of lives left, the time remaining, or anything else you can think of!</p>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 2: Exploring Parameters</h3>
+                <p>In this exercise, you will learn what parameters are and how to use them in Scratch.</p>
+                <br>
+
+                <p><strong>What is a Parameter?</strong></p>
+                <p>Think of a parameter as a placeholder or a blank space that you can fill in with a specific value. It's like having a blank form that you can complete with different information every time you use it.</p>
+                <br>
+
+                <p>In Scratch, parameters are often represented by round or oval blocks that fit into other blocks. These parameters can change how a block behaves, depending on what value you give them.</p>
+                <br>
+
+                <p><strong>Common Parameter Blocks in Scratch</strong></p>
+                <ul>
+                    <li>
+                        <p><strong>Pick Random [1] to [10]</strong></p>
+                        <p>This block generates a random number between the two values you specify. For example, "Pick Random [1] to [10]" might give you any number between 1 and 10 each time it's used.</p>
+                        <img src="path_to_image/pick_random.png" alt="Pick Random">
+                        <p>Example: Use this block to make a sprite move a random number of steps each time the green flag is clicked.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>Timer</strong></p>
+                        <p>The "Timer" block keeps track of how much time has passed since the project started. You can use it to create time-based events in your game.</p>
+                        <img src="path_to_image/timer.png" alt="Timer">
+                        <p>Example: Use the Timer to make something happen after a certain amount of time, like ending the game after 30 seconds.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>Mouse X / Mouse Y</strong></p>
+                        <p>These blocks return the current X or Y position of the mouse pointer on the screen. You can use these to make a sprite follow the mouse or interact with it.</p>
+                        <img src="path_to_image/mouse_x_y.png" alt="Mouse X / Mouse Y">
+                        <p>Example: Use "Mouse X" and "Mouse Y" to make a sprite move to the mouse pointer's location.</p>
+                    </li>
+                </ul>
+                <br>
+
+                <p><strong>Activity: Create a Simple Random Movement</strong></p>
+                <p>Let's use what we've learned to create a simple program that makes a sprite move randomly on the stage.</p>
+                <ol>
+                    <li>Drag the "When Green Flag Clicked" block to start your program.</li>
+                    <li>Add the "Forever" loop so the movement continues endlessly.</li>
+                    <li>Inside the loop, use the "Move [10] Steps" block, but replace the number with "Pick Random [5] to [15]" to make the sprite move a random number of steps each time.</li>
+                    <li>Test your program to see the sprite move randomly on the stage.</li>
+                </ol>
+                <br>
+
+                <p>Now that you understand parameters, you can use them to create dynamic and interesting interactions in your Scratch projects!</p>
+            </div>
+        </div>
+        
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework and Practice Exercises:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Exercise 1: Create a Scorekeeper</h4>
+                            <p>- Create a variable called "Score". Set it to 0 at the start of your program.</p>
+                            <p>- Use the "Change [Score] by [1]" block to increase the score every time the sprite touches a specific color or object.</p>
+                            <p>- Display the score on the screen, and make sure it updates each time the score changes.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Exercise 2: Random Movement Game</h4>
+                            <p>- Use the "Pick Random [1] to [10]" block to control the movement of a sprite. The sprite should move a random number of steps in a random direction each time the green flag is clicked.</p>
+                            <p>- Add a timer to limit how long the game lasts. Use the "Timer" block to stop the game after 30 seconds.</p>
+                            <p>- Keep track of how many times the sprite hits the edge of the screen using a variable called "Hits". Display the hits on the screen.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Exercise 3: Interactive Quiz</h4>
+                            <p>- Create a simple quiz using variables to store the user's answers.</p>
+                            <p>- Ask the user a series of questions, and store their responses in variables like "Answer1," "Answer2," etc.</p>
+                            <p>- Use the "If Else" conditional blocks to check if the answers are correct, and increase the score accordingly.</p>
+                            <p>- At the end of the quiz, display the user's score using the "Score" variable.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Exercise 4: Custom Timer</h4>
+                            <p>- Create a timer that counts down from a specified number of seconds. Display the remaining time on the screen.</p>
+                            <p>- Use the "Timer" block to decrease the timer by 1 each second.</p>
+                            <p>- When the timer reaches 0, make the sprite say "Time's Up!" and stop all scripts.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <h4>Challenge: Parameterized Drawing</h4>
+                            <p>- Use the "Pick Random" block to create a drawing program where the sprite draws random shapes on the screen.</p>
+                            <p>- Use parameters to control the size, color, and number of sides of the shapes.</p>
+                            <p>- Experiment with different shapes and patterns to create a unique artwork.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch_tutorials.html';  
+            }
+        </script>
+    
+    
+        <script>
+            function showExercise(exerciseId) {
+                const exercises = document.querySelectorAll('.exercise-container');
+                exercises.forEach(exercise => {
+                    exercise.style.display = 'none';
+                });
+                document.getElementById(exerciseId).style.display = 'block';
+            }
+        </script>
+    </body>
+    </html>
+
+
+
