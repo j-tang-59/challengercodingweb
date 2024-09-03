@@ -3,14 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn to Code at Challenger Coding</title>
+    <title>Challenger Coding</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%; /* Make the bar span the full width of the page */
+            position: fixed; /* Fix the bar to the top of the page */
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure the bar stays on top of other content */
+        }
+
+        .navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center the buttons */
+        }
+
+        .navbar li {
+            display: inline-block;
+        }
+
+        .navbar li a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .navbar li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Carousel Styling */
+        .carousel {
+            width: 60%;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-images {
+            display: flex;
+            width: 300%;
+            animation: slide 20s infinite;
+        }
+
+        .carousel-images img {
+            width: 33.33%;
+            transition: transform 1s;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(0); } /* Hold the first image */
+            33% { transform: translateX(-33.33%); }
+            58% { transform: translateX(-33.33%); } /* Hold the second image */
+            66% { transform: translateX(-66.66%); }
+            92% { transform: translateX(-66.66%); } /* Hold the third image */
+            100% { transform: translateX(0); }
+        }
+
+        /* Testimonials Carousel Styling */
+        .testimonials-carousel {
+            width: 60%;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonials-content {
+            display: flex;
+            width: 300%;
+            animation: slideTestimonials 20s infinite;
+        }
+
+        .testimonial-item {
+            width: 33.33%;
+            padding: 20px;
+            background-color: #fff;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 1s;
+        }
+
+        @keyframes slideTestimonials {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(0); } /* Hold the first testimonial */
+            33% { transform: translateX(-33.33%); }
+            58% { transform: translateX(-33.33%); } /* Hold the second testimonial */
+            66% { transform: translateX(-66.66%); }
+            92% { transform: translateX(-66.66%); } /* Hold the third testimonial */
+            100% { transform: translateX(0); }
+        }
+
+        .testimonial-item p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-item span {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Mission Statement Styling */
+        .mission-statement {
+            width: 70%;
+            margin: 60px auto;
+            font-size: 24px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .mission-statement p {
+            margin-bottom: 20px;
+        }
+
+        .mission-statement strong {
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .footer-content {
+            width: 60%;
+            margin: auto;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-box {
+            border: 1px solid white;
+            padding: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul class="navbar">
             <li><a href="index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="online_compiler.html">Online Compiler</a></li>
             <li><a href="resources.html">Links and Other Resources</a></li>
@@ -18,19 +199,57 @@
     </nav>
 
     <br>
+    <br>
+    <br>
+    <br>
     <h1>Welcome to Challenger Coding!</h1>
 
-    <label for="courseSelect">Select a Course:</label>
-    <select id="courseSelect">
-        <option value="">-- No Selection --</option>
-        <option value="scratch">Scratch Programming</option>
-        <option value="python">Python Programming</option>
-        <option value="java">Java Programming</option>
-    </select>
+    <!-- Carousel for Class Images -->
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="path/to/image1.jpg" alt="Class Image 1">
+            <img src="path/to/image2.jpg" alt="Class Image 2">
+            <img src="path/to/image3.jpg" alt="Class Image 3">
+        </div>
+    </div>
+
+    <!-- Testimonials Carousel -->
+    <div class="testimonials-carousel">
+        <div class="testimonials-content">
+            <div class="testimonial-item">
+                <p>"My child has learned so much through Challenger Coding. The patience and creativity of the instructors are unmatched!"</p>
+                <span>- Parent</span>
+            </div>
+            <div class="testimonial-item">
+                <p>"Jaden was very easygoing and patient. The study materials were simple and self-explanatory!"</p>
+                <span>- Parent</span>
+            </div>
+            <div class="testimonial-item">
+                <p>"Jaden is an amazing instructor, he brings such good energy and positivity - that resonates really well with the kids!"</p>
+                <span>- Parent</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Statement -->
+    <div class="mission-statement">
+        <p><strong>Challenger Coding</strong></p>
+        <p>At Challenger Coding, our mission is to empower students of all ages to embrace coding and technology, equipping them with the skills they need to succeed in an increasingly digital world.</p>
+        <p>We believe that coding is not just for computer scientists, but a valuable skill for everyone. By offering accessible and engaging tutorials, we make coding fun and approachable for all.</p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="contact-box">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/jaden-tang" target="_blank">LinkedIn</a>
+                    <a href="mailto:contact@challengercoding.com">Email</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
-
-<footer>
-    <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
-</footer>
-
 </html>
