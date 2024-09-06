@@ -351,3 +351,12 @@ body {
 .testimonial.right {
     margin-left: 10px;
 }
+
+/* Sidebar */
+.sidebar {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-top: 80px; /* Adds space between the nav bar and sidebar */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
