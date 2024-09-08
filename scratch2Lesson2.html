@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 2 - Lesson 1: Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 2 Class - Guided Exercise</h1>
+        <h2>Lesson 1: Calculator</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('overview')">Lesson Overview</button>
+            <button onclick="showExercise('exercise1')">Exercise 1</button>
+            <button onclick="showExercise('exercise2')">Exercise 2</button>
+            <button onclick="showExercise('homework')">Homework</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch2_tutorials.html';  
+            }
+        </script>
+
+        <!-- Overview -->
+        <div id="overview" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Overview:</h3>
+                <p>In this lesson, you will create a simple calculator in Scratch. By the end of this project, you’ll have a functioning calculator that can perform basic math operations (addition, subtraction, multiplication, and division).</p>
+                <h3>Check out the final project below!</h3>
+                <iframe src="https://scratch.mit.edu/projects/963670311/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+
+<!-- Exercise 1 -->
+<div id="exercise1" class="exercise-container">
+    <div class="handout">
+        <h3>Exercise 1: Ask Function & Conditional Logic</h3>
+
+        <!-- Section 1: Introducing the Ask and Wait Block -->
+        <h4>Section 1: The Ask and Wait Block</h4>
+        <p>
+            In Scratch, the <strong>ask [ ] and wait</strong> block allows us to ask the user a question and wait for their response. It’s a great way to get input from the user, such as asking for a number or an operation they want to perform.
+        </p>
+        <p>
+            This block belongs to the "Sensing" category. When you drag the <strong>ask [ ] and wait</strong> block into your workspace, you’ll notice a white circle where you type your question. After the user answers, Scratch stores their response in the <strong>answer</strong> block, which you can use later in the program.
+        </p>
+        <p>For example, if you ask, "What's your name?" the user’s response will be stored in the <strong>answer</strong> block, and you can use it in your program.</p>
+        <img src="ask_wait_block.png" alt="Ask and Wait Block" style="display: block; margin: 20px auto;">
+
+        <hr>
+
+        <!-- Section 2: Transition to the Calculator Project -->
+        <h4>Section 2: Transition into the Calculator</h4>
+        <p>
+            Now that you’ve learned about the <strong>ask [ ] and wait</strong> block, let's think about how we can use it in our calculator project. You need to ask the user a question. What would be the most important question to ask in a calculator?
+        </p>
+
+        <!-- Button to toggle the question -->
+        <button onclick="toggleVisibility('reveal-question', this)">Click to Reveal the Question</button>
+        
+        <div id="reveal-question" style="display:none; margin-top: 15px;">
+            <p><strong>Question:</strong> "What operation would you like to perform? (add, subtract, multiply, divide)"</p>
+        </div>
+
+        <p>Now that you know the question, what should you do next with the user's response? Think about how you would store the answer.</p>
+
+        <!-- Button to toggle answer handling -->
+        <button onclick="toggleVisibility('reveal-answer-storage', this)">Click to Reveal the Next Step</button>
+
+        <div id="reveal-answer-storage" style="display:none; margin-top: 15px;">
+            <p>
+                The user's response is automatically stored in the <strong>answer</strong> block, which you can use later to control the flow of the program.
+            </p>
+        </div>
+        <img src="ask_wait_example.png" alt="Ask and Wait Example" style="display: block; margin: 20px auto;">
+
+        <hr>
+
+        <!-- Section 3: Creating the Conditional -->
+        <h4>Section 3: Creating the Conditional</h4>
+        <p>
+            Now, how do you think we can decide which operation the user chose? What block could help us check if the user typed "add", "subtract", "multiply", or "divide"?
+        </p>
+
+        <!-- Button to toggle conditional explanation -->
+        <button onclick="toggleVisibility('reveal-conditional', this)">Click to Reveal the Conditional Block</button>
+
+        <div id="reveal-conditional" style="display:none; margin-top: 15px;">
+            <p>
+                We can use an <strong>if [ ] then</strong> block from the "Control" tab to create a condition that checks what the user typed.
+            </p>
+        </div>
+
+        <p>Next, how would you check if the user's input matches "add"? What operator could help you with this?</p>
+
+        <!-- Button to toggle the operator explanation -->
+        <button onclick="toggleVisibility('reveal-check', this)">Click to Reveal the Answer</button>
+
+        <div id="reveal-check" style="display:none; margin-top: 15px;">
+            <p>
+                Use the <strong>=</strong> block from the "Operators" tab to check if the <strong>answer</strong> equals "add".
+            </p>
+        </div>
+
+        <p>
+            Once you've done that, place the <strong>answer</strong> block on the left side of the equals operator, and type "add" on the right side. If the user's input matches, you'll be ready to perform the addition operation.
+        </p>
+        <img src="conditional_example.png" alt="Conditional Block Example" style="display: block; margin: 20px auto;">
+
+        <hr>
+
+        <!-- Section 4: Adding the Broadcast Block -->
+        <h4>Section 4: Adding the Broadcast Block</h4>
+        <p>
+            Now, how can we notify other parts of the program that the user has selected "add"? How can we broadcast this choice across the program?
+        </p>
+
+        <!-- Button to toggle broadcast block explanation -->
+        <button onclick="toggleVisibility('reveal-broadcast', this)">Click to Reveal the Broadcast Block</button>
+
+        <div id="reveal-broadcast" style="display:none; margin-top: 15px;">
+            <p>
+                We can use the <strong>broadcast [message]</strong> block from the "Events" tab to send a signal to the rest of the program.
+            </p>
+        </div>
+
+        <p>Once you’ve added the broadcast block, create a new message and name it <strong>"addition"</strong>. This will notify the rest of the program to perform the addition operation.</p>
+        <img src="broadcast_block.png" alt="Broadcast Block Example" style="display: block; margin: 20px auto;">
+        
+        <p>In the next exercise, we’ll guide you through implementing the actual math operations. For now, test your program to make sure it asks for the operation and sets up the correct broadcast signal.</p>
+        <p><strong>Click the green flag to test your program!</strong></p>
+    </div>
+</div>
+
+<!-- JavaScript to toggle visibility -->
+<script>
+    function toggleVisibility(id, btn) {
+        const element = document.getElementById(id);
+        if (element.style.display === "none") {
+            element.style.display = "block";
+            btn.innerText = "Click to Hide";
+        } else {
+            element.style.display = "none";
+            btn.innerText = "Click to Reveal";
+        }
+    }
+</script>
+
+
+<!-- Exercise 2 -->
+<div id="exercise2" class="exercise-container">
+    <div class="handout">
+        <h3>Exercise 2: Coding the Subtraction Operation</h3>
+        <p>In this exercise, you will implement the subtraction operation for the calculator. The conditional and broadcast setup has already been completed in Exercise 1, so now we will focus solely on the subtraction logic.</p>
+
+        <h3>Step-by-Step Instructions:</h3>
+        <p>First, how do you think we can ask for the two numbers that we need to subtract? What blocks should we use to store these inputs?</p>
+
+        <!-- Button to reveal the process for asking and storing numbers -->
+        <button onclick="toggleVisibility('reveal-numbers', this)">Click to Reveal How to Ask for Numbers</button>
+
+        <div id="reveal-numbers" style="display:none; margin-top: 15px;">
+            <p>Use the <strong>ask [ ] and wait</strong> block to ask for the first number, and store the response in a variable called <strong>number1</strong>.</p>
+            <p>Then, repeat the same step for the second number and store it in a variable called <strong>number2</strong>.</p>
+        </div>
+
+        <p>Now that you have the two numbers stored, how can we perform the subtraction? What block can we use to get the sprite to say the result?</p>
+
+        <!-- Button to reveal how to say the result -->
+        <button onclick="toggleVisibility('reveal-subtraction', this)">Click to Reveal How to Say the Result</button>
+
+        <div id="reveal-subtraction" style="display:none; margin-top: 15px;">
+            <p>Instead of using a <strong>set</strong> block, you can use the <strong>say [ ]</strong> block to show the result. To do this, go to the "Operators" tab and find the subtraction block <strong>(-)</strong>.</p>
+            <p>Place the <strong>number1</strong> and <strong>number2</strong> variables inside the subtraction operator, and then place that inside the <strong>say [ ]</strong> block.</p>
+            <p>The sprite will now say the result of <strong>number1 - number2</strong> directly!</p>
+        </div>
+
+        <hr>
+
+        <p><strong>Next Step:</strong> Now that you've coded the subtraction operation, try applying the same logic to implement multiplication and division!</p>
+
+        <p><strong>Test your calculator:</strong> Run the project and make sure it can subtract two numbers correctly!</p>
+    </div>
+</div>
+
+<!-- JavaScript to toggle visibility -->
+<script>
+    function toggleVisibility(id, btn) {
+        const element = document.getElementById(id);
+        if (element.style.display === "none") {
+            element.style.display = "block";
+            btn.innerText = "Click to Hide";
+        } else {
+            element.style.display = "none";
+            btn.innerText = "Click to Reveal";
+        }
+    }
+</script>
+
+
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Exercise 1: Create a Functioning Calculator</h4>
+                            <p>Extend your calculator to handle multiplication and division as discussed in class.</p>
+                        </li>
+                        <li>
+                            <h4>Exercise 2: Experiment with More Operations</h4>
+                            <p>Try adding new functions, like finding the square root or working with percentages. How creative can you get?</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

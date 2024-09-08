@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 2 - Lesson 4: Advanced Platformer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 2 Class - Guided Exercise</h1>
+        <h2>Lesson 4: Advanced Platformer</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('overview')">Lesson Overview</button>
+            <button onclick="showExercise('exercise1')">Mini-Lesson 1</button>
+            <button onclick="showExercise('exercise2')">Mini-Lesson 2</button>
+            <button onclick="showExercise('exercise3')">Mini-Lesson 3</button>
+            <button onclick="showExercise('exercise4')">Mini-Lesson 4</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch2_tutorials.html';  // Takes user back to Scratch 2 homepage
+            }
+        </script>
+
+        <!-- Overview -->
+        <div id="overview" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Overview:</h3>
+                <p>In this advanced platformer lesson, we will introduce wall jumping, realistic gravity and acceleration, health and hazardous objects, and optionally, a boss fight. By the end of this project, you’ll have a more complex platformer game with added challenges and gameplay depth.</p>
+                <h3>Check out the final project below!</h3>
+                <iframe src="https://scratch.mit.edu/projects/123456789/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 1: Wall Jumping</h3>
+
+                <h4>Step 1: Introduction to Wall Jumping</h4>
+                <p>
+                    Wall jumping is an exciting mechanic in platformer games that allows the player to jump off walls and reach higher areas or cross wide gaps. 
+                    Let’s go through the process of implementing this feature in a simple exercise before integrating it into your platformer game.
+                </p>
+
+                <h4>Step 2: Implementing Wall Jumping</h4>
+                <p>
+                    In this part, you’ll learn how to detect when the character is touching a wall and enable jumping from the wall. Follow the steps below.
+                </p>
+
+                <!-- Button to reveal the steps -->
+                <button onclick="toggleVisibility('reveal-wall-jumping', this)">Click to Reveal the Steps for Wall Jumping</button>
+
+                <div id="reveal-wall-jumping" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Wall Jumping:</h5>
+                    <ol>
+                        <li>
+                            <strong>Create a Wall Sprite:</strong>
+                            Draw a simple vertical rectangle to represent the wall. You can either create a new sprite for the wall or draw it directly on the backdrop.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Detect When the Character Touches the Wall:</strong>
+                            Use the <strong>if touching color [ ]</strong> block from the "Sensing" category to detect when the player’s character touches the wall. Select the wall's color using the color picker inside the block.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Jumping Logic:</strong>
+                            When the player presses the jump key while the character is touching the wall:
+                            <ol type="a">
+                                <li>
+                                    Use the <strong>change x by [ ]</strong> block to move the character away from the wall. For example, if the wall is on the right, move the character to the left by setting a negative x value.
+                                </li>
+                                <br>
+                                <li>
+                                    Use the <strong>change y by [ ]</strong> block to move the character upward, simulating a jump. Adjust the y-value to control the jump height.
+                                </li>
+                            </ol>
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Test the Wall Jump:</strong>
+                            Place the wall at different locations on the stage and test the wall jump by pressing the jump key when the character is next to the wall. Ensure the character can jump away smoothly without falling through or sticking to the wall.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 3: Applying Wall Jumping to Your Platformer</h4>
+                <p>
+                    Now that you've learned how to implement wall jumping, apply it to your platformer game. Make sure to test it alongside your existing movement mechanics, and place walls in different areas of your level for the player to jump off.
+                </p>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 2 -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 2: Gravity and Acceleration</h3>
+
+                <h4>Step 1: Introduction to Gravity and Acceleration</h4>
+                <p>
+                    Gravity and acceleration make platformer games feel more realistic by simulating how objects fall and move over time. 
+                    Gravity pulls the character downward, while acceleration controls the speed of movement.
+                    Let’s explore these concepts before applying them to your platformer.
+                </p>
+
+                <h4>Step 2: Implementing Gravity</h4>
+                <p>
+                    Gravity is the force that pulls the character down when they’re not standing on a platform. To implement gravity, we’ll gradually decrease the character's y-position to simulate falling. Click below to reveal the steps.
+                </p>
+
+                <!-- Button to reveal the gravity steps -->
+                <button onclick="toggleVisibility('reveal-gravity', this)">Click to Reveal the Steps for Gravity</button>
+
+                <div id="reveal-gravity" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Implementing Gravity:</h5>
+                    <ol>
+                        <li>
+                            <strong>Create a Gravity Variable:</strong>
+                            Create a new variable called <strong>Gravity</strong>. This variable will store the amount of downward force applied to the character. Initially, set it to a small negative value (e.g., -1).
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Apply Gravity to the Character:</strong>
+                            Use the <strong>change y by [Gravity]</strong> block to apply gravity. Inside a <strong>forever</strong> loop, continuously change the y-position of the character by the value of the gravity variable.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Increase Gravity Over Time:</strong>
+                            Gradually increase the gravity variable to simulate acceleration as the character falls. For example, every frame, decrease the y-position by a larger amount (e.g., set <strong>change Gravity by -0.5</strong>).
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Limit the Fall Speed:</strong>
+                            To prevent the character from falling too fast, set a maximum value for the gravity variable (e.g., if <strong>Gravity</strong> is less than -10, stop increasing it).
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Stop Gravity When on a Platform:</strong>
+                            Use the <strong>if touching [platform]</strong> block to stop gravity. If the character is touching a platform, set the gravity to 0 so the character stops falling.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 3: Implementing Sprite Movement Acceleration</h4>
+                <p>
+                    Acceleration controls how fast the character moves horizontally across the screen. Instead of moving at a constant speed, the character can start slow and gradually speed up as they move. 
+                    Click below to reveal the steps.
+                </p>
+
+                <!-- Button to reveal the acceleration steps -->
+                <button onclick="toggleVisibility('reveal-acceleration', this)">Click to Reveal the Steps for Acceleration</button>
+
+                <div id="reveal-acceleration" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Implementing Acceleration:</h5>
+                    <ol>
+                        <li>
+                            <strong>Create a Speed Variable:</strong>
+                            Create a variable called <strong>Speed</strong> that stores the current speed of the character. Set the initial value to 0.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Accelerate the Character:</strong>
+                            When the player presses the left or right arrow key, gradually increase or decrease the <strong>Speed</strong> variable. Use the <strong>change Speed by [ ]</strong> block to control acceleration (e.g., <strong>change Speed by 1</strong>).
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Apply Speed to Movement:</strong>
+                            Use the <strong>change x by [Speed]</strong> block to move the character horizontally. The character should move faster as the <strong>Speed</strong> variable increases.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Limit the Maximum Speed:</strong>
+                            Set a maximum value for the speed (e.g., if <strong>Speed</strong> is greater than 10, don’t increase it further). This ensures the character doesn’t move too quickly.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Decelerate When No Key Is Pressed:</strong>
+                            If no movement key is pressed, gradually reduce the speed to 0 using <strong>change Speed by -1</strong>, creating a smooth deceleration effect.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 4: Homework</h4>
+                <p>
+                    Now that you’ve learned how to implement gravity and acceleration, apply these mechanics to your platformer game.
+                    Make sure your character can fall realistically and accelerate smoothly when moving.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Mini-Lesson 3 -->
+        <div id="exercise3" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 3: Health and Hazardous Objects</h3>
+
+                <h4>Step 1: Thinking About Health as a Variable</h4>
+                <p>
+                    In many games, players have a limited amount of health. When they come into contact with dangerous objects like spikes or lava, they lose some of that health. 
+                    But how can we keep track of the player’s health? What would we need in Scratch to represent this concept?
+                </p>
+
+                <p>
+                    Think about health as a value that changes over time—what Scratch feature allows us to store a changing number?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-health-variable', this)">Click to Reveal the Answer</button>
+
+                <div id="reveal-health-variable" style="display:none; margin-top: 15px;">
+                    <p>
+                        That’s right! We can use a **variable** to represent health. Let’s create a variable called <strong>Health</strong> and set its initial value to 100.
+                    </p>
+                </div>
+
+                <h4>Step 2: Losing Health – Introducing Conditionals</h4>
+                <p>
+                    Now that we have a way to track the player's health, how can we reduce that value when the character touches a dangerous object? 
+                    What kind of condition would we need to check for in our game?
+                </p>
+
+                <p>
+                    Think about how we can detect when the player touches a hazardous object. What block could we use in Scratch to check this interaction?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-hazard-detection', this)">Click to Reveal the Answer</button>
+
+                <div id="reveal-hazard-detection" style="display:none; margin-top: 15px;">
+                    <p>
+                        We can use the <strong>if touching [ ]</strong> block to check if the character is touching a hazardous object, like spikes or lava. 
+                        If the character is touching one of these hazards, we’ll reduce the player’s health by a certain amount.
+                    </p>
+                </div>
+
+                <p>
+                    Next, let’s think about how much health the player should lose when touching a hazard. Should it always be the same, or could different hazards cause different amounts of damage?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-health-reduction', this)">Click to Reveal the Answer</button>
+
+                <div id="reveal-health-reduction" style="display:none; margin-top: 15px;">
+                    <p>
+                        You can decide! For example, touching a small spike could reduce health by 10, while touching lava could reduce health by 30. 
+                        To do this, use the <strong>change Health by [-amount]</strong> block, with the amount based on the severity of the hazard.
+                    </p>
+                </div>
+
+                <h4>Step 3: Game Over – When Health Reaches Zero</h4>
+                <p>
+                    Now that we’re reducing the player’s health when they touch hazards, what should happen if the player runs out of health? 
+                    How can we check if their health has reached zero?
+                </p>
+
+                <p>
+                    Think about the condition we need to check to see if the game should end. What type of comparison can we make with our health variable?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-game-over', this)">Click to Reveal the Answer</button>
+
+                <div id="reveal-game-over" style="display:none; margin-top: 15px;">
+                    <p>
+                        We can use an <strong>if Health = 0</strong> block to detect when the player’s health reaches zero. When that happens, you can broadcast a message like <strong>Game Over</strong>, which can stop the game or reset it to the beginning.
+                    </p>
+                </div>
+
+                <h4>Step 4: Applying the Health System</h4>
+                <p>
+                    Now that we've thought through how to implement health, losing health, and what happens when health runs out, it’s time to add this system to your platformer game.
+                    Start by adding hazardous objects like spikes or lava, and make sure that your player’s health decreases when they touch these hazards. When the health variable reaches zero, end the game.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Mini-Lesson 4 -->
+        <div id="exercise4" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 4: Optional Boss Fight</h3>
+
+                <h4>Step 1: Programming a Boss</h4>
+                <p>If you want to add a final challenge, you can introduce a boss fight at the end of the level. The boss will have health, attack the player, and require strategy to defeat. How do you think we should begin?</p>
+                <button onclick="toggleVisibility('reveal-boss', this)">Click to Reveal How to Program a Boss</button>
+                <div id="reveal-boss" style="display:none; margin-top: 15px;">
+                    <p>Create a boss sprite with its own health variable. Program the boss to attack the player using projectiles or moving toward them. The player can reduce the boss's health by hitting a weak spot or dodging attacks. When the boss's health reaches zero, broadcast a victory message to complete the game.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Gravity and Acceleration:</h4>
+                            <p>Add realistic gravity and acceleration to your platformer game as discussed. Make the character fall faster and allow jumps with variable height.</p>
+                        </li>
+                        <li>
+                            <h4>Health and Hazards:</h4>
+                            <p>Add hazardous objects that reduce the player's health when touched, and create a game over condition when health reaches zero.</p>
+                        </li>
+                        <li>
+                            <h4>Optional: Boss Fight:</h4>
+                            <p>If you want to take the challenge further, add a boss at the end of the game, complete with attacks and a health system.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+
+        function toggleVisibility(id, btn) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+                btn.innerText = "Click to Hide";
+            } else {
+                element.style.display = "none";
+                btn.innerText = "Click to Reveal";
+            }
+        }
+    </script>
+</body>
+</html>

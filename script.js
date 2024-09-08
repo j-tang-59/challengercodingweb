@@ -8,11 +8,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 case 'scratch':
                     window.location.href = 'scratch_tutorials.html';
                     break;
+                case 'scratch2':
+                    window.location.href = 'scratch2_tutorials.html';
+                    break;
                 case 'python':
                     window.location.href = 'python_tutorials.html';
                     break;
+                case 'python2':
+                    window.location.href = 'python2_tutorials.html';
+                    break;
                 case 'java':
                     window.location.href = 'java_tutorials.html';
+                    break;
+                case 'java2':
+                    window.location.href = 'java2_tutorials.html';
                     break;
             }
         }

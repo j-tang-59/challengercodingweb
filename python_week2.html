@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Lessons - Challenger Coding</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 25%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin-top: 80px; /* Adds space between the nav bar and sidebar */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+            padding: 10px;
+            border-left: 4px solid transparent;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #e0e0e0;
+            border-left-color: #3498db;
+        }
+
+        /* Main content area */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-height: 400px;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            width: 80%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="online_compiler.html">Online Compiler</a></li>
+            <li><a href="resources.html">Links and Other Resources</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Sidebar for lesson progress -->
+        <div class="sidebar">
+            <h2>Lesson 2 - Variables</h2>
+            <ul>
+                <li><a href="#" class="active" onclick="showLesson('lesson1')">Lesson Overview</a></li>
+                <li><a href="#" onclick="showLesson('lesson2')">What is a Variable?</a></li>
+                <li><a href="#" onclick="showLesson('lesson3')">Types of Variables</a></li>
+                <li><a href="#" onclick="showLesson('lesson4')">Creating and Defining a Variable</a></li>
+                <li><a href="#" onclick="showLesson('lesson5')">Printing Variables</a></li>
+                <li><a href="#" onclick="showLesson('lesson6')">Variable Operations</a></li>
+                <li><a href="#" onclick="showLesson('resources')">Other Resources</a></li>
+                <li><a href="#" onclick="showLesson('quiz')">Quiz</a></li>
+                <li><a href="python_tutorials.html">Back to Homepage</a></li> 
+            </ul>
+        </div>
+
+        <!-- Main content for text-only lesson -->
+        <div class="content">
+            <br>
+            <br>
+            <br>
+            <h1 id="lesson-title">Python Week 2: Overview</h1>
+            <div class="video-container" style="display: none;">
+                <!-- This will be hidden when no video is available -->
+                <iframe id="lesson-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p id="lesson-description"><p>This lesson introduced key concepts regarding variables and their role in storing information. We also explored the three main types of variables in Python and different operations that can be performed on them.</p>
+
+            <h2>Key Topics Covered:</h2>
+
+            <ul>
+                <li>Introduction to Variables</li>
+                <li>Data Types: String, Integer, Float</li>
+                <li>Declaring and Redefining Variables</li>
+                <li>Operations on Integer and Float Variables</li>
+                <li>String Concatenation</li>
+            </ul>
+
+            <h2>Definitions:</h2>
+
+            <h3>Variables:</h3>
+            <p>Variables are used to store information in memory. Think of a variable like a labeled box, and the information inside the box is what the computer remembers. Variables get erased and replaced each time you rerun your program.</p>
+
+            <h3>Data Types:</h3>
+            <p>Data types represent the kinds of information you can store in variables. Python allows a flexible system where variables can switch between types as needed. We covered the following:</p>
+
+            <ul>
+                <li><strong>Strings:</strong> Sequences of characters, including text, surrounded by quotation marks (<code>" " </code>or <code>' '</code>).</li>
+                <li><strong>Integer:</strong> Whole numbers without decimals.</li>
+                <li><strong>Float:</strong> Numbers with decimal points.</li>
+            </ul>
+
+            <h2>Examples:</h2>
+
+            <div class="example-box">
+                <strong>Declaring a String:</strong>
+                <code>name = "Aadi Saraf"</code>
+            </div>
+
+            <div class="example-box">
+                <strong>Declaring an Integer:</strong>
+                <code>num = 10</code>
+            </div>
+
+            <div class="example-box">
+                <strong>Declaring a Float:</strong>
+                <code>pi = 3.14159</code>
+            </div>
+
+            <h2>String Concatenation:</h2>
+            <p>Strings can be added together using concatenation. This combines multiple strings into one longer string.</p>
+            <div class="example-box">
+                <strong>Example:</strong>
+                <code>greeting = "Hello, " + "world!"</code> will produce <code>"Hello, world!"</code>
+            </div>
+
+            <h2>Operations on Variables:</h2>
+            <p>Python allows you to perform operations on integers and floats, such as addition, subtraction, multiplication, and more.</p>
+
+            <ul>
+                <li><strong>Addition:</strong> <code>+</code></li>
+                <li><strong>Subtraction:</strong> <code>-</code></li>
+                <li><strong>Multiplication:</strong> <code>*</code></li>
+                <li><strong>Division:</strong> <code>/</code></li>
+                <li><strong>Floor Division:</strong> <code>//</code> (Removes decimals)</li>
+                <li><strong>Modulo:</strong> <code>%</code> (Finds the remainder)</li>
+            </ul>
+
+            <h2>Redefining Variables:</h2>
+            <p>Variables can be redeclared at any time. For example:</p>
+            <div class="example-box">
+                <strong>Initial:</strong> <code>num = 10</code><br>
+                <strong>Redeclaration:</strong> <code>num = 20</code>
+            </div>
+
+            <h2>Advanced Printing:</h2>
+            <p>To insert variables into a string during a <code>print()</code> statement, use an <code>f-string</code>. It lets you include variables within a string by surrounding the variable name with curly brackets <code>{ }</code>.</p>
+            <div class="example-box">
+                <strong>Example:</strong> <code>print(f"My favorite number is {favNumber}")</code>
+            </div>
+        </div></p>
+        </div>
+
+    <script>
+        // Define lesson data
+        const lessons = {
+            lesson1: {
+                title: 'Python Week 2: Variables',
+                video: 'https://www.youtube.com/embed/hC1GL4ZQYcs',
+                description: 'This lesson introduces students to Scratch, a block-based coding language that allows users to create interactive stories, games, and animations.'
+            },
+            lesson2: {
+                title: 'Variables and Data Types',
+                video: 'https://www.youtube.com/embed/sampleVideoLink2',
+                description: 'In this lesson, you will learn about variables, which are used to store data, and data types, such as numbers and strings.'
+            },
+            lesson3: {
+                title: 'Control Structures',
+                video: 'https://www.youtube.com/embed/sampleVideoLink3',
+                description: 'Control structures are blocks of programming that analyze variables and choose directions in which to go based on given parameters.'
+            },
+            lesson4: {
+                title: 'Loops and Iterations',
+                video: 'https://www.youtube.com/embed/sampleVideoLink4',
+                description: 'Loops allow you to repeat actions in code. In this lesson, you will learn about different types of loops like while loops and for loops.'
+            },
+            lesson5: {
+                title: 'Functions and Parameters',
+                video: 'https://www.youtube.com/embed/sampleVideoLink5',
+                description: 'Learn how to use functions to break down complex tasks into smaller, reusable pieces. This lesson covers parameters and function calls.'
+            },
+            lesson6: {
+                title: 'Project: Build a Game',
+                video: 'https://www.youtube.com/embed/sampleVideoLink6',
+                description: 'Now it\'s time to put everything together and build your first game! In this project, you will use what you\'ve learned to create an interactive game.'
+            },
+            resources: {
+                title: 'Other Resources',
+                video: 'https://www.youtube.com/embed/sampleVideoLinkResources',
+                description: 'Here you can find additional resources, tutorials, and documentation to further support your coding journey.'
+            },
+            quiz: {
+                title: 'Quiz',
+                video: 'https://www.youtube.com/embed/sampleVideoLinkQuiz',
+                description: 'Test your knowledge with this quiz. It will cover the topics learned throughout the lessons.'
+            }
+        };
+
+        // Function to show lesson
+        function showLesson(lessonKey) {
+            const lesson = lessons[lessonKey];
+            document.getElementById('lesson-title').textContent = lesson.title;
+            document.getElementById('lesson-description').textContent = lesson.description;
+
+            // Check if the video exists for this lesson
+            const videoContainer = document.querySelector('.video-container');
+            const videoFrame = document.getElementById('lesson-video');
+
+            if (lesson.video) {
+                videoContainer.style.display = 'block';  // Show video if it exists
+                videoFrame.src = lesson.video;
+            } else {
+                videoContainer.style.display = 'none';  // Hide video container if no video
+                videoFrame.src = '';  // Clear the video source if no video
+            }
+
+            // Update active class for sidebar
+            document.querySelectorAll('.sidebar ul li a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

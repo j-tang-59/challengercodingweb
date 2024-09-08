@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 2 - Lesson 2: Pong Game (1 Player)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 2 Class - Guided Exercise</h1>
+        <h2>Lesson 2: Pong Game (1 Player)</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('overview')">Lesson Overview</button>
+            <button onclick="showExercise('exercise1')">Mini-Lesson 1</button>
+            <button onclick="showExercise('exercise2')">Mini-Lesson 2</button>
+            <button onclick="showExercise('exercise3')">Mini-Lesson 3</button>
+            <button onclick="showExercise('exercise4')">Mini-Lesson 4</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch2_tutorials.html';  
+            }
+        </script>
+
+        <!-- Overview -->
+        <div id="overview" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Overview:</h3>
+                <p>In this lesson, you will create a basic 1-player Pong game in Scratch. The player controls a paddle on the left side of the screen using the mouse, while a bouncing ball tries to pass the paddle. Your goal is to keep the ball in play and prevent it from passing your paddle.</p>
+                <p>The ball will bounce off the edges of the screen and your paddle. You will score points by keeping the ball in play. If the ball passes your paddle, the game will end.</p>
+                <h3>Check out the final project below!</h3>
+                <iframe src="https://scratch.mit.edu/projects/10128515/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 1: Setting Up the Stage and Paddle</h3>
+
+                <h4>Step 1: Setting the Stage</h4>
+                <p>We’ll start by creating a simple playing field for the Pong game.</p>
+                <button onclick="toggleVisibility('reveal-stage', this)">Click to Reveal How to Set Up the Stage</button>
+                <div id="reveal-stage" style="display:none; margin-top: 15px;">
+                    <p>Go to the "Backdrops" tab and select or create a simple backdrop to represent the playing field. You can use the built-in "Blue Sky" or create a plain-colored background.</p>
+                </div>
+
+                <h4>Step 2: Creating the Paddle</h4>
+                <p>Next, we’ll create the player’s paddle. How do you think we should design it?</p>
+                <button onclick="toggleVisibility('reveal-paddle', this)">Click to Reveal How to Create the Paddle</button>
+                <div id="reveal-paddle" style="display:none; margin-top: 15px;">
+                    <p>Go to the "Sprites" tab and create a new sprite. Draw a simple rectangle, name it "PlayerPaddle," and position it on the left side of the screen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 2 -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 2: Moving the Player's Paddle with the Mouse</h3>
+
+                <h4>Step 1: Player-Controlled Paddle</h4>
+                <p>We’ll control the player's paddle using the mouse. How can we set this up in Scratch?</p>
+                <button onclick="toggleVisibility('reveal-mouse-control', this)">Click to Reveal How to Control the Paddle with the Mouse</button>
+                <div id="reveal-mouse-control" style="display:none; margin-top: 15px;">
+                    <p>Use the <strong>forever</strong> block and place the <strong>go to y: [mouse y]</strong> block inside it. This will allow the paddle to follow the mouse vertically on the screen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 3 -->
+        <div id="exercise3" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 3: Ball Movement</h3>
+
+                <h4>Step 1: Creating the Ball</h4>
+                <p>Now, we’ll create the ball that bounces between the paddles. How can we make the ball move in Scratch?</p>
+                <button onclick="toggleVisibility('reveal-ball-move', this)">Click to Reveal How to Move the Ball</button>
+                <div id="reveal-ball-move" style="display:none; margin-top: 15px;">
+                    <p>Draw a small circle sprite and use the <strong>move [ ] steps</strong> and <strong>point in direction [ ]</strong> blocks to make the ball move.</p>
+                </div>
+
+                <h4>Step 2: Bouncing the Ball</h4>
+                <p>How can we make the ball bounce when it hits the paddle or the edges of the screen?</p>
+                <button onclick="toggleVisibility('reveal-bounce', this)">Click to Reveal How to Make the Ball Bounce</button>
+                <div id="reveal-bounce" style="display:none; margin-top: 15px;">
+                    <p>Use the <strong>if on edge, bounce</strong> block to make the ball bounce off the screen edges. For the paddle, use the <strong>if touching [PlayerPaddle]</strong> block to make the ball bounce off the player's paddle.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 4 -->
+        <div id="exercise4" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 4: Scoring and Game Over</h3>
+
+                <h4>Step 1: Adding a Score Counter</h4>
+                <p>How can we track the player’s score when the ball hits the right side of the screen?</p>
+                <button onclick="toggleVisibility('reveal-score', this)">Click to Reveal How to Add Scoring</button>
+                <div id="reveal-score" style="display:none; margin-top: 15px;">
+                    <p>Use a variable called <strong>PlayerScore</strong> and increase the score each time the ball passes the right edge of the screen.</p>
+                </div>
+
+                <h4>Step 2: Game Over</h4>
+                <p>How should we end the game when the player misses the ball?</p>
+                <button onclick="toggleVisibility('reveal-end-game', this)">Click to Reveal How to End the Game</button>
+                <div id="reveal-end-game" style="display:none; margin-top: 15px;">
+                    <p>When the ball passes the player’s paddle, broadcast a <strong>Game Over</strong> message and stop all scripts.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Extend Your Pong Game:</h4>
+                            <p>Add sound effects for when the ball hits the paddle or when the player scores. You can also add a win condition by setting a score limit!</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+
+        function toggleVisibility(id, btn) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+                btn.innerText = "Click to Hide";
+            } else {
+                element.style.display = "none";
+                btn.innerText = "Click to Reveal";
+            }
+        }
+    </script>
+</body>
+</html>

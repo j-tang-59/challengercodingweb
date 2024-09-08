@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 2 - Lesson 3: Basic Platformer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 2 Class - Guided Exercise</h1>
+        <h2>Lesson 3: Basic Platformer</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('overview')">Lesson Overview</button>
+            <button onclick="showExercise('exercise1')">Mini-Lesson 1</button>
+            <button onclick="showExercise('exercise2')">Mini-Lesson 2</button>
+            <button onclick="showExercise('exercise3')">Mini-Lesson 3</button>
+            <button onclick="showExercise('exercise4')">Mini-Lesson 4</button>
+            <button onclick="showExercise('exercise5')">Homework</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch2_tutorials.html';  // Takes user back to Scratch 2 homepage
+            }
+        </script>
+
+        <!-- Overview -->
+        <div id="overview" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Overview:</h3>
+                <p>In this lesson, we will create a basic platformer game. You will learn how to move a character left and right, jump between platforms, and avoid falling off the screen.</p>
+                <p>By the end of this project, you’ll have a simple but functioning platformer game with basic character movement, platform interaction, and gravity effects.</p>
+                <h3>Check out the final project below!</h3>
+                <iframe src="https://scratch.mit.edu/projects/123456789/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 1 -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 1: Creating the Platforms</h3>
+
+                <h4>Step 1: Drawing the Platforms</h4>
+                <p>How do you think we should create platforms for our platformer game?</p>
+                <button onclick="toggleVisibility('reveal-platforms', this)">Click to Reveal How to Create Platforms</button>
+                <div id="reveal-platforms" style="display:none; margin-top: 15px;">
+                    <p>Go to the "Backdrops" tab and draw simple rectangular platforms at different heights and widths. These will be the platforms that your character will jump onto.</p>
+                </div>
+
+                <h4>Step 2: Setting Up the Ground</h4>
+                <p>What should we do to set up a ground at the bottom of the screen?</p>
+                <button onclick="toggleVisibility('reveal-ground', this)">Click to Reveal How to Create the Ground</button>
+                <div id="reveal-ground" style="display:none; margin-top: 15px;">
+                    <p>Create a large rectangular ground that spans the bottom of the screen. This will act as the base platform in your game.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 2 -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 2: Creating the Character</h3>
+
+                <h4>Step 1: Drawing the Player Character</h4>
+                <p>Next, we’ll need to create a character that the player will control. How should we design the character?</p>
+                <button onclick="toggleVisibility('reveal-character', this)">Click to Reveal How to Create the Character</button>
+                <div id="reveal-character" style="display:none; margin-top: 15px;">
+                    <p>Go to the "Sprites" tab and draw a simple character sprite. You can draw a stick figure, a block character, or import an existing character.</p>
+                </div>
+
+                <h4>Step 2: Adding Basic Movement</h4>
+                <p>How do you think we can program the character to move left and right?</p>
+                <button onclick="toggleVisibility('reveal-movement', this)">Click to Reveal How to Add Character Movement</button>
+                <div id="reveal-movement" style="display:none; margin-top: 15px;">
+                    <p>Use the <strong>when [left arrow] pressed</strong> and <strong>when [right arrow] pressed</strong> blocks to move the character left and right across the screen. Use the <strong>change x by [ ]</strong> block to control the movement.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 3 -->
+        <div id="exercise3" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 3: Jumping and Gravity</h3>
+
+                <h4>Step 1: Implementing Jumping</h4>
+                <p>How do you think we can program the character to jump?</p>
+                <button onclick="toggleVisibility('reveal-jumping', this)">Click to Reveal How to Program Jumping</button>
+                <div id="reveal-jumping" style="display:none; margin-top: 15px;">
+                    <p>Use the <strong>when [space key] pressed</strong> block and the <strong>change y by [ ]</strong> block to make the character jump. Adjust the value to simulate the jump height.</p>
+                </div>
+
+                <h4>Step 2: Simulating Gravity</h4>
+                <p>What do we need to do to simulate gravity so that the character falls back down after jumping?</p>
+                <button onclick="toggleVisibility('reveal-gravity', this)">Click to Reveal How to Add Gravity</button>
+                <div id="reveal-gravity" style="display:none; margin-top: 15px;">
+                    <p>Use a <strong>forever</strong> loop with the <strong>change y by -1</strong> block to make the character constantly move down. This will simulate gravity. You’ll also need to add a condition that stops the character from falling through platforms.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Lesson 4 -->
+        <div id="exercise4" class="exercise-container">
+            <div class="handout">
+                <h3>Mini-Lesson 4: Collisions with Platforms</h3>
+
+                <h4>Step 1: Stopping the Character on Platforms</h4>
+                <p>How can we make sure the character stops falling when it lands on a platform using the color of the platform?</p>
+                <button onclick="toggleVisibility('reveal-collisions', this)">Click to Reveal How to Handle Platform Collisions</button>
+                <div id="reveal-collisions" style="display:none; margin-top: 15px;">
+                    <p>Instead of checking if the character is touching a platform sprite, we will check if the character is touching the **color** of the platform. Use the <strong>if touching color [ ]</strong> block to detect the platform color.</p>
+                    <p>Once the character is touching the platform's color, use the <strong>set y to [y position]</strong> block to keep the character at the same y-coordinate. This will prevent the character from falling through the platform.</p>
+                    <p>You can pick the platform’s color by clicking on the color picker in the <strong>if touching color [ ]</strong> block and selecting the platform's color directly.</p>
+                </div>
+
+                <h4>Step 2: Preventing the Character from Falling Off the Screen</h4>
+                <p>What happens if the player falls off the platforms? How can we prevent the character from falling off the screen?</p>
+                <button onclick="toggleVisibility('reveal-falling', this)">Click to Reveal How to Prevent the Character from Falling Off</button>
+                <div id="reveal-falling" style="display:none; margin-top: 15px;">
+                    <p>If the character’s <strong>y</strong> position goes below the screen’s bottom (e.g., y < -180), reset the game or place the character back at the start position. You can use an <strong>if</strong> statement to check the <strong>y</strong> value and trigger the response.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Homework Section -->
+        <div id="exercise5" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Extend Your Platformer:</h4>
+                            <p>Add new levels or obstacles to your game. You can also add a goal for the player to reach at the end of each level!</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+
+        function toggleVisibility(id, btn) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+                btn.innerText = "Click to Hide";
+            } else {
+                element.style.display = "none";
+                btn.innerText = "Click to Reveal";
+            }
+        }
+    </script>
+</body>
+</html>
