@@ -41,14 +41,24 @@
     </footer>
 
     <script>
-        // Check if user is logged in
-        const loggedIn = localStorage.getItem('loggedIn');
+        // Check if user is logged in on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('loggedIn');
+            if (!loggedIn) {
+                // If not logged in, redirect to login page
+                window.location.href = 'login.html';
+            }
+        });
 
         // Log out functionality
         const logoutButton = document.getElementById('logoutButton');
         logoutButton.addEventListener('click', function() {
-            localStorage.removeItem('loggedIn');  // Remove the login status
-            window.location.href = 'login.html';  // Redirect to the login page
+            // Remove the login status
+            localStorage.removeItem('loggedIn');
+            // Optionally, clear other user-specific data if needed
+            // localStorage.clear();
+            // Redirect to the login page
+            window.location.href = 'login.html';
         });
     </script>
 </body>

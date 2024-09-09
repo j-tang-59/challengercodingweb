@@ -1,7 +1,13 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    margin-top: 50px;
+}
+
+h1, h2, p, nav ul {
+    font-family: 'Georgia', serif;
 }
 
 label {
@@ -14,11 +20,6 @@ select {
     font-size: 16px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-}
 
 .tutorial-container {
     display: flex;
@@ -52,12 +53,6 @@ button img {
 
 button:hover {
     background-color: #ddd;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
 }
 
 .tutorial-container {
@@ -266,7 +261,7 @@ body {
     max-width: 1200px;
     margin: auto;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: Georgia, serif;
 }
 
 .compiler-container h1 {
@@ -285,7 +280,7 @@ body {
     max-width: 1200px;
     margin: auto;
     text-align: left;
-    font-family: Arial, sans-serif;
+    font-family: Georgia, serif;
 }
 
 .resources-container h1 {
