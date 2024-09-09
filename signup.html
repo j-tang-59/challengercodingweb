@@ -30,6 +30,13 @@
         <form id="signupForm">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
+
+
+                        <!-- Show Password Checkbox -->
+                        <div class="show-password">
+                            <input type="checkbox" id="showPassword" onclick="togglePassword('password')"> Show Password
+                        </div>
+                        
             <button type="submit">Sign Up</button>
         </form>
         <button onclick="window.location.href='index.html'">Back to Homepage</button>
@@ -81,6 +88,15 @@
             // Display success message and show the current user count
             messageElement.innerText = `Sign up successful! Total users: ${userCount}`;
         });
+
+        function togglePassword(inputId) {
+            const passwordField = document.getElementById(inputId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
     </script>
 </body>
 </html>

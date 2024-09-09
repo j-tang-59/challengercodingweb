@@ -43,9 +43,6 @@
     <script>
         // Check if user is logged in
         const loggedIn = localStorage.getItem('loggedIn');
-        if (!loggedIn) {
-            window.location.href = 'login.html';  // Redirect to login if not logged in
-        }
 
         // Log out functionality
         const logoutButton = document.getElementById('logoutButton');
