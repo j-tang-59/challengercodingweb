@@ -81,6 +81,8 @@
     </div>
 </div>
 
+<p>Total Users: <span id="userCount"></span></p>
+
     <!-- Footer Section -->
     <footer>
         <div class="footer-content">
@@ -95,5 +97,10 @@
         </div>
     </footer>
 </body>
+<script>
+    // Retrieve the user count from localStorage
+    const userCount = localStorage.getItem('userCount') || 0;
+    document.getElementById('userCount').innerText = userCount;
+</script>
 </html>
 

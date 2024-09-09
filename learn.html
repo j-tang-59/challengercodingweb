@@ -31,10 +31,28 @@
         <option value="java">Java Programming</option>
         <option value="java2">Java Programming 2</option>
     </select>
+
+    <!-- Log Out Button -->
+    <br><br>
+    <button id="logoutButton" style="display: block; margin: 20px auto; padding: 10px 20px;">Log Out</button>
+
+    <footer>
+        <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        const loggedIn = localStorage.getItem('loggedIn');
+        if (!loggedIn) {
+            window.location.href = 'login.html';  // Redirect to login if not logged in
+        }
+
+        // Log out functionality
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', function() {
+            localStorage.removeItem('loggedIn');  // Remove the login status
+            window.location.href = 'login.html';  // Redirect to the login page
+        });
+    </script>
 </body>
-
-<footer>
-    <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
-</footer>
-
 </html>

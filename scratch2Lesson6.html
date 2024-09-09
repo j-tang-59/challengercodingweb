@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch 2 - Lesson 5: Flappy Bird</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .handout {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-section, .blocks-section, .homework-section {
+            margin-top: 30px;
+        }
+
+        .vocab-section ul, .blocks-section ul, .homework-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
+            background-color: #eef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .blocks-section img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        .blocks-section p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scratch 2 Class - Guided Exercise</h1>
+        <h2>Lesson 5: Flappy Bird - Foundational Components</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button onclick="showExercise('overview')">Lesson Overview</button>
+            <button onclick="showExercise('exercise1')">Exercise 1: Player Movement</button>
+            <button onclick="showExercise('exercise2')">Exercise 2: Cloning</button>
+            <button onclick="showExercise('exercise3')">Exercise 3: Collisions</button>
+            <button onclick="showExercise('exercise4')">Exercise 4: Game Variables</button>
+            <button onclick="showExercise('homework')">Homework</button>
+            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
+        </div>
+
+        <script>
+            function goToHomepage() {
+                window.location.href = 'scratch2_tutorials.html';  // Takes user back to Scratch 2 homepage
+            }
+        </script>
+
+        <!-- Overview -->
+        <div id="overview" class="exercise-container" style="display: block;">
+            <div class="handout">
+                <h3>Overview:</h3>
+                <p>
+                    In this lesson, we will focus on teaching foundational components needed to create a Flappy Bird-style game. You will learn key elements like gravity, flapping, scrolling backdrops, and a scoring mechanism. Each exercise builds toward understanding the mechanics, but you won’t be making the entire game just yet!
+                </p>
+            </div>
+        </div>
+
+        <!-- Exercise 1: Player Movement with Conditionals and Operators -->
+        <div id="exercise1" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 1: Player Movement Using Conditionals and Operators</h3>
+
+                <p>In this exercise, we will implement the movement of the player's spaceship using key press detection and movement constraints. We will also use conditionals, the <strong>and</strong>/<strong>not</strong> operator, and the <strong>greater than/less than</strong> operator to keep the player within the screen's bounds.</p>
+
+                <h4>Step 1: Moving Left and Right</h4>
+                <p>
+                    The player needs to move left and right using the arrow keys. What key press events can we use to control the movement of the spaceship?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-left-right', this)">Click to Reveal the Steps for Moving Left and Right</button>
+
+                <div id="reveal-left-right" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Movement:</h5>
+                    <ol>
+                        <li><strong>Detect Key Press:</strong> 
+                            Use the <strong>when [right arrow] key pressed</strong> and <strong>when [left arrow] key pressed</strong> blocks from the "Events" tab to detect the arrow key presses for movement.
+                        </li>
+                        <br>
+                        <li><strong>Move the Spaceship:</strong> 
+                            Use the <strong>change x by [ ]</strong> block to move the spaceship left or right. For example:
+                            - Use <strong>change x by [10]</strong> for right movement.
+                            - Use <strong>change x by [-10]</strong> for left movement.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 2: Limiting Movement to the Screen Bounds</h4>
+                <p>
+                    We don't want the player’s spaceship to move off the screen. We’ll use the <strong>greater than/less than</strong> operators to create boundaries. What do you think is the range for the player’s movement on the x-axis?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-limits', this)">Click to Reveal the Steps for Limiting Movement</button>
+
+                <div id="reveal-limits" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Setting Limits:</h5>
+                    <ol>
+                        <li><strong>Use Conditionals:</strong> 
+                            Before moving the spaceship, use an <strong>if</strong> statement to check if the x-position is within the screen limits. 
+                            Example: <strong>if x-position > -240 and x-position < 240</strong>.
+                        </li>
+                        <br>
+                        <li><strong>Move Only if Within Limits:</strong> 
+                            Only allow the spaceship to move if it stays within the x-coordinate limits. Combine this check with the movement:
+                            - For the right movement, use: <strong>if x < 240</strong>.
+                            - For the left movement, use: <strong>if x > -240</strong>.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 3: Adding the <strong>Not</strong> Operator for Reverse Control</h4>
+                <p>
+                    What if we want to change the controls so that the player moves in the opposite direction? The <strong>not</strong> operator can help us invert the control behavior. For example, pressing the left arrow could move the spaceship right, and pressing the right arrow could move it left. How can we do this?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-not', this)">Click to Reveal the Steps for Using the Not Operator</button>
+
+                <div id="reveal-not" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Reversing Movement with <strong>Not</strong>:</h5>
+                    <ol>
+                        <li><strong>Use the <strong>Not</strong> Operator:</strong> 
+                            Combine the <strong>not</strong> operator with the arrow key events to reverse the controls:
+                            Example: <strong>when not [right arrow] key pressed</strong>, move the spaceship left.
+                        </li>
+                        <br>
+                        <li><strong>Apply Reverse Logic:</strong> 
+                            Reverse the movement commands:
+                            - Use <strong>change x by [-10]</strong> for the right arrow.
+                            - Use <strong>change x by [10]</strong> for the left arrow.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 4: Testing the Player Movement</h4>
+                <p>Now that we have implemented the movement, boundary conditions, and reverse control logic, let's test the spaceship movement:</p>
+                <ul>
+                    <li>Move the spaceship left and right using the arrow keys.</li>
+                    <li>Ensure the spaceship doesn't move off the screen (past x = -240 or x = 240).</li>
+                    <li>If you've enabled reverse controls, ensure pressing left moves right and vice versa.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Exercise 2: Enemy Movement and Cloning -->
+        <div id="exercise2" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 2: Enemy Movement and Cloning</h3>
+
+                <p>
+                    In this exercise, we’ll focus on creating enemies that move across the screen. We’ll also learn how to use cloning to generate multiple enemies. Instead of building the exact enemy movement for Space Invaders, we’ll practice cloning and movement in a different context to help you understand these concepts.
+                </p>
+
+                <h4>Step 1: Introduction to Cloning</h4>
+                <p>
+                    Cloning is when we create multiple copies of a sprite, all with the same behaviors. How do you think we can generate multiple enemies using clones in Scratch?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-cloning-intro', this)">Click to Reveal the Steps for Cloning</button>
+
+                <div id="reveal-cloning-intro" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Cloning:</h5>
+                    <ol>
+                        <li><strong>Create an Enemy Sprite:</strong> Draw or import a simple sprite for your enemy.</li>
+                        <br>
+                        <li><strong>Set Up Cloning:</strong> Use the <strong>when green flag clicked</strong> block and inside it, use <strong>create clone of [myself]</strong> to generate clones of the enemy at regular intervals.
+                        </li>
+                        <br>
+                        <li><strong>Position Clones:</strong> Use a <strong>go to x [ ] y [ ]</strong> block inside the <strong>when I start as a clone</strong> block to position the clones at random x positions at the top of the screen.</li>
+                    </ol>
+                </div>
+
+                <h4>Step 2: Moving the Clones</h4>
+                <p>
+                    Once the enemies are cloned, we want them to move across the screen. We’ll use loops to move the clones downwards. How do you think we can move each enemy down the screen while maintaining their position horizontally?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-clone-movement', this)">Click to Reveal the Steps for Moving Clones</button>
+
+                <div id="reveal-clone-movement" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Moving Clones:</h5>
+                    <ol>
+                        <li><strong>Set Up Movement:</strong> Inside the <strong>when I start as a clone</strong> block, use a loop (e.g., <strong>repeat until [ ]</strong>) to move each clone down the screen using <strong>change y by [-10]</strong>.</li>
+                        <br>
+                        <li><strong>Delete the Clone:</strong> When the enemy moves off the bottom of the screen, use a condition like <strong>if y < -180, delete this clone</strong> to remove the clone from the game.</li>
+                    </ol>
+                </div>
+
+                <h4>Step 3: Testing Cloning and Movement</h4>
+                <p>Now that we’ve set up cloning and movement, run your program and make sure the clones appear at the top of the screen at random x positions and move downward. Make sure clones are deleted when they go off the screen.</p>
+
+                <h4>Related Practice Exercise: Falling Objects</h4>
+                <p>Let’s practice what we’ve learned by creating a different project. Instead of enemies, let’s create falling objects (e.g., raindrops or snowflakes) that fall from the top of the screen to the bottom. Follow the steps below to create your own version of this project.</p>
+
+                <button onclick="toggleVisibility('reveal-practice-exercise', this)">Click to Reveal the Steps for the Practice Exercise</button>
+
+                <div id="reveal-practice-exercise" style="display:none; margin-top: 15px;">
+                    <h5>Practice Exercise Steps:</h5>
+                    <ol>
+                        <li><strong>Create a Raindrop/Snowflake Sprite:</strong> Draw or import a sprite for the falling object.</li>
+                        <br>
+                        <li><strong>Clone the Falling Object:</strong> Use the <strong>create clone of [myself]</strong> block inside the <strong>when green flag clicked</strong> event to generate multiple falling objects at random x positions.</li>
+                        <br>
+                        <li><strong>Move the Clones:</strong> Inside the <strong>when I start as a clone</strong> block, move the falling objects down the screen using <strong>change y by [-5]</strong>.</li>
+                        <br>
+                        <li><strong>Delete the Clones:</strong> Use a condition (e.g., <strong>if y < -180</strong>) to delete the clone once it moves off the bottom of the screen.</li>
+                    </ol>
+                </div>
+
+                <h4>Homework Challenge:</h4>
+                <p>
+                    Your homework is to apply these concepts to your own Space Invaders game! Try cloning and moving enemies in a similar way to what we’ve practiced with the falling objects. Be creative with how you implement these mechanics in your game.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Exercise 3: Collision Detection -->
+        <div id="exercise3" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 3: Collision Detection</h3>
+
+                <p>In this exercise, we’ll learn how to detect collisions between two sprites. In Space Invaders, this happens when a player's bullet hits an enemy. However, we will practice this concept using a different scenario.</p>
+
+                <h4>Step 1: Introduction to Collision Detection</h4>
+                <p>
+                    Collision detection is when one sprite touches another, triggering an event. For example, when a player’s bullet touches an enemy, both the bullet and the enemy should disappear.
+                    What Scratch block can we use to check if two sprites are touching?
+                </p>
+
+                <button onclick="toggleVisibility('reveal-collision-intro', this)">Click to Reveal the Steps for Collision Detection</button>
+
+                <div id="reveal-collision-intro" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Collision Detection:</h5>
+                    <ol>
+                        <li><strong>Use the "touching" Block:</strong> 
+                            The <strong>if touching [sprite]</strong> block from the "Sensing" tab can be used to detect when one sprite touches another. We’ll use this block to detect when two sprites collide.
+                        </li>
+                        <br>
+                        <li><strong>Delete Sprites on Collision:</strong> 
+                            When a collision happens, we can make both sprites disappear by using the <strong>delete this clone</strong> block inside the condition.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 2: Practice with Falling Objects</h4>
+                <p>
+                    Let’s practice collision detection with a simple game where a player controls a basket to catch falling apples. When the basket touches an apple, the apple should disappear, and the player earns a point. This will help you understand the mechanics of collision detection before applying it to your Space Invaders game.
+                </p>
+
+                <button onclick="toggleVisibility('reveal-practice-exercise', this)">Click to Reveal the Practice Exercise</button>
+
+                <div id="reveal-practice-exercise" style="display:none; margin-top: 15px;">
+                    <h5>Practice Exercise: Catching Apples</h5>
+                    <ol>
+                        <li><strong>Create the Sprites:</strong> 
+                            Draw or import two sprites: one for the apple (the object to be caught) and one for the basket (the player-controlled sprite).
+                        </li>
+                        <br>
+                        <li><strong>Apple Movement:</strong> 
+                            Set up the apple to clone itself and fall from the top of the screen using <strong>create clone of [myself]</strong> and <strong>change y by [-5]</strong> inside the clone loop.
+                        </li>
+                        <br>
+                        <li><strong>Basket Control:</strong> 
+                            Use the left and right arrow keys to control the basket’s movement using <strong>change x by [ ]</strong>.
+                        </li>
+                        <br>
+                        <li><strong>Collision Detection:</strong> 
+                            Inside the apple’s clone loop, use the <strong>if touching [basket]</strong> block to detect when the apple touches the basket. When this happens, delete the apple clone using <strong>delete this clone</strong>.
+                        </li>
+                        <br>
+                        <li><strong>Track the Score:</strong> 
+                            Use a variable to track the player’s score. Each time an apple is caught, increase the score using <strong>change score by 1</strong>.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 3: Applying This to Space Invaders</h4>
+                <p>
+                    Now that you’ve practiced collision detection with the basket and apples, think about how you can apply the same concept to Space Invaders. Instead of apples and a basket, you’ll detect collisions between bullets and enemies. What should happen when a bullet touches an enemy?
+                </p>
+
+                <ul>
+                    <li>Use the <strong>if touching [enemy]</strong> block inside the bullet’s movement script to detect when a bullet hits an enemy.</li>
+                    <li>When a collision is detected, delete both the bullet and the enemy using <strong>delete this clone</strong>.</li>
+                    <li>Increase the player’s score each time they destroy an enemy.</li>
+                </ul>
+
+                <h4>Homework Challenge:</h4>
+                <p>
+                    Now it's your turn! Implement the collision detection in your Space Invaders game by using what you've learned in the practice exercise. Make sure bullets destroy enemies when they collide, and the player earns points for each enemy destroyed.
+                </p>
+            </div>
+        </div>
+
+        <!-- Exercise 4: Scoring, Lives, and Game Over -->
+        <div id="exercise4" class="exercise-container">
+            <div class="handout">
+                <h3>Exercise 4: Scoring, Lives, and Game Over</h3>
+
+                <p>In this exercise, we’ll explore how to implement scoring, track the player's lives, and handle the game over state. Instead of focusing directly on Space Invaders, we’ll work on these concepts in a different context so that you can apply them later to your game.</p>
+
+                <h4>Step 1: Scoring</h4>
+                <p>In games, players often earn points for completing tasks or defeating enemies. For Space Invaders, this means destroying enemies. What variable can we use to keep track of the player’s score?</p>
+
+                <button onclick="toggleVisibility('reveal-scoring', this)">Click to Reveal the Steps for Scoring</button>
+
+                <div id="reveal-scoring" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Scoring:</h5>
+                    <ol>
+                        <li><strong>Create a Score Variable:</strong> 
+                            Go to the "Variables" tab and create a variable named <strong>Score</strong> to keep track of the player’s points.
+                        </li>
+                        <br>
+                        <li><strong>Update the Score:</strong> 
+                            Whenever the player completes a task (like destroying an enemy), use the <strong>change score by 1</strong> block to increase the score.
+                        </li>
+                        <br>
+                        <li><strong>Display the Score:</strong> 
+                            Check the "show" box next to the <strong>Score</strong> variable to display the player's current score on the screen.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 2: Player Lives</h4>
+                <p>In Space Invaders, players have a limited number of lives. Every time an enemy reaches the player, they lose a life. How can we track the player’s lives?</p>
+
+                <button onclick="toggleVisibility('reveal-lives', this)">Click to Reveal the Steps for Tracking Lives</button>
+
+                <div id="reveal-lives" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Tracking Lives:</h5>
+                    <ol>
+                        <li><strong>Create a Lives Variable:</strong> 
+                            Go to the "Variables" tab and create a variable called <strong>Lives</strong> to track how many lives the player has left.
+                        </li>
+                        <br>
+                        <li><strong>Lose a Life:</strong> 
+                            Each time an enemy touches the player, use the <strong>change Lives by -1</strong> block to reduce the number of lives.
+                        </li>
+                        <br>
+                        <li><strong>Display Lives:</strong> 
+                            Check the "show" box next to the <strong>Lives</strong> variable to display how many lives the player has left.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Step 3: Game Over</h4>
+                <p>When the player runs out of lives, the game should end. What condition can we use to check if the game is over?</p>
+
+                <button onclick="toggleVisibility('reveal-gameover', this)">Click to Reveal the Steps for Game Over</button>
+
+                <div id="reveal-gameover" style="display:none; margin-top: 15px;">
+                    <h5>Steps for Implementing Game Over:</h5>
+                    <ol>
+                        <li><strong>Check for Zero Lives:</strong> 
+                            Use an <strong>if Lives = 0</strong> condition to check if the player has run out of lives.
+                        </li>
+                        <br>
+                        <li><strong>Stop the Game:</strong> 
+                            Inside the <strong>if Lives = 0</strong> block, use the <strong>stop all</strong> block to end the game.
+                        </li>
+                        <br>
+                        <li><strong>Display Game Over Message:</strong> 
+                            Use the <strong>say [Game Over]</strong> block to display a "Game Over" message when the player’s lives reach zero.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Practice Exercise: Catching Falling Objects</h4>
+                <p>
+                    Let’s practice these concepts by creating a game where the player must catch falling objects to earn points and avoid harmful objects that reduce their lives. This exercise will help you understand how to track scores, lives, and implement a game over state.
+                </p>
+
+                <button onclick="toggleVisibility('reveal-practice-exercise', this)">Click to Reveal the Practice Exercise</button>
+
+                <div id="reveal-practice-exercise" style="display:none; margin-top: 15px;">
+                    <h5>Practice Exercise Steps:</h5>
+                    <ol>
+                        <li><strong>Create Two Types of Falling Objects:</strong> 
+                            Draw or import two sprites—one that the player should catch to earn points (e.g., apples) and one that the player should avoid to lose lives (e.g., rocks).
+                        </li>
+                        <br>
+                        <li><strong>Track Score:</strong> 
+                            When the player catches a good object (apple), increase the score by 1 using the <strong>change score by 1</strong> block.
+                        </li>
+                        <br>
+                        <li><strong>Track Lives:</strong> 
+                            When the player touches a harmful object (rock), reduce their lives by 1 using the <strong>change lives by -1</strong> block.
+                        </li>
+                        <br>
+                        <li><strong>Game Over:</strong> 
+                            If the player’s lives reach 0, display a "Game Over" message and stop the game using the <strong>if Lives = 0, stop all</strong> block.
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>Homework Challenge:</h4>
+                <p>
+                    Apply these concepts to your Space Invaders game! Create a scoring system for destroying enemies, track the player’s lives, and add a game over condition when lives reach 0. Be creative and add your own features!
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Homework Section -->
+        <div id="homework" class="exercise-container">
+            <div class="handout">
+                <h3>Homework:</h3>
+                <div class="homework-section">
+                    <ul>
+                        <li>
+                            <h4>Homework: Make Flappy Bird!</h4>
+                            <p>
+                                Now that you’ve learned about the foundational elements of a Space Invaders game, try coding it yourself! Good luck, and happy coding!
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise-container');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+
+        function toggleVisibility(id, btn) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+                btn.innerText = "Click to Hide";
+            } else {
+                element.style.display = "none";
+                btn.innerText = "Click to Reveal";
+            }
+        }
+    </script>
+</body>
+</html>

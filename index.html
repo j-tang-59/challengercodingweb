@@ -150,6 +150,27 @@
             color: #333;
         }
 
+        /* Centered Button Styling */
+        .center-button {
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .center-button button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #1db9d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .center-button button:hover {
+            background-color: #555;
+        }
+
         /* Footer Styling */
         footer {
             background-color: #333;
@@ -198,10 +219,7 @@
         </ul>
     </nav>
 
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br>
     <h1>Welcome to Challenger Coding!</h1>
 
     <!-- Carousel for Class Images -->
@@ -238,6 +256,13 @@
         <p>We believe that coding is not just for computer scientists, but a valuable skill for everyone. By offering accessible and engaging tutorials, we make coding fun and approachable for all.</p>
     </div>
 
+    <p>Total Users: <span id="userCount"></span></p>
+
+    <!-- Centered Button -->
+    <div class="center-button">
+        <button onclick="window.location.href='signup.html'">Interested? Sign up to learn NOW, FOR FREE!</button>
+    </div>
+
     <!-- Footer Section -->
     <footer>
         <div class="footer-content">
@@ -252,4 +277,9 @@
         </div>
     </footer>
 </body>
+<script>
+    // Retrieve the user count from localStorage
+    const userCount = localStorage.getItem('userCount') || 0;
+    document.getElementById('userCount').innerText = userCount;
+</script>
 </html>

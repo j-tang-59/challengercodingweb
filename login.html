@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Challenger Coding</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script> 
+    <style>
+        body { font-family: Arial, sans-serif; padding: 50px; }
+        .form-container { width: 300px; margin: auto; }
+        input { margin: 10px 0; padding: 10px; width: 100%; }
+        button { padding: 10px; width: 100%; margin-top: 10px; }
+        .error { color: red; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+        .nav-buttons button { width: 48%; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="online_compiler.html">Online Compiler</a></li>
+            <li><a href="resources.html">Links and Other Resources</a></li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="error" class="error"></p>
+
+        <!-- Back to Homepage and Sign Up Buttons -->
+        <div class="nav-buttons">
+            <button onclick="window.location.href='index.html'">Back to Homepage</button>
+            <button onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Get the stored password for the entered username
+            const storedPassword = localStorage.getItem(username);
+
+            // Check if the password matches
+            if (storedPassword === password) {
+                localStorage.setItem('loggedIn', true);  // Mark user as logged in
+                window.location.href = 'learn.html';     // Redirect to lessons page
+            } else {
+                document.getElementById('error').innerText = "Invalid username or password.";
+            }
+        });
+    </script>
+</body>
+</html>
