@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links and Other Resources - Challenger Coding</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
     <style>
         :root {
             --primary: #2196F3;
@@ -78,8 +75,82 @@
             transform: translateY(-2px);
         }
 
-                /* Footer */
-                footer {
+        /* Hero Section */
+        .hero {
+            padding: 6rem 1.5rem 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark) 60%, #4da6ff 100%);
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Resources Container */
+        .resources-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .resources-container h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .resources-container p {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .resource-category {
+            margin-bottom: 2rem;
+        }
+
+        .resource-category h2 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .resource-category li {
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-category a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .resource-category a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
             background: var(--secondary);
             color: var(--white);
             padding: 4rem 0 2rem;
@@ -116,9 +187,9 @@
             border-radius: 8px;
             margin: 1rem 0;
         }
-
-</style>
-
+    </style>
+</head>
+<body>
     <!-- Blue Top Strip -->
     <div class="top-strip"></div>
 
@@ -133,55 +204,60 @@
         </ul>
     </nav>
 
-<!-- Main Content -->
-<div class="resources-container">
-    <br>
-    <h1>Links and Other Resources</h1>
-    <p>Explore the following resources to enhance your coding knowledge and skills:</p>
-
-    <div class="resource-category">
-        <h2>Coding Practice Platforms</h2>
-        <ul>
-            <li><a href="https://codingbat.com/" target="_blank">CodingBat</a> - Practice coding with immediate feedback in Python and Java.</li>
-            <li><a href="https://leetcode.com/" target="_blank">LeetCode</a> - Practice problems for coding interviews and technical assessments.</li>
-            <li><a href="https://www.hackerrank.com/" target="_blank">HackerRank</a> - Practice coding, data structures, algorithms, and more.</li>
-            <li><a href="https://www.codewars.com/" target="_blank">Codewars</a> - Challenge yourself with katas to improve your coding skills.</li>
-        </ul>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Links and Other Resources</h1>
+        <p>Additional resources to enhance your coding knowledge and skills:</p>
     </div>
 
-    <div class="resource-category">
-        <h2>Learning Resources</h2>
-        <ul>
-            <li><a href="https://www.udemy.com/courses/development/programming-languages/" target="_blank">Udemy Programming Courses</a> - Comprehensive courses on various programming languages.</li>
-            <li><a href="https://www.edx.org/learn/computer-programming" target="_blank">edX Computer Programming</a> - University-level courses in computer programming.</li>
-            <li><a href="https://www.codecademy.com" target="_blank">Codecademy</a> - Interactive courses to learn programming from scratch.</li>
-            <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a> - Tutorials and references on web development and coding languages.</li>
-        </ul>
+    <!-- Main Content -->
+    <div class="resources-container">
+        <div class="resource-category">
+            <h2>Coding Practice Platforms</h2>
+            <ul>
+                <li><a href="https://codingbat.com/" target="_blank">CodingBat</a> - Practice coding with immediate feedback in Python and Java.</li>
+                <li><a href="https://leetcode.com/" target="_blank">LeetCode</a> - Practice problems for coding interviews and technical assessments.</li>
+                <li><a href="https://www.hackerrank.com/" target="_blank">HackerRank</a> - Practice coding, data structures, algorithms, and more.</li>
+                <li><a href="https://www.codewars.com/" target="_blank">Codewars</a> - Challenge yourself with katas to improve your coding skills.</li>
+            </ul>
+        </div>
+
+        <div class="resource-category">
+            <h2>Learning Resources</h2>
+            <ul>
+                <li><a href="https://www.udemy.com/courses/development/programming-languages/" target="_blank">Udemy Programming Courses</a> - Comprehensive courses on various programming languages.</li>
+                <li><a href="https://www.edx.org/learn/computer-programming" target="_blank">edX Computer Programming</a> - University-level courses in computer programming.</li>
+                <li><a href="https://www.codecademy.com" target="_blank">Codecademy</a> - Interactive courses to learn programming from scratch.</li>
+                <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a> - Tutorials and references on web development and coding languages.</li>
+            </ul>
+        </div>
+
+        <div class="resource-category">
+            <h2>Documentation & Installation Guides</h2>
+            <ul>
+                <li><a href="https://code.visualstudio.com/docs/setup/setup-overview" target="_blank">Installing Visual Studio Code</a> - Step-by-step guide to download and install VSCode.</li>
+                <li><a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">Installing Java JDK</a> - Download and installation guide for Java Development Kit (JDK).</li>
+                <li><a href="https://www.python.org/downloads/" target="_blank">Installing Python</a> - Official guide for downloading and installing Python.</li>
+                <li><a href="https://docs.oracle.com/javase/8/docs/api/" target="_blank">Java SE 8 Documentation</a> - Official Java SE 8 API documentation.</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML Documentation</a> - Comprehensive guide to HTML by MDN.</li>
+                <li><a href="https://docs.python.org/3/library/index.html" target="_blank">Python Standard Library</a> - Detailed documentation on Python's standard library.</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="resource-category">
-        <h2>Documentation & Installation Guides</h2>
-        <ul>
-            <li><a href="https://code.visualstudio.com/docs/setup/setup-overview" target="_blank">Installing Visual Studio Code</a> - Step-by-step guide to download and install VSCode.</li>
-            <li><a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">Installing Java JDK</a> - Download and installation guide for Java Development Kit (JDK).</li>
-            <li><a href="https://www.python.org/downloads/" target="_blank">Installing Python</a> - Official guide for downloading and installing Python.</li>
-            <li><a href="https://docs.oracle.com/javase/8/docs/api/" target="_blank">Java SE 8 Documentation</a> - Official Java SE 8 API documentation.</li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML Documentation</a> - Comprehensive guide to HTML by MDN.</li>
-            <li><a href="https://docs.python.org/3/library/index.html" target="_blank">Python Standard Library</a> - Detailed documentation on Python's standard library.</li>
-        </ul>
-    </div>
 
-    <div class="resource-category">
-        <h2>Helpful YouTube Channels</h2>
-        <ul>
-            <li><a href="https://www.youtube.com/user/derekbanas" target="_blank">Derek Banas</a> - Tutorials on programming, data structures, and more.</li>
-            <li><a href="https://www.youtube.com/user/programmingwithmosh" target="_blank">Programming with Mosh</a> - Tutorials on Python, JavaScript, and software development.</li>
-            <li><a href="https://www.youtube.com/c/TraversyMedia" target="_blank">Traversy Media</a> - Web development and programming tutorials.</li>
-            <li><a href="https://www.youtube.com/c/CSDojo" target="_blank">CS Dojo</a> - Coding interview preparation and Python tutorials.</li>
-        </ul>
-    </div>
-
-</div>
-
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="contact-box">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/jaden-tang" target="_blank">LinkedIn</a>
+                    <a href="mailto:contact@challengercoding.com">Email</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

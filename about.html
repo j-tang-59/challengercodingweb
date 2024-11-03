@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Challenger Coding</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2196F3;
@@ -33,7 +30,6 @@
             line-height: 1.6;
         }
 
-        /* Blue Top Strip */
         .top-strip {
             background-color: var(--primary);
             height: 30px;
@@ -44,13 +40,12 @@
             z-index: 1001;
         }
 
-        /* Navigation Bar Styling */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             width: 100%;
             position: fixed;
-            top: 30px; /* Positioned right below the top strip */
+            top: 30px;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
@@ -78,8 +73,101 @@
             transform: translateY(-2px);
         }
 
-                /* Footer */
-                footer {
+        .hero {
+            padding: 8rem 1.5rem 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark) 60%, #4da6ff 100%);
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-section, .founder-section {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .header-section:hover, .founder-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .header-section h1, .founder-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .founder-bio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            text-align: center;
+            flex-direction: column; /* Ensures text and image are vertically centered on smaller screens */
+        }
+
+        .founder-image {
+            width: 200px;
+            height: 200px; /* Ensure the image height matches the width for a perfect circle */
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            object-fit: cover; /* Ensures the image is not stretched */
+        }
+
+
+        .header-section, .founder-section {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 4rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover Effect for Sections */
+        .header-section:hover, .founder-section:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Centering */
+        @media (max-width: 768px) {
+            .founder-bio {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+
+        footer {
             background: var(--secondary);
             color: var(--white);
             padding: 4rem 0 2rem;
@@ -117,12 +205,73 @@
             margin: 1rem 0;
         }
 
-</style>
+        @media (max-width: 768px) {
+            .founder-bio {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    <!-- Blue Top Strip -->
+            .founder-image {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Instructors Section Styling */
+        .instructors-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .instructors-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Instructor Grid */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        /* Instructor Box Styling */
+        .instructor-box {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .instructor-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .instructor-box h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructor-box p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .instructor-grid {
+                grid-template-columns: 1fr; /* Stacks boxes on smaller screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
     <div class="top-strip"></div>
-
-    <!-- Navigation Bar -->
     <nav>
         <ul class="navbar">
             <li><a href="index.html">Home</a></li>
@@ -133,31 +282,61 @@
         </ul>
     </nav>
 
-<!-- Main Content -->
-<div class="about-us-container">
-    
-    <!-- Logo and Mission Statement -->
-    <div class="header-section">
-        <img src="path_to_your_logo/logo.png" alt="Challenger Coding Logo" class="logo">
-        <h1>Our Mission</h1>
-        <p>At Challenger Coding, our mission is to empower students of all ages to embrace coding and technology, equipping them with the skills they need to succeed in an increasingly digital world.</p>
-        <p>We believe that coding is not just for computer scientists, but a valuable skill for everyone. By offering accessible and engaging tutorials, we aim to make coding fun and approachable for all.</p>
+    <div class="hero">
+        <h1>About Us</h1>
+        <p>Empowering the Next Generation of Coders</p>
     </div>
 
+    <div class="about-us-container">
+        <div class="header-section">
+            <h1>Our Mission</h1>
+            <p>At Challenger Coding, our mission is to empower students of all ages to embrace coding and technology, equipping them with the skills they need to succeed in an increasingly digital world.</p>
+            <p>We believe that coding is not just for computer scientists, but a valuable skill for everyone. By offering accessible and engaging tutorials, we aim to make coding fun and approachable for all.</p>
+        </div>
 
-    <!-- Founder Section -->
-    <div class="founder-section">
-        <h2>Meet the Founder</h2>
-        <div class="founder-bio">
-            <img src="jaden.jpg" alt="Founder Image" class="founder-image">
-            <p>Jaden founded Challenger Coding in the summer of 2023 after observing the lack of tailored, engaging coding resources for young learners. With a deep passion for technology, Jaden started his coding journey in 3rd grade with Scratch and has since learned multiple programming languages, earning the Microsoft Intro to Java Programming certification, scoring a 5 on the AP Computer Science A exam, and conducted AI research. His years of experience working with youth has allowed him to develop a unique teaching style, where patience and encouragement are at the forefront. This approach to teaching is focused on creative empowerment, aiming to develop critical thinking skills while making coding accessible and enjoyable. With extensive tutoring experience, Jaden is dedicated to breaking down barriers of educational access and hopes to inspire the next generation of coders. Outside of Challenger Coding, Jaden loves playing soccer, playing music, and hanging out with friends and family.</p>
+        <div class="founder-section">
+            <h2>Meet the Founder</h2>
+            <div class="founder-bio">
+                <img src="jaden.jpg" alt="Founder Image" class="founder-image">
+                <div>
+                    <p>Jaden founded Challenger Coding in the summer of 2023 after observing the lack of tailored, engaging coding resources for young learners. With a deep passion for technology, Jaden started his coding journey in 3rd grade with Scratch and has since learned multiple programming languages, earning the Microsoft Intro to Java Programming certification, scoring a 5 on the AP Computer Science A exam, and conducted AI research.</p>
+                    <p>His years of experience working with youth has allowed him to develop a unique teaching style, where patience and encouragement are at the forefront. This approach to teaching is focused on creative empowerment, aiming to develop critical thinking skills while making coding accessible and enjoyable.</p>
+                    <p>With extensive tutoring experience, Jaden is dedicated to breaking down barriers of educational access and hopes to inspire the next generation of coders. Outside of Challenger Coding, Jaden loves playing soccer, playing music, and hanging out with friends and family.</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<p>Total Users: <span id="userCount"></span></p>
+    <div class="instructors-section">
+        <h2>Meet Our Team</h2>
+        <div class="instructor-grid">
+            <!-- VP of Education -->
+            <div class="instructor-box">
+                <h3>VP of Education</h3>
+                <p>Aadi</p>
+            </div>
+            
+            <!-- VP of Outreach -->
+            <div class="instructor-box">
+                <h3>VP of Outreach</h3>
+                <p>Ananya</p>
+            </div>
+            
+            <!-- Instructor -->
+            <div class="instructor-box">
+                <h3>Instructor</h3>
+                <p>Miheer</p>
+            </div>
+            
+            <!-- Instructor -->
+            <div class="instructor-box">
+                <h3>Instructor</h3>
+                <p>Brinda</p>
+            </div>
+        </div>
+    </div>
+    
 
-    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
             <div class="contact-box">
@@ -171,10 +350,4 @@
         </div>
     </footer>
 </body>
-<script>
-    // Retrieve the user count from localStorage
-    const userCount = localStorage.getItem('userCount') || 0;
-    document.getElementById('userCount').innerText = userCount;
-</script>
 </html>
-
