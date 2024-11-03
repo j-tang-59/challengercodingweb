@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <title>Challenger Coding</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -84,8 +85,6 @@
             margin-bottom: 2rem;
         }
 
-
-
         .hero h1 {
             font-size: 2.5rem; /* Slightly smaller font size */
             margin-bottom: 0.8rem;
@@ -126,33 +125,151 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e0a800;
+        }
+
+        .impact-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+
+        .impact-box {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        .impact-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .impact-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
 
         .carousel {
             width: 90%;
             max-width: 1200px;
             margin: 4rem auto;
-            border-radius: 10px;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .carousel-images {
+        .carousel-container {
             display: flex;
-            width: 200%; /* Updated to fit two images */
-            animation: slide 16s infinite;
+            transition: transform 0.5s ease-in-out;
         }
 
-        .carousel-images img {
-            width: 50%; /* Adjust to 50% for two images */
+        .carousel-item {
+            flex: 0 0 100%;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
             object-fit: cover;
         }
 
-        /* Keyframe animation updated for two images */
-        @keyframes slide {
-            0%, 40% { transform: translateX(0); } /* Show first image */
-            50%, 90% { transform: translateX(-50%); } /* Show second image */
-            100% { transform: translateX(0); } /* Loop back to the start */
+        .carousel-description {
+            position: absolute;
+            top: 0; /* Position at the top of the image */
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: white;
+            padding: 1rem;
+            transform: translateY(-100%); /* Hide above the image initially */
+            transition: transform 0.3s ease-in-out;
         }
+
+        .carousel-item:hover .carousel-description {
+            transform: translateY(0); /* Slide down into view on hover */
+        }
+
+
+        .carousel-description h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .carousel-description p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation Buttons */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+
+        .carousel-nav button {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-nav button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc; /* Light grey for inactive dots */
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: #333; /* Darker grey for the active dot */
+        }
+
 
         /* Testimonials Carousel */
         .testimonials-carousel {
@@ -202,6 +319,24 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .mission-statement.full-width {
+            width: 100%;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
 
         .mission-statement strong, .statistics-box strong {
             color: var(--primary);
@@ -352,37 +487,72 @@
     </nav>
 
     <div class="hero">
-        <h1>Welcome to Challenger Coding!</h1>
+        <h1>Welcome to <span style="color: #FFC107;">Challenger Coding!</span></h1>
         <p>Code with Confidence.</p>
         <p>Interactive tutorials, projects, and real learning – all in one place.</p>
         <div class="hero-button">
-            <button onclick="window.location.href='signup.html'">Interested? Join Now and Start Coding Today</button>
+            <button onclick="window.location.href='signup.html'">Start Learning Today, For Free!</button>
         </div>
     </div>
-    
 
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="lesson preview.png" alt="Class Image 1">
-            <img src="sample exercise.png" alt="Class Image 2">
+        <div class="impact-section">
+        <div class="impact-box">
+            <i data-lucide="users"></i>
+            <h3>1000+</h3>
+            <p>Students Taught</p>
+        </div>
+        <div class="impact-box">
+            <i data-lucide="school"></i>
+            <h3>20+</h3>
+            <p>Schools Reached</p>
+        </div>
+        <div class="impact-box">
+            <i data-lucide="hourglass"></i>
+            <h3>50+</h3>
+            <p>Hours of Course Content</p>
         </div>
     </div>
 
     <div class="main-content">
-        <!-- Mission Statement Box -->
-        <div class="mission-statement">
+        <!-- Mission Statement Box (Now Full Width) -->
+        <div class="mission-statement full-width">
             <strong>Our Mission</strong>
             <p>At Challenger Coding, we empower students of all ages to embrace coding, equipping them with skills for a digital world.</p>
             <p>Coding is valuable for everyone, and we make it accessible and fun through interactive tutorials.</p>
         </div>
-    
-        <!-- Statistics Box -->
-        <div class="statistics-box">
-            <strong>Statistics</strong>
-            <p class="stat-text">1K+ Students</p>
-            <p class="stat-text">20+ Elementary Schools Nationwide</p>
-        </div>
     </div>
+    
+    <div class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-item">
+                <img src="sample exercise.png" alt="Interactive Lesson Preview">
+                <div class="carousel-description">
+                    <h3>Interactive Lessons</h3>
+                    <p>Engage with our interactive coding lessons and exercises designed for all skill levels.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="lesson preview.png" alt="Hands-on Coding Exercise">
+                <div class="carousel-description">
+                    <h3>Video Tutorials</h3>
+                    <p>Quality video tutorials to learn and enhance your understanding.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="sample exercise.png" alt="Expert Instructors">
+                <div class="carousel-description">
+                    <h3>Autograder</h3>
+                    <p>Built in autograder and code compiler provides instant feedback.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+        <div class="carousel-indicators"></div>
+    </div>
+    
 
         <!-- Course Offerings Section -->
         <section class="course-offerings">
@@ -455,5 +625,63 @@
         const userCount = localStorage.getItem('userCount') || 0;
         document.getElementById('userCount').innerText = userCount;
     </script>
+
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script>
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel-container');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.carousel-nav .prev');
+        const nextBtn = document.querySelector('.carousel-nav .next');
+        const indicators = document.querySelector('.carousel-indicators');
+
+        let currentIndex = 0;
+
+        // Create indicators
+        items.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('carousel-indicator');
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => goToSlide(index));
+            indicators.appendChild(indicator);
+        });
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000); // 5 seconds interval
+    </script>
+
 </body>
 </html>
