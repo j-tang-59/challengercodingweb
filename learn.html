@@ -1,65 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn to Code at Challenger Coding</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>    
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Challenger Coding</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            :root {
+                --primary: #2196F3;
+                --primary-dark: #1976D2;
+                --secondary: #263238;
+                --accent: #FFC107;
+                --background: #F5F7FA;
+                --text: #333;
+                --text-light: #666;
+                --white: #ffffff;
+            }
+    
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-color: var(--background);
+                color: var(--text);
+                line-height: 1.6;
+            }
+            /* Blue Top Strip */
+            .top-strip {
+                background-color: var(--primary);
+                height: 30px;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1001;
+            }
+    
+            /* Navigation Bar Styling */
+            nav {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                position: fixed;
+                top: 30px; /* Positioned right below the top strip */
+                z-index: 1000;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                padding: 0.4rem 1rem; /* Reduced padding for a smaller navbar */
+                gap: 0.8rem; /* Slightly closer spacing between items */
+            }
+
+            .navbar li a {
+                color: var(--text);
+                text-decoration: none;
+                padding: 0.6rem 1rem; /* Reduced padding for smaller links */
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                font-weight: 500;
+            }
+
+            .navbar li a:hover {
+                background: var(--primary);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+    
+            /* Hero Section */
+            .hero {
+                padding: 6rem 1.5rem 1rem; /* Keep top padding at 6rem, reduce bottom padding to 1rem */
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark) 60%, #4da6ff 100%);
+                color: white;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+
+    
+            .hero h1 {
+                font-size: 2.5rem; /* Slightly smaller font size */
+                margin-bottom: 0.8rem;
+                font-weight: 800;
+                letter-spacing: -1px;
+            }
+    
+            .hero p {
+                font-size: 1rem; /* Reduced font size for paragraphs */
+                opacity: 0.9;
+                max-width: 600px;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+            }
+    
+
+        /* Course Button Grid */
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Set up a 3-column layout */
+            gap: 2rem;
+            width: 90%;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .course-button {
+            background-color: white;
+            color: var(--text);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .course-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-description {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        /* Log Out Button */
+        #logoutButton {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #logoutButton:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .contact-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('loggedIn');
+            if (!loggedIn) {
+                window.location.href = 'login.html';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
+    <!-- Blue Top Strip -->
+    <div class="top-strip"></div>
+
+    <!-- Navigation Bar -->
     <nav>
         <ul class="navbar">
             <li><a href="index.html">Home</a></li>
             <li><a href="learn.html">Learn</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="online_compiler.html">Online Compiler</a></li>
-            <li><a href="resources.html">Links and Other Resources</a></li>
+            <li><a href="compiler.html">Online Compiler</a></li>
+            <li><a href="resources.html">Resources</a></li>
         </ul>
     </nav>
 
-    <br>
-    <h1>Welcome to Challenger Coding!</h1>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Explore Our Courses</h1>
+        <p>Choose from our selection of beginner-friendly programming courses.</p>
+    </div>
 
-    <label for="courseSelect">Select a Course:</label>
-    <select id="courseSelect">
-        <option value="">-- No Selection --</option>
-        <option value="scratch">Scratch Programming</option>
-        <option value="scratch2">Scratch Programming 2</option>
-        <option value="python">Python Programming</option>
-        <option value="python2">Python Programming 2</option>
-        <option value="java">Java Programming</option>
-        <option value="java2">Java Programming 2</option>
-    </select>
+    <!-- Course Selection Buttons in 3x2 Grid -->
+    <div class="course-container">
+        <div class="course-button" onclick="location.href='scratch.html'">
+            <div class="course-title">Scratch Programming</div>
+            <div class="course-description">An introductory course on visual programming for beginners.</div>
+        </div>
+
+        <div class="course-button" onclick="location.href='python.html'">
+            <div class="course-title">Python Programming</div>
+            <div class="course-description">Learn the basics of Python programming with hands-on projects.</div>
+        </div>
+
+        <div class="course-button" onclick="location.href='java.html'">
+            <div class="course-title">Java Programming</div>
+            <div class="course-description">Get started with Java, one of the most popular programming languages.</div>
+        </div>
+
+        <div class="course-button" onclick="location.href='scratch2.html'">
+            <div class="course-title">Scratch Programming 2</div>
+            <div class="course-description">Advanced Scratch concepts for building interactive projects.</div>
+        </div>
+
+        <div class="course-button" onclick="location.href='python2.html'">
+            <div class="course-title">Python Programming 2</div>
+            <div class="course-description">Intermediate Python programming, including data structures and more.</div>
+        </div>
+
+        <div class="course-button" onclick="location.href='java2.html'">
+            <div class="course-title">Java Programming 2</div>
+            <div class="course-description">Deep dive into Java with object-oriented programming and algorithms.</div>
+        </div>
+    </div>
+
 
     <!-- Log Out Button -->
-    <br><br>
-    <button id="logoutButton" style="display: block; margin: 20px auto; padding: 10px 20px;">Log Out</button>
+    <button id="logoutButton" onclick="logout()">Log Out</button>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="contact-box">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/jaden-tang" target="_blank">LinkedIn</a>
+                    <a href="mailto:contact@challengercoding.com">Email</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <p>&copy; 2024 Challenger Coding. All rights reserved.</p>
+        </div>
     </footer>
-
-    <script>
-        // Check if user is logged in on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const loggedIn = localStorage.getItem('loggedIn');
-            if (!loggedIn) {
-                // If not logged in, redirect to login page
-                window.location.href = 'login.html';
-            }
-        });
-
-        // Log out functionality
-        const logoutButton = document.getElementById('logoutButton');
-        logoutButton.addEventListener('click', function() {
-            // Remove the login status
-            localStorage.removeItem('loggedIn');
-            // Optionally, clear other user-specific data if needed
-            // localStorage.clear();
-            // Redirect to the login page
-            window.location.href = 'login.html';
-        });
-    </script>
 </body>
 </html>
