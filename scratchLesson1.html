@@ -3,238 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scratch 1 Class - Guided Exercise</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Scratch Guided Lesson - Challenger Coding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #4D97FF;
+            --primary-dark: #3373CC;
+            --secondary: #FF9F00;
+            --accent: #FF6680;
+            --background: #f0f4f8;
+            --surface: #ffffff;
+            --border: #e0e7ff;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --success: #48bb78;
+            --error: #f56565;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--background);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--background);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
         }
 
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            gap: 2rem;
+            background-color: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
         }
 
-        h1, h2 {
+        .sidebar {
+            width: 250px;
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: calc(100vh - 120px);
+            position: sticky;
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .exercise-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .exercise-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .exercise-item:hover {
+            background: var(--primary);
+            color: var(--surface);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .exercise-item.active {
+            background: var(--primary);
+            color: var(--surface);
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .tutorial-section {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .tutorial-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .tutorial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .tutorial-text ol, .tutorial-text ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tutorial-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid var(--border);
+            white-space: pre-wrap;
+            word-break: break-word;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .image-block {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .content-box {
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .highlight-box {
+            background-color: #e6f7ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .step-box {
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
             text-align: center;
-            color: #333;
+            line-height: 24px;
+            margin-right: 0.5rem;
         }
 
-        .handout {
-            background-color: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .vocab-section, .blocks-section, .homework-section {
-            margin-top: 30px;
-        }
-
-        .vocab-section ul, .blocks-section ul, .homework-section ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
-            background-color: #eef;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            font-size: 18px;
-        }
-
-        .blocks-section img {
-            display: block;
-            margin: 20px auto;
-            width: 150px;
-        }
-
-        .blocks-section p {
+        .image-caption {
             text-align: center;
-            font-weight: bold;
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-brand">Challenger Coding</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learn.html">Learn</a>
+                <a href="about.html">About Us</a>
+                <a href="resources.html">Resources</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>Scratch 1 Class - Guided Exercise</h1>
-        <h2>Lesson 1 Guide</h2>
-
-        <!-- Navigation Buttons -->
-        <div class="button-container">
-            <button onclick="showExercise('review')">Lesson Overview and Review</button>
-            <button onclick="showExercise('exercise1')">Exercise 1</button>
-            <button onclick="showExercise('exercise2')">Exercise 2</button>
-            <button onclick="showExercise('exercise3')">Exercise 3</button>
-            <button onclick="showExercise('homework')">Homework and Exercises</button>
-            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
-        </div>
-
-        <script>
-            function goToHomepage() {
-                window.location.href = 'scratch_tutorials.html';  
-            }
-        </script>
-
-        <!-- Review -->
-        <div id="review" class="exercise-container" style="display: block;">
-            <div class="handout">
-                <h3>Vocabulary:</h3>
-                <div class="vocab-section">
-                    <ul>
-                        <li><strong>Sprite:</strong> The cat in Scratch – images on the screen are called sprites.</li>
-                        <li><strong>Backdrop:</strong> Background in the workspace.</li>
-                        <li><strong>Blocks:</strong> Blocks that contain the code, moving it into the workspace.</li>
-                    </ul>
+        <aside class="sidebar">
+            <div class="exercise-list">
+                <div class="exercise-item" data-exercise="0">
+                    <span>Overview</span>
                 </div>
-
-                <h3>Blocks Used/Introduced Today:</h3>
-                <div class="blocks-section">
-                    <ul>
-                        <li>
-                            <img src="greenflag.png" alt="When Flag Clicked Block">
-                            <p>When Flag Clicked - This code block listens for when the start is clicked.</p>
-                        </li>
-                        <li>
-                            <img src="movesteps.png" alt="Move Steps Block">
-                            <p>Move ____ Steps - This code block moves a sprite left and right.</p>
-                        </li>
-                        
-                        <li>
-                            <img src="forever.png" alt="Forever Block">
-                            <p>Forever Loop - This code block repeats code forever.</p>
-                        </li>
-                        <li>
-                            <img src="rotate.png" alt="Turn Right Block">
-                            <p>Rotate ___ Degrees - This code block rotates a sprite to the right by 15 degrees.</p>
-                        </li>
-                    </ul>
+                <div class="exercise-item" data-exercise="1">
+                    <span>1. Understanding Sprites</span>
+                </div>
+                <div class="exercise-item" data-exercise="2">
+                    <span>2. Moving Sprites</span>
+                </div>
+                <div class="exercise-item" data-exercise="3">
+                    <span>3. Changing Sprite Direction</span>
+                </div>
+                <div class="exercise-item" data-exercise="4">
+                    <span>4. Using Loops</span>
+                </div>
+                <div class="exercise-item" data-exercise="5">
+                    <span>5. Homework</span>
+                </div>
+                <div class="exercise-item" onclick="window.location.href='scratch_tutorials.html'">
+                    <span>Return to Home</span>
                 </div>
             </div>
-        </div>
+        </aside>
 
-        <!-- Exercise 1 -->
-        <div id="exercise1" class="exercise-container">
-            <div class="handout">
-                <h3>Exercise 1: Creating your First Program</h3>
-                <p>In this exercise, you will learn how to write your first Scratch program!</p>
-                <!-- Additional content for Exercise 2 -->
-                <br>
-                <h3><strong>Create your Account</strong></h3>
-                <img src="createaccount.png" alt="Create scratch acct"> <!-- image from PPT-->
-                <p>First, create your Scratch account. Go to scratch.mit.edu. Once you are on the page, click "Join Scratch" on the top right hand corner of the page.</p>
-                <br>
-                <img src="createaccount2.png" alt="Click create"> <!-- image from PPT-->
-                <p>Next, click "Create" on the top left corner of the screen. You should now be in the Scratch code editor environment.</p>
-                <br>
-                <h3><strong>Scratch Basics</strong></h3>
-                <p>Scratch is a block-based programming language. Instead of typing text, you are simply dragging blocks to instruct the computer on what to do! </p>
-                <img src="path/to/hello_world_icon.png" alt="Scratch environment"> <!-- image of scratch environment - what you should see-->
-                <p>You should see the cat, which is known as the sprite. You should see blocks on the left hand side of the screen, and a big white box around the cat - this is the backdrop.</p>
-                <br>
-                <h3><strong>Your First Program</strong></h3>
-                <p>Let's create your first program. On your scratch editor, click the orange events button. Drag the block that says "when green flag clicked."</p>
-                <img src="greenflag.png" alt="When green flag clicked"> <!-- green flag image-->
-                <p>This block starts your code. To run any code, you click the green flag at the top right corner.</p>
-                <p>However, when you click the green flag, nothing happens. That is because there are no instructions for the computer to do when you start the program! Let's add some code.</p>
-                <br>
-                <p>Click "motion", the blue button, and drag the block that says "move 10 steps" into the environment.</p>
-                <img src="movesteps.png" alt="move 10 steps"> <!--add the 10 steps-->
-                <p>Now, click the green flag. What happened? Did the cat move? If so, congratulations, you have written your first program!</p>
-
-
-            </div>
-        </div>
-
-        <!-- Exercise 2 -->
-        <div id="exercise2" class="exercise-container">
-            <div class="handout">
-                <h3>Exercise 2: Moving the Sprite</h3>
-                <p>In this exercise, you will learn how to modify your first program!</p>
-                <br>
-                <p>In your first program, your sprite moved very little. In this exercise, you will learn how to do more than that!</p>
-
-                <h3>Changing Direction</h3>
-                <p>Notice how the in the block "move 10 steps", the number 10 is enclosed in a white circle. <strong>Anytime in scratch where you have a round circle with a number, you can change that value.</strong></p>
-                <img src="path/to/hello_world_icon.png" alt="parameters"> <!--parameters-->
-                <p>Let's change that number to a bigger number. Observe what happens!</p>
-                <p>Change that number to a negative number. Observe what happens!</p>
-                <br>
-                <h3>Adding a Forever Loop</h3>
-                <p>We can improve the program even further by adding a "forever" loop.</p>
-                <img src="path/to/hello_world_icon.png" alt="forever loop"> <!--forever loop-->
-                <p>As it suggests, any code inside the loop, will execute "forever"</p>
-                <p>Observe what happens now!</p>
-                <!-- Additional content for Exercise 3 -->
-            </div>
-        </div>        
-
-        <!-- Exercise 3 -->
-        <div id="exercise3" class="exercise-container">
-            <div class="handout">
-                <h3>Exercise 3: Rotating the Sprite</h3>
-                <p>In this exercise, you will learn how to rotate and change the direction of sprites.</p>
-                <br>
-                <p>In your last program, you could make your sprite move horizontally. In this exercise, you will learn how to make it move vertically and in all directions!</p>
-
-                <h3>Changing Direction</h3>
-                <p>Notice how the in the block "move 10 steps", the number 10 is enclosed in a white circle. <strong>Anytime in scratch where you have a round circle with a number, you can change that value.</strong></p>
-                <img src="path/to/hello_world_icon.png" alt="parameters"> <!--parameters-->
-                <p>Let's change that number to a bigger number. Observe what happens!</p>
-                <p>Change that number to a negative number. Observe what happens!</p>
-                <br>
-                <h3>Adding a Forever Loop</h3>
-                <p>We can improve the program even further by adding a "forever" loop.</p>
-                <img src="path/to/hello_world_icon.png" alt="forever loop"> <!--forever loop-->
-                <p>As it suggests, any code inside the loop, will execute "forever"</p>
-                <p>Observe what happens now!</p>
-                <!-- Additional content for Exercise 3 -->
-            </div>
-        </div>     
-               
-        <!-- Homework Section -->
-        <div id="homework" class="exercise-container">
-            <div class="handout">
-                <h3>Homework:</h3>
-                <div class="homework-section">
-                    <ul>
-                        <li>
-                            <h4>Exercise 1: Race Two Sprites</h4>
-                            <p>- First, program your first sprite to move from one side of the backdrop to the other.</p>
-                            <p>- Next, create a second sprite.</p>
-                            <p>- Program the second sprite to move from one side of the backdrop to the other.</p>
-                            <p>- Play around with the blocks to make one sprite move faster than the other!</p>
-                        </li>
-                        <li>
-                            <h4>Exercise 2: Dancing Cat</h4>
-                            <p>- For this exercise, use the blocks that you know to animate the sprite. Play around with the numbers and see what happens! Get creative with it.</p>
-                        </li>
-                        <li>
-                            <h4>Exercise 3: Treasure Hunt</h4>
-                            <p>- For this exercise, please draw this backdrop:</p>
-                            <img src="path_to_image/treasure_hunt_backdrop.png" alt="Treasure Hunt Backdrop">
-                            <p>- Refer to this tutorial if needed: <a href="https://www.youtube.com/watch?v=CQ4SldacxG4" target="_blank">https://www.youtube.com/watch?v=CQ4SldacxG4</a></p>
-                            <p>- Please program the sprite so that it will touch every “X”.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <main class="main-content">
+            <div id="tutorial-content"></div>
+        </main>
+    </div>
 
     <script>
-        function showExercise(exerciseId) {
-            const exercises = document.querySelectorAll('.exercise-container');
-            exercises.forEach(exercise => {
-                exercise.style.display = 'none';
+        lucide.createIcons();
+
+        const exercises = [
+            {
+                title: "Overview",
+                content: `
+                    <h1 class="tutorial-title">Lesson 1 Overview</h1>
+                    <div class="content-box">
+                        <h2 class="text-2xl font-semibold mb-4">What You'll Learn</h2>
+                        <p class="tutorial-text">
+                            In this Scratch tutorial, you'll learn the basics of programming with Scratch.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h2 class="text-2xl font-semibold mb-4">Blocks Covered</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="step-box">
+                                <h3 class="text-xl font-semibold mb-2">Motion Blocks</h3>
+                                <ul class="list-disc list-inside">
+                                    <li>Move 10 steps</li>
+                                    <li>Turn 15 degrees</li>
+                                    <li>If on edge, bounce</li>
+                                </ul>
+                            </div>
+                            <div class="step-box">
+                                <h3 class="text-xl font-semibold mb-2">Control Blocks</h3>
+                                <ul class="list-disc list-inside">
+                                    <li>When green flag clicked</li>
+                                    <li>Forever</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <h2 class="text-2xl font-semibold mb-4">Definitions</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">Sprite</h3>
+                                <p>A character or object in Scratch that can be programmed to perform actions.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">Motion</h3>
+                                <p>The movement of sprites on the Scratch stage, controlled by motion blocks.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">Loop</h3>
+                                <p>A programming construct that repeats a set of instructions multiple times.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">Event</h3>
+                                <p>A trigger that starts a script, such as clicking the green flag or a sprite.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                `
+            },
+            {
+                title: "Understanding Sprites",
+                content: `
+                    <h1 class="tutorial-title">Understanding Sprites</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            In Scratch, sprites are the characters or objects that perform actions in your projects. They're a fundamental part of any Scratch program. But what exactly is a sprite?
+                        </p>
+                        <div class="highlight-box">
+                            <p><strong>Definition:</strong> A sprite is any image that can move around and interact with other elements in your Scratch project. It could be a character, an object, or even just a simple shape.</p>
+                        </div>
+                        <p class="tutorial-text">
+                            The default sprite in Scratch is the cat, but you can create or choose many different sprites.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Adding a New Sprite</h3>
+                        <p class="tutorial-text">Here's how you can add a new sprite:</p>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Look at the bottom right of the Scratch interface. Do you see a cat icon?</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Click on the cat icon. What happens?</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> You should see a menu with different sprite options. Try selecting one!</p>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Now that you've added a new sprite, take a moment to explore. Can you find where your new sprite appears in the Scratch interface? How many sprites can you add to your project?
+                        </p>
+                        <img src="/placeholder.svg?height=300&width=500" alt="Adding a sprite in Scratch" class="image-block">
+                        <p class="image-caption">Figure 1: Adding a new sprite in Scratch</p>
+                    </div>
+
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Remember, each sprite can have its own set of instructions (or "scripts") that tell it how to behave. In the next exercises, we'll learn how to make our sprites move and interact!
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "Moving Sprites",
+                content: `
+                    <h1 class="tutorial-title">Moving Sprites</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Now that we understand what sprites are, let's make them move! In Scratch, we can use motion blocks to control how our sprites move around the stage.
+                        </p>
+                        <p class="tutorial-text">
+                            One of the simplest ways to move a sprite is with the "move" block. It looks like this:
+                        </p>
+                        <img src="/placeholder.svg?height=100&width=200" alt="Move block in Scratch" class="image-block">
+                        <p class="image-caption">Figure 2: Move block in Scratch</p>
+                        <p class="tutorial-text">
+                            This block moves the sprite 10 steps in whatever direction it's facing. But what exactly is a "step" in Scratch? How far do you think your sprite will move?
+                        </p>
+                    </div>
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Let's Try It Out</h3>
+                        <p class="tutorial-text">Let's try it out:</p>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Find the "move 10 steps" block in the Motion category (it's blue).</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Drag it into the coding area.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> Click on the block. What happens to your sprite?</p>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Did the sprite move as far as you expected? Try clicking the block multiple times. What happens if you change the number 10 to a different number?
+                        </p>
+                        <p class="tutorial-text">
+                            Now, let's make our sprite move automatically when we start our project. Can you think of a block we might use to start our project? Hint: It's green and has a flag on it!
+                        </p>
+                        <img src="/placeholder.svg?height=150&width=300" alt="When green flag clicked block in Scratch" class="image-block">
+                        <p class="image-caption">Figure 3: When green flag clicked block in Scratch</p>
+                        <p class="tutorial-text">
+                            Try connecting the "when green flag clicked" block to your "move" block. Then click the green flag above the stage. Does your sprite move automatically now?
+                        </p>
+                        <p class="tutorial-text">
+                            Experiment with different numbers in the "move" block. Can you make your sprite move across the entire stage? What happens when it reaches the edge?
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "Changing Sprite Direction",
+                content: `
+                    <h1 class="tutorial-title">Changing Sprite Direction</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Moving in a straight line is fun, but what if we want our sprite to change direction? In Scratch, we can use rotation blocks to make our sprites turn.
+                        </p>
+                        <p class="tutorial-text">
+                            One of the blocks we can use is the "turn" block. It looks like this:
+                        </p>
+                        <img src="/placeholder.svg?height=100&width=200" alt="Turn block in Scratch" class="image-block">
+                        <p class="image-caption">Figure 4: Turn block in Scratch</p>
+                        <p class="tutorial-text">
+                            This block rotates the sprite clockwise by 15 degrees. But what does 15 degrees look like? How many degrees do you think it takes to make a complete circle?
+                        </p>
+                    </div>
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Let's Experiment</h3>
+                        <p class="tutorial-text">Let's experiment:</p>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Find the "turn 15 degrees" block in the Motion category.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Place it after your "move" block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> Click the green flag. What path does your sprite follow now?</p>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Try changing the number of degrees. What happens if you use a negative number? Can you make your sprite draw a square? A triangle?
+                        </p>
+                        <p class="tutorial-text">
+                            Now, let's combine our movement and rotation to create a more complex pattern. Can you make your sprite draw a spiral? Here's a hint: you might need to use more than one "move" and "turn" block.
+                        </p>
+                        <img src="/placeholder.svg?height=300&width=500" alt="Spiral pattern in Scratch" class="image-block">
+                        <p class="image-caption">Figure 5: Spiral pattern in Scratch</p>
+                        <p class="tutorial-text">
+                            Remember, in Scratch, you can always experiment and try new things. What other interesting patterns can you create by combining movement and rotation?
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "Using Loops",
+                content: `
+                    <h1 class="tutorial-title">Using Loops</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            So far, we've been making our sprites move by repeating blocks manually. But what if we want our sprite to keep moving or turning indefinitely? This is where loops come in handy!
+                        </p>
+                        <p class="tutorial-text">
+                            In Scratch, one of the most common loops is the "forever" block. It looks like this:
+                        </p>
+                        <img src="/placeholder.svg?height=150&width=200" alt="Forever block in Scratch" class="image-block">
+                        <p class="image-caption">Figure 6: Forever block in Scratch</p>
+                        <p class="tutorial-text">
+                            The forever block repeats the blocks inside it... well, forever! Or at least until you stop the project. But how might this be useful? Let's find out!
+                        </p>
+                    </div>
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Try This</h3>
+                        <p class="tutorial-text">Try this:</p>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Find the "forever" block in the Control category (it's yellow).</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Drag it under your "when green flag clicked" block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> Place your "move" and "turn" blocks inside the forever block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">4</span> Click the green flag. What happens now?</p>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Your sprite should now move and turn continuously! But what if it goes off the screen? Can you think of a way to make it bounce off the edges?
+                        </p>
+                        <p class="tutorial-text">
+                            Here's a hint: look for a block in the Motion category that mentions "edge". Can you add this block to your script to keep your sprite on the screen?
+                        </p>
+                        <img src="/placeholder.svg?height=100&width=300" alt="If on edge, bounce block in Scratch" class="image-block">
+                        <p class="image-caption">Figure 7: If on edge, bounce block in Scratch</p>
+                        <p class="tutorial-text">
+                            Experiment with different combinations of blocks inside your forever loop. Can you make your sprite draw a continuous pattern? Or move in a figure-eight? Remember, in Scratch, there are many ways to achieve  the same result - don't be afraid to try new things!
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "Homework",
+                content: `
+                    <h1 class="tutorial-title">Homework and Exercises</h1>
+                    <div class="content-box">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Exercise 1: Race Two Sprites</h3>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li>Program your first sprite to move from one side of the backdrop to the other.</li>
+                                <li>Add a second sprite to your project.</li>
+                                <li>Program the second sprite to also move across the screen.</li>
+                                <li>Experiment with different speeds to make one sprite faster than the other.</li>
+                            </ol>
+                            <p class="mt-2">
+                                This exercise will help you practice using multiple sprites and controlling their movements independently.
+                            </p>
+                        </div>
+
+                        <div class="mt-6">
+                            <h3 class="text-xl font-semibold mb-2">Exercise 2: Dancing Cat</h3>
+                            <p>
+                                Use the blocks you've learned to animate the cat sprite. Combine different movements and rotations to create a dance-like animation. 
+                                Be creative and see what interesting motions you can create!
+                            </p>
+                            <p class="mt-2">
+                                This exercise encourages experimentation and helps you understand how different blocks interact to create complex behaviors.
+                            </p>
+                        </div>
+
+                        <div class="mt-6">
+                            <h3 class="text-xl font-semibold mb-2">Exercise 3: Treasure Hunt</h3>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li>Create a new backdrop with several "X" marks representing treasure.</li>
+                                <li>Program your sprite to move to and "collect" each treasure.</li>
+                                <li>Try to make the movement as efficient as possible.</li>
+                            </ol>
+                            <p class="mt-2">
+                                This exercise combines everything you've learned about sprite movement and rotation, 
+                                and introduces the concept of planning a sequence of actions to achieve a goal.
+                            </p>
+                            <p class="mt-2">
+                                For help creating the backdrop, you can refer to this tutorial: 
+                                <a href="https://www.youtube.com/watch?v=CQ4SldacxG4" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+                                    How to Draw in Scratch
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        let currentExercise = 0;
+
+        function loadExercise(index) {
+            const exercise = exercises[index];
+            document.getElementById('tutorial-content').innerHTML = exercise.content;
+            document.querySelectorAll('.exercise-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
             });
-            document.getElementById(exerciseId).style.display = 'block';
+            currentExercise = index;
         }
+
+        document.querySelectorAll('.exercise-item').forEach((item, index) => {
+            item.addEventListener('click', () => loadExercise(index));
+        });
+
+        loadExercise(0);
     </script>
 </body>
 </html>
