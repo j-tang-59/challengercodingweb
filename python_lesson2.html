@@ -22,6 +22,15 @@
             --success: #2ecc71;
             --error: #e74c3c;
         }
+        .top-strip {
+            background-color: var(--primary);
+            height: 30px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+        }
 
         * {
             margin: 0;
@@ -36,43 +45,38 @@
             line-height: 1.6;
         }
 
-        .navbar {
-            background-color: var(--primary);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            position: fixed;
+            top: 30px;
             z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
         }
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        .navbar {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            list-style: none;
+            padding: 0.5rem 1rem;
+            gap: 1rem;
         }
 
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--background);
+        .navbar li a {
+            color: var(--text);
             text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--background);
-            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             font-weight: 500;
-            transition: opacity 0.3s ease;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
+        .navbar li a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .container {
@@ -281,22 +285,24 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <a href="index.html" class="nav-brand">Challenger Coding</a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="learn.html">Learn</a>
-                <a href="about.html">About Us</a>
-                <a href="online_compiler.html">Online Compiler</a>
-                <a href="resources.html">Resources</a>
-            </div>
-        </div>
+    <div class="top-strip"></div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="compiler.html">Online Compiler</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="https://tinyurl.com/challengercoding" target="_blank" class="enroll-button">Enroll</a></li>
+        </ul>
     </nav>
 
     <div class="container">
         <aside class="sidebar">
             <div class="exercise-list">
+                <a href="python_tutorials.html" class="exercise-item">
+                    <span>Return Home</span>
+                </a>
                 <div class="exercise-item" data-exercise="1">
                     <span>1. Understanding Variables</span>
                 </div>
@@ -319,6 +325,9 @@
         </aside>
 
         <main class="main-content">
+            <br>
+            <br>
+            <br>
             <div id="tutorial-content"></div>
 
             <div class="compiler-section">
@@ -633,7 +642,8 @@ print("  |||||  ")
             document.getElementById('tutorial-content').innerHTML = exercise.content;
             document.getElementById('code-editor').value = exercise.initialCode;
             document.querySelectorAll('.exercise-item').forEach((item, i) => {
-                item.classList.toggle('active', i === index);
+                if (i === 0) return; // Skip the "Return Home" button
+                item.classList.toggle('active', i - 1 === index);
             });
             document.getElementById('output').textContent = '';
             document.getElementById('result').textContent = '';
@@ -687,7 +697,8 @@ print("  |||||  ")
         }
 
         document.querySelectorAll('.exercise-item').forEach((item, index) => {
-            item.addEventListener('click', () => loadExercise(index));
+            if (index === 0) return; // Skip the "Return Home" button
+            item.addEventListener('click', () => loadExercise(index - 1));
         });
 
         loadExercise(0);
