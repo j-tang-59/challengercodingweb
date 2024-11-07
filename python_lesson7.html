@@ -3,192 +3,666 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 7: Functions Practice</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
-    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <title>Lesson 7: Functions Practice - Challenger Coding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --background: #ffffff;
+            --surface: #f8f9fa;
+            --border: #e9ecef;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --success: #2ecc71;
+            --error: #e74c3c;
+            --highlight: #ffeaa7;
+        }
+        .top-strip {
+            background-color: var(--primary);
+            height: 30px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            position: fixed;
+            top: 30px;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0.5rem 1rem;
+            gap: 1rem;
+        }
+        .navbar li a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .navbar li a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            gap: 2rem;
+        }
+        .sidebar {
+            width: 250px;
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: calc(100vh - 120px);
+            position: sticky;
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+        }
+        .exercise-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .exercise-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--background);
+            border: 1px solid var(--border);
+        }
+        .exercise-item:hover {
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+        .exercise-item.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .main-content {
+            flex: 1;
+        }
+        .tutorial-section {
+            background: var(--background);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+        .tutorial-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        .tutorial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .code-block {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid var(--border);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .compiler-section {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .compiler-left {
+            flex: 6;
+        }
+        .compiler-right {
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .editor {
+            background: var(--surface);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .editor-header {
+            background: var(--primary);
+            color: var(--background);
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            border: none;
+            resize: vertical;
+            line-height: 1.5;
+            background-color: var(--background);
+        }
+        textarea:focus {
+            outline: none;
+        }
+        .run-button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        .run-button:hover {
+            background: var(--accent);
+            opacity: 0.9;
+        }
+        .output-container {
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            height: calc(50% - 0.5rem);
+        }
+        .output-header {
+            background: var(--primary);
+            color: var(--background);
+            padding: 0.75rem 1rem;
+            font-weight: 500;
+        }
+        .output, .result {
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            height: calc(100% - 40px);
+            overflow-y: auto;
+            background-color: var(--background);
+        }
+        .hint {
+            background-color: var(--highlight);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .key-point {
+            background-color: var(--surface);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .key-point h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+            .compiler-section {
+                flex-direction: column;
+            }
+            .compiler-left, .compiler-right {
+                flex: 1;
+            }
+            .output-container {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Lesson 7: Functions Practice</h1>
-    <div class="button-container">
-        <button onclick="showExercise('exercise1')">Exercise 1</button>
-        <button onclick="showExercise('exercise2')">Exercise 2</button>
-        <button onclick="showExercise('exercise3')">Exercise 3</button>
-        <button onclick="showExercise('project')">Project</button>
-        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
-    </div>
+    <div class="top-strip"></div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="compiler.html">Online Compiler</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="https://tinyurl.com/challengercoding" target="_blank" class="enroll-button">Enroll</a></li>
+        </ul>
+    </nav>
 
-    <div class="exercise-container">
-        <!-- Exercise 1: Introduction to Functions -->
-        <div id="exercise1" class="exercise">
-            <div class="instructions">
-                <h2>Exercise 1: What is a Function?</h2>
-                <p>A function is a reusable block of code that performs a specific task. Functions help in breaking down complex problems into smaller, manageable pieces.</p>
-                <h3>Example of a Simple Function:</h3>
-                <pre><code>def greet():
-    print("Hello, World!")
+    <div class="container">
+        <aside class="sidebar">
+            <div class="exercise-list">
+                <a href="python_tutorials.html" class="exercise-item">
+                    <span>Return Home</span>
+                </a>
+                <div class="exercise-item" data-exercise="1">
+                    <span>1. Introduction to Functions</span>
+                </div>
+                <div class="exercise-item" data-exercise="2">
+                    <span>2. Functions with Parameters</span>
+                </div>
+                <div class="exercise-item" data-exercise="3">
+                    <span>3. Returning Values from Functions</span>
+                </div>
+                <div class="exercise-item" data-exercise="4">
+                    <span>4. Function Project: Calculator</span>
+                </div>
+            </div>
+        </aside>
 
-greet() # this calls the function to execute the code within the function!
-</code></pre>
-                <p>In the above example, <code>greet</code> is the function name, and it prints "Hello, World!" when called.</p>
-                <p>To call the function, simply type the name of the function with parantheses.</p>
-                <pre>greet()</pre>
-                <div></div>
-                <h3>Try it Yourself</h3>
-                <p>Create your own function that prints a greeting message.</p>
-            </div>
-            <div class="editor">
-                <textarea id="codeEditor1" rows="10" cols="50"># Write a function that prints a greeting message</textarea>
-                <button onclick="runCode('codeEditor1', 'output1', 'result1')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="output1"></pre>
-                </div>
-                <div class="result">
-                    <h3>Result</h3>
-                    <pre id="result1"></pre>
-                </div>
-            </div>
-        </div>
+        <main class="main-content">
+            <br>
+            <br>
+            <br>
+            <h1 class="tutorial-title">Lesson 7: Functions Practice</h1>
+            <div id="tutorial-content"></div>
 
-        <!-- Exercise 2: Functions with Parameters -->
-        <div id="exercise2" class="exercise" style="display: none;">
-            <div class="instructions">
-                <h2>Exercise 2: Functions with Parameters</h2>
-                <p>Functions can take inputs called parameters, which allow them to work with different data.</p>
-                <h3>Example of a Function with Parameters:</h3>
-                <pre><code>def greet(name):
-    print(f"Hello, {name}!")
-</code></pre>
-                <p>In the above example, <code>name</code> is a parameter that the function <code>greet</code> uses to print a personalized message.</p>
-                <h3>Try it Yourself</h3>
-                <p>Create a function that takes your name as a parameter and prints a personalized greeting.</p>
-            </div>
-            <div class="editor">
-                <textarea id="codeEditor2" rows="10" cols="50"># Write a function that prints a personalized greeting</textarea>
-                <button onclick="runCode('codeEditor2', 'output2', 'result2')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="output2"></pre>
+            <div class="compiler-section">
+                <div class="compiler-left">
+                    <div class="editor">
+                        <div class="editor-header">
+                            <span>Python Code</span>
+                            <button class="run-button" onclick="runCode()">
+                                <i data-lucide="play"></i> Run
+                            </button>
+                        </div>
+                        <textarea id="code-editor" spellcheck="false"></textarea>
+                    </div>
                 </div>
-                <div class="result">
-                    <h3>Result</h3>
-                    <pre id="result2"></pre>
+                <div class="compiler-right">
+                    <div class="output-container">
+                        <div class="output-header">Output</div>
+                        <div id="output" class="output"></div>
+                    </div>
+                    <div class="output-container">
+                        <div class="output-header">Result</div>
+                        <div id="result" class="result"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Exercise 3: Returning Values from Functions -->
-        <div id="exercise3" class="exercise" style="display: none;">
-            <div class="instructions">
-                <h2>Exercise 3: Returning Values from Functions</h2>
-                <p>Functions can return values using the <code>return</code> keyword. This allows the function to send back a result that can be used later in the program.</p>
-                <h3>Example of a Function that Returns a Value:</h3>
-                <pre><code>def add(a, b):
-    return a + b
-</code></pre>
-                <p>In the above example, the function <code>add</code> takes two parameters, <code>a</code> and <code>b</code>, adds them together, and returns the result.</p>
-                <h3>Try it Yourself</h3>
-                <p>Create a function that returns the sum of two numbers.</p>
-            </div>
-            <div class="editor">
-                <textarea id="codeEditor3" rows="10" cols="50"># Write a function that returns the sum of two numbers</textarea>
-                <button onclick="runCode('codeEditor3', 'output3', 'result3')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="output3"></pre>
-                </div>
-                <div class="result">
-                    <h3>Result</h3>
-                    <pre id="result3"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project: Build Your Own Function -->
-        <div id="project" class="exercise" style="display: none;">
-            <div class="instructions">
-                <h2>Project: Create a Complex Function</h2>
-                <p>Use this space to create a more complex function that takes multiple parameters, performs some calculations or operations, and returns a result.</p>
-                <h3>Example Project Idea:</h3>
-                <p>Create a function that takes the radius of a circle as a parameter and returns the area of the circle.</p>
-            </div>
-            <div class="editor">
-                <textarea id="codeEditorProject" rows="20" cols="100"># Start your complex function project here!</textarea>
-                <button onclick="runCode('codeEditorProject', 'outputProject', 'resultProject')">Run</button>
-                <div class="output">
-                    <h3>Output</h3>
-                    <pre id="outputProject"></pre>
-                </div>
-                <div class="result">
-                    <h3>Result</h3>
-                    <pre id="resultProject"></pre>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
 
     <script>
-        function showExercise(exerciseId) {
-            const exercises = document.querySelectorAll('.exercise');
-            exercises.forEach(exercise => {
-                exercise.style.display = 'none';
-            });
-            document.getElementById(exerciseId).style.display = 'flex';
-        }
+        lucide.createIcons();
 
-        function builtinRead(x) {
-            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
-                throw "File not found: '" + x + "'";
+        const exercises = [
+            {
+                title: "Introduction to Functions",
+                content: `
+                    <p class="tutorial-text">
+                        Functions are reusable blocks of code that perform specific tasks. They help in breaking down complex problems into smaller, manageable pieces, making your code more organized and easier to understand.
+                    </p>
+                    <div class="key-point">
+                        <h4>Key Concept: Functions</h4>
+                        <p>Functions allow you to write code once and use it multiple times, promoting code reusability and reducing redundancy.</p>
+                    </div>
+                    <h3>Anatomy of a Function:</h3>
+                    <div class="code-block">
+def function_name():
+    # Function body
+    # Code to be executed
+    </div>
+                    <p class="tutorial-text">
+                        Here's a breakdown of the function structure:
+                        <ul>
+                            <li><code>def</code>: Keyword used to define a function</li>
+                            <li><code>function_name</code>: The name you give to your function</li>
+                            <li><code>()</code>: Parentheses for parameters (empty in this case)</li>
+                            <li><code>:</code>: Colon to start the function body</li>
+                            <li>Indented code block: The actual code of the function</li>
+                        </ul>
+                    </p>
+                    <h3>Example: Simple Greeting Function</h3>
+                    <div class="code-block">
+def greet():
+    print("Hello, World!")
+
+# Calling the function
+greet()
+                    </div>
+                    <p class="tutorial-text">
+                        In this example, <code>greet</code> is the function name. When called, it prints "Hello, World!".
+                    </p>
+                    <h3>Guided Exercise: Create Your Own Function</h3>
+                    <p class="tutorial-text">
+                        Now, let's create a function that prints a custom message. Follow these steps:
+                        <ol>
+                            <li>Define a function called <code>my_function</code></li>
+                            <li>Inside the function, print a message of your choice</li>
+                            <li>Call the function to see the output</li>
+                        </ol>
+                    </p>
+                    <div class="hint">
+                        <strong>Hint:</strong> Remember to use the <code>def</code> keyword to define your function, and don't forget to call it after defining!
+                    </div>
+                `,
+                initialCode: `# Define your function here
+def my_function():
+    print("Welcome to the world of functions!")
+
+# Call your function here
+my_function()
+`
+            },
+            {
+                title: "Functions with Parameters",
+                content: `
+                    <p class="tutorial-text">
+                        Functions can accept inputs called parameters, which allow them to work with different data each time they're called. This makes functions more flexible and powerful.
+                    </p>
+                    <div class="key-point">
+                        <h4>Key Concept: Parameters</h4>
+                        <p>Parameters are variables listed inside the parentheses in the function definition. They act as placeholders for the data that will be passed to the function when it's called.</p>
+                    </div>
+                    <h3>Function with a Parameter:</h3>
+                    <div class="code-block">
+def greet(name):
+    print(f"Hello, {name}!")
+
+# Calling the function with an argument
+greet("Alice")
+greet("Bob")
+                    </div>
+                    <p class="tutorial-text">
+                        In this example:
+                        <ul>
+                            <li><code>name</code> is a parameter of the <code>greet</code> function</li>
+                            <li>When calling the function, we provide an argument (e.g., "Alice" or "Bob")</li>
+                            <li>The function uses this argument to create a personalized greeting</li>
+                        </ul>
+                    </p>
+                    <h3>Multiple Parameters:</h3>
+                    <div class="code-block">
+def describe_pet(animal_type, pet_name):
+    print(f"I have a {animal_type} named {pet_name}.")
+
+describe_pet("dog", "Rex")
+describe_pet("cat", "Whiskers")
+                    </div>
+                    <h3>Guided Exercise: Create a Function with Parameters</h3>
+                    <p class="tutorial-text">
+                        Let's create a function that calculates and prints the area of a rectangle. Follow these steps:
+                        <ol>
+                            <li>Define a function called <code>calculate_area</code> that takes two parameters: <code>length</code> and <code>width</code></li>
+                            <li>Inside the function, calculate the area (length * width)</li>
+                            <li>Print the calculated area</li>
+                            <li>Call the function with different values to test it</li>
+                        </ol>
+                    </p>
+                    <div class="hint">
+                        <strong>Hint:</strong> Use the formula: area = length * width. Don't forget to print the result!
+                    </div>
+                `,
+                initialCode: `# Define your function here
+def calculate_area(length, width):
+    area = length * width
+    print(f"The area of the rectangle is: {area} square units")
+
+# Call your function with different values
+calculate_area(5, 3)
+calculate_area(7, 2)
+calculate_area(10, 10)
+`
+            },
+            {
+                title: "Returning Values from Functions",
+                content: `
+                    <p class="tutorial-text">
+                        Functions can not only perform actions but also return values using the <code>return</code> statement. This allows functions to compute results that can be used elsewhere in your program.
+                    </p>
+                    <div class="key-point">
+                        <h4>Key Concept: Return Statement</h4>
+                        <p>The <code>return</code> statement specifies the value that a function should output. When a function returns a value, it can be assigned to a variable or used in expressions.</p>
+                    </div>
+                    <h3>Function that Returns a Value:</h3>
+                    <div class="code-block">
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(f"The sum is: {result}")
+                    </div>
+                    <p class="tutorial-text">
+                        In this example:
+                        <ul>
+                            <li>The <code>add</code> function takes two parameters and returns their sum</li>
+                            <li>The returned value is stored in the <code>result</code> variable</li>
+                            <li>We can then use this value in other parts of our code</li>
+                        </ul>
+                    </p>
+                    <h3>Multiple Return Statements:</h3>
+                    <div class="code-block">
+def get_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    else:
+        return "F"
+
+print(get_grade(85))  # Outputs: B
+                    </div>
+                    <h3>Guided Exercise: Create a Function that Returns a Value</h3>
+                    <p class="tutorial-text">
+                        Let's create a function that calculates the average of three numbers. Follow these steps:
+                        <ol>
+                            <li>Define a function called <code>calculate_average</code> that takes three parameters</li>
+                            <li>Inside the function, calculate the average of the three numbers</li>
+                            <li>Return the calculated average</li>
+                            <li>Call the function with different sets of numbers and print the results</li>
+                        </ol>
+                    </p>
+                    <div class="hint">
+                        <strong>Hint:</strong> To calculate the average, add the three numbers and divide by 3. Use the <code>return</code> keyword to send back the result.
+                    </div>
+                `,
+                initialCode: `# Define your function here
+def calculate_average(num1, num2, num3):
+    average = (num1 + num2 + num3) / 3
+    return average
+
+# Call your function and print the results
+print(f"Average of 10, 20, 30: {calculate_average(10, 20, 30)}")
+print(f"Average of 5, 15, 25: {calculate_average(5, 15, 25)}")
+print(f"Average of 100, 200, 300: {calculate_average(100, 200, 300)}")
+`
+            },
+            {
+                title: "Function Project: Calculator",
+                content: `
+                    <p class="tutorial-text">
+                        Now that we've learned about functions, parameters, and return values, let's put it all together to create a simple calculator program. This project will help reinforce the concepts we've covered and show how functions can be used to create more complex programs.
+                    </p>
+                    <div class="key-point">
+                        <h4>Project Goal</h4>
+                        <p>Create a calculator that can perform basic arithmetic operations (addition, subtraction, multiplication, division) using functions.</p>
+                    </div>
+                    <h3>Project Requirements:</h3>
+                    <p class="tutorial-text">
+                        Your calculator should:
+                        <ol>
+                            <li>Have separate functions for each arithmetic operation</li>
+                            <li>Take two numbers as input for each operation</li>
+                            <li>Return the result of the operation</li>
+                            <li>Handle division by zero gracefully</li>
+                            <li>Allow the user to choose which operation to perform</li>
+                        </ol>
+                    </p>
+                    <h3>Implementation Steps:</h3>
+                    <ol>
+                        <li>Define functions for addition, subtraction, multiplication, and division</li>
+                        <li>Create a main function that:
+                            <ul>
+                                <li>Prompts the user for two numbers</li>
+                                <li>Asks the user which operation to perform</li>
+                                <li>Calls the appropriate function based on the user's choice</li>
+                                <li>Displays the result</li>
+                            </ul>
+                        </li>
+                        <li>Implement error handling for division by zero</li>
+                        <li>Use a loop to allow multiple calculations</li>
+                    </ol>
+                    <div class="hint">
+                        <strong>Hint:</strong> Use the <code>input()</code> function to get user input. Convert string inputs to numbers using <code>float()</code>. For division, check if the second number is zero before performing the operation.
+                    </div>
+                    <p class="tutorial-text">
+                        The template below provides a starting point for your Calculator project. Fill in the functions and complete the main program logic!
+                    </p>
+                `,
+                initialCode: `# Calculator functions
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y != 0:
+        return x / y
+    else:
+        return "Error: Division by zero"
+
+def calculator():
+    while True:
+        print("\nSimple Calculator")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Exit")
+        
+        choice = input("Enter choice (1/2/3/4/5): ")
+        
+        if choice == '5':
+            print("Thank you for using the calculator. Goodbye!")
+            break
+        
+        if choice in ('1', '2', '3', '4'):
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+            
+            if choice == '1':
+                print(f"Result: {add(num1, num2)}")
+            elif choice == '2':
+                print(f"Result: {subtract(num1, num2)}")
+            elif choice == '3':
+                print(f"Result: {multiply(num1, num2)}")
+            elif choice == '4':
+                print(f"Result: {divide(num1, num2)}")
+        else:
+            print("Invalid input. Please try again.")
+
+# Run the calculator
+calculator()
+`
             }
-            return Sk.builtinFiles["files"][x];
+        ];
+
+        let currentExercise = 0;
+
+        function loadExercise(index) {
+            const exercise = exercises[index];
+            document.getElementById('tutorial-content').innerHTML = exercise.content;
+            document.getElementById('code-editor').value = exercise.initialCode;
+            document.querySelectorAll('.exercise-item').forEach((item, i) => {
+                if (i === 0) return; // Skip the "Return Home" button
+                item.classList.toggle('active', i - 1 === index);
+            });
+            document.getElementById('output').textContent = '';
+            document.getElementById('result').textContent = '';
+            currentExercise = index;
         }
 
-        async function runCode(editorId, outputId, resultId, expectedOutput = null) {
-            const code = document.getElementById(editorId).value;
-            const outputElement = document.getElementById(outputId);
-            const resultElement = document.getElementById(resultId);
-            outputElement.textContent = "";
+        async function runCode() {
+            const code = document.getElementById('code-editor').value;
+            const outputElement = document.getElementById('output');
+            const resultElement = document.getElementById('result');
+            outputElement.textContent = "Running...";
             resultElement.textContent = "";
 
-            const isEffectiveCode = code.split('\n').some(line => {
-                const strippedLine = line.trim();
-                return strippedLine && !strippedLine.startsWith('#');
-            });
-
-            if (!isEffectiveCode) {
-                resultElement.textContent = "Error: No effective code provided";
-                return;
-            }
-
             try {
-                Sk.configure({ 
-                    output: function (text) {
-                        outputElement.textContent += text;
-                    },
-                    read: builtinRead
-                });
-                const promise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true));
-                await promise;
-                const actualOutput = outputElement.textContent.trim();
-                if (actualOutput === "") {
-                    resultElement.textContent = "Error: No output generated";
-                } else if (expectedOutput === null) {
-                    resultElement.textContent = "Success";
-                } else if (actualOutput === expectedOutput) {
-                    resultElement.textContent = "Success";
-                } else {
-                    resultElement.textContent = `Error: Output does not match expected output.\nExpected: '${expectedOutput}'\nActual: '${actualOutput}'`;
-                }
+                let pyodide = await loadPyodide();
+                await pyodide.loadPackage("numpy");
+                pyodide.runPython(`
+                    import sys
+                    import io
+                    sys.stdout = io.StringIO()
+                `);
+                await pyodide.runPythonAsync(code);
+                let stdout = pyodide.runPython("sys.stdout.getvalue()");
+                outputElement.textContent = stdout;
+                resultElement.textContent = "Success!";
+                resultElement.style.color = "var(--success)";
             } catch (error) {
-                resultElement.textContent = `Error: ${error.toString()}`;
+                outputElement.textContent = "";
+                resultElement.textContent = `Error: ${error.message}`;
+                resultElement.style.color = "var(--error)";
             }
         }
+
+        document.querySelectorAll('.exercise-item').forEach((item, index) => {
+            if (index === 0) return; // Skip the "Return Home" button
+            item.addEventListener('click', () => loadExercise(index - 1));
+        });
+
+        loadExercise(0);
     </script>
-        <script>
-            function goToHomepage() {
-                window.location.href = 'python_tutorials.html';  
-            }
-        </script>
 </body>
 </html>
