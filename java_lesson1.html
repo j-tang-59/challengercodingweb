@@ -3,40 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Tutorial</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <title>Java Guided Tutorials - Week 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Ensure that all exercises take up the full width of the page */
-        .exercise {
-            width: 100%;
-            box-sizing: border-box; /* Include padding and border in the element's width and height */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f39c12;
+            --background-color: #f0f4f8;
+            --text-color: #333;
+            --card-background: #ffffff;
+            --border-color: #e0e0e0;
         }
-        
-        /* Ensure that iframes take up the full width of their container */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background-color: #3a7bd5;
+        }
+
+        .home-button {
+            background-color: var(--secondary-color);
+        }
+
+        .home-button:hover {
+            background-color: #e67e22;
+        }
+
+        .exercise {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .exercise h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .exercise p {
+            margin-bottom: 1rem;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .instructions {
+            margin-bottom: 1rem;
+        }
+
         iframe {
             width: 100%;
-            height: 600px;
-            border: 0; /* Remove border if not needed */
+            height: 400px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #quiz {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #quiz h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+        }
+
+        .question p {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        #quizResult {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Week 1 Guided Tutorials</h1>
-    <div class="button-container">
-        <button onclick="showExercise('exercise1')">Exercise 1</button>
-        <button onclick="showExercise('exercise2')">Exercise 2</button>
-        <button onclick="showExercise('exercise3')">Exercise 3</button>
-        <button onclick="showExercise('quiz')">Quiz</button>
-        <button onclick="showExercise('project')">Project</button>
-        <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
-    </div>
-    
-    <div class="exercise-container">
-        <!-- Exercise 1 -->
+    <div class="container">
+        <h1>Week 1 Java Guided Tutorials</h1>
+        <div class="button-container">
+            <button class="button" onclick="showExercise('exercise1')">Exercise 1</button>
+            <button class="button" onclick="showExercise('exercise2')">Exercise 2</button>
+            <button class="button" onclick="showExercise('exercise3')">Exercise 3</button>
+            <button class="button" onclick="showExercise('quiz')">Quiz</button>
+            <button class="button" onclick="showExercise('project')">Project</button>
+            <button class="button home-button" onclick="goToHomepage()">Back to Homepage</button>
+        </div>
+        
         <div id="exercise1" class="exercise">
+            <h2>My First Java Program</h2>
             <div class="instructions">
-                <h2>My First Java Program</h2>
                 <p>Here is a Java program that prints <strong>Hello, Java!</strong></p>
                 <pre><code>public class Hello {
     public static void main(String[] args) {
@@ -51,10 +189,9 @@
             <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
         </div>
         
-        <!-- Exercise 2 -->
-        <div id="exercise2" class="exercise" style="display: none;">
+        <div id="exercise2" class="exercise">
+            <h2>Syntax and Java Basics</h2>
             <div class="instructions">
-                <h2>Syntax and Java Basics</h2>
                 <p>Every executable Java program consists of a <strong>class</strong>, that contains a <strong>method</strong> named <strong>main</strong>, that contains the <strong>statements</strong> (commands) to be executed.</p>
                 <pre><code>public class Hello {
     public static void main(String[] args) {
@@ -75,10 +212,9 @@ four lines of output.</code></pre>
             <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
         </div>
 
-        <!-- Exercise 3 -->
-        <div id="exercise3" class="exercise" style="display: none;">
+        <div id="exercise3" class="exercise">
+            <h2>Debugging</h2>
             <div class="instructions">
-                <h2>Exercise 3: Debugging</h2>
                 <p>Find and fix the error in the following Java code:</p>
                 <pre><code>public class DebugExample {
     public static void main(String[] args) {
@@ -93,68 +229,85 @@ public class DebugExample {
         System.out.println("Hello, Java!)
     }
 }</textarea>
+            </div>
             <iframe src="https://www.jdoodle.com/online-java-compiler"></iframe>
-            </div>
         </div>
 
-        <!-- Quiz -->
-        <div id="quiz" class="exercise" style="display: none; width: 100%;">
-            <div class="instructions" style="width: 100%;">
-                <h2>Java Basics Quiz</h2>
-                <form id="quizForm" style="width: 100%;">
-                    <div class="question" style="width: 100%;">
-                        <p>1. What is the correct syntax to output "Hello, World" in Java?</p>
-                        <input type="radio" name="q1" value="a"> System.out.println("Hello, World");<br>
-                        <input type="radio" name="q1" value="b"> echo("Hello, World");<br>
-                        <input type="radio" name="q1" value="c"> print("Hello, World");<br>
-                    </div>
-                    <div class="question" style="width: 100%;">
-                        <p>2. How do you start a single line comment in Java?</p>
-                        <input type="radio" name="q2" value="a"> <!-- This is a comment --><br>
-                        <input type="radio" name="q2" value="b"> // This is a comment<br>
-                        <input type="radio" name="q2" value="c"> # This is a comment<br>
-                    </div>
-                    <div class="question" style="width: 100%;">
-                        <p>3. Which data type is used to create a variable that should store text?</p>
-                        <input type="radio" name="q3" value="a"> myString<br>
-                        <input type="radio" name="q3" value="b"> String<br>
-                        <input type="radio" name="q3" value="c"> string<br>
-                    </div>
-                    <div class="question" style="width: 100%;">
-                        <p>4. How do you create a variable with the numeric value 5?</p>
-                        <input type="radio" name="q4" value="a"> int x = 5;<br>
-                        <input type="radio" name="q4" value="b"> num x = 5;<br>
-                        <input type="radio" name="q4" value="c"> x = 5;<br>
-                    </div>
-                    <div class="question" style="width: 100%;">
-                        <p>5. Which method can be used to find the length of a string?</p>
-                        <input type="radio" name="q5" value="a"> getLength()<br>
-                        <input type="radio" name="q5" value="b"> len()<br>
-                        <input type="radio" name="q5" value="c"> length()<br>
-                    </div>
-                    <button type="button" onclick="submitQuiz()">Submit</button>
-                </form>
-                <div class="output" style="width: 100%;">
-                    <h3>Result</h3>
-                    <pre id="quizResult"></pre>
+        <div id="quiz" class="exercise">
+            <h2>Java Basics Quiz</h2>
+            <form id="quizForm">
+                <div class="question">
+                    <p>1. What is the correct syntax to output "Hello, World" in Java?</p>
+                    <input type="radio" name="q1" value="a" id="q1a"><label for="q1a">System.out.println("Hello, World");</label><br>
+                    <input type="radio" name="q1" value="b" id="q1b"><label for="q1b">echo("Hello, World");</label><br>
+                    <input type="radio" name="q1" value="c" id="q1c"><label for="q1c">print("Hello, World");</label><br>
                 </div>
-            </div>
+                <div class="question">
+                    <p>2. How do you start a single line comment in Java?</p>
+                    <input type="radio" name="q2" value="a" id="q2a"><label for="q2a"><!-- This is a comment --></label><br>
+                    <input type="radio" name="q2" value="b" id="q2b"><label for="q2b">// This is a comment</label><br>
+                    <input type="radio" name="q2" value="c" id="q2c"><label for="q2c"># This is a comment</label><br>
+                </div>
+                <div class="question">
+                    <p>3. Which data type is used to create a variable that should store text?</p>
+                    <input type="radio" name="q3" value="a" id="q3a"><label for="q3a">myString</label><br>
+                    <input type="radio" name="q3" value="b" id="q3b"><label for="q3b">String</label><br>
+                    <input type="radio" name="q3" value="c" id="q3c"><label for="q3c">string</label><br>
+                </div>
+                <div class="question">
+                    <p>4. How do you create a variable with the numeric value 5?</p>
+                    <input type="radio" name="q4" value="a" id="q4a"><label for="q4a">int x = 5;</label><br>
+                    <input type="radio" name="q4" value="b" id="q4b"><label for="q4b">num x = 5;</label><br>
+                    <input type="radio" name="q4" value="c" id="q4c"><label for="q4c">x = 5;</label><br>
+                </div>
+                <div class="question">
+                    <p>5. Which method can be used to find the length of a string?</p>
+                    <input type="radio" name="q5" value="a" id="q5a"><label for="q5a">getLength()</label><br>
+                    <input type="radio" name="q5" value="b" id="q5b"><label for="q5b">len()</label><br>
+                    <input type="radio" name="q5" value="c" id="q5c"><label for="q5c">length()</label><br>
+                </div>
+                <button type="button" class="button" onclick="submitQuiz()">Submit</button>
+            </form>
+            <div id="quizResult"></div>
         </div>
 
-    
-        <script>
-            function showExercise(exerciseId) {
-                const exercises = document.querySelectorAll('.exercise');
-                exercises.forEach(exercise => {
-                    exercise.style.display = 'none';
-                });
-                document.getElementById(exerciseId).style.display = 'flex';
+        <div id="project" class="exercise">
+            <h2>Weekly Project</h2>
+            <p>Project details will be added here.</p>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(exerciseId) {
+            const exercises = document.querySelectorAll('.exercise');
+            exercises.forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            document.getElementById(exerciseId).style.display = 'block';
+        }
+
+        function goToHomepage() {
+            window.location.href = 'java_tutorials.html';
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const result = document.getElementById('quizResult');
+            let score = 0;
+            const answers = ['a', 'b', 'b', 'a', 'c'];
+
+            for (let i = 1; i <= 5; i++) {
+                const selected = form[`q${i}`].value;
+                if (selected === answers[i-1]) {
+                    score++;
+                }
             }
-        </script>
-                    <script>
-                        function goToHomepage() {
-                            window.location.href = 'java_tutorials.html';  
-                        }
-                    </script>
+
+            result.textContent = `You scored ${score} out of 5`;
+        }
+
+        // Show the first exercise by default
+        showExercise('exercise1');
+    </script>
 </body>
 </html>

@@ -3,260 +3,963 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scratch 1 Class - Guided Exercise</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Scratch Lesson 5: Conditionals - Challenger Coding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #2196F3;
+            --primary-dark: #1976D2;
+            --secondary: #FF4081;
+            --accent: #FFC107;
+            --background: #f0f4f8;
+            --surface: #ffffff;
+            --border: #e0e7ff;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --success: #48bb78;
+            --error: #f56565;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .top-strip {
+            background-color: var(--primary);
+            height: 5px;
+            width: 100%;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0.5rem 1rem;
+            gap: 1rem;
+        }
+
+        .navbar li a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .navbar li a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            display: flex;
+            max-width: 1200px;
+            margin: 2rem auto;
+            gap: 2rem;
         }
 
-        h1, h2 {
+        .sidebar {
+            width: 250px;
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: calc(100vh - 120px);
+            position: sticky;
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .exercise-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .exercise-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .exercise-item:hover {
+            background: var(--primary);
+            color: var(--surface);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .exercise-item.active {
+            background: var(--primary);
+            color: var(--surface);
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .main-content {
+            flex: 1;
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .tutorial-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .tutorial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-box {
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .highlight-box {
+            background-color: #e6f7ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .step-box {
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
             text-align: center;
-            color: #333;
+            line-height: 24px;
+            margin-right: 0.5rem;
         }
 
-        .handout {
-            background-color: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        .image-block {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
         }
 
-        .vocab-section, .blocks-section, .homework-section {
-            margin-top: 30px;
-        }
-
-        .vocab-section ul, .blocks-section ul, .homework-section ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .vocab-section ul li, .blocks-section ul li, .homework-section ul li {
-            background-color: #eef;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            font-size: 18px;
-        }
-
-        .blocks-section img {
-            display: block;
-            margin: 20px auto;
-            width: 150px;
-        }
-
-        .blocks-section p {
+        .image-caption {
             text-align: center;
-            font-weight: bold;
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .interactive-demo {
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .demo-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .demo-button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .demo-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="top-strip"></div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="compiler.html">Online Compiler</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="https://tinyurl.com/challengercoding" target="_blank" class="enroll-button">Enroll</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>Scratch 1 Class - Guided Exercise</h1>
-        <h2>Lesson 5 Guide</h2>
-
-        <!-- Navigation Buttons -->
-        <div class="button-container">
-            <button onclick="showExercise('review')">Lesson Overview and Review</button>
-            <button onclick="showExercise('exercise1')">Exercise 1</button>
-            <button onclick="showExercise('exercise2')">Exercise 2</button>
-            <button onclick="showExercise('tutorial')">Guided Tutorial</button>
-            <button onclick="showExercise('homework')">Homework and Exercises</button>
-            <button onclick="goToHomepage()" class="home-button">Back to Homepage</button>
-        </div>
-
-        <!-- Review -->
-        <div id="review" class="exercise-container" style="display: block;">
-            <div class="handout">
-                <h3>Vocabulary:</h3>
-                <div class="vocab-section">
-                    <ul>
-                        <li><strong>Conditional:</strong> A conditional is a statement that performs different actions based on whether a certain condition is true or false.</li>
-                        <li><strong>Boolean:</strong> A boolean is a data type that represents one of two values: true or false. Booleans are often used in conditionals to make decisions in code.</li>
-                        <li><strong>While Loop:</strong> A while loop is a type of loop that keeps repeating a set of instructions as long as a certain condition is true. This is a loop and a conditional.</li>
-                        <li><strong>If Statement:</strong> An if statement is a type of conditional that executes a set of instructions only if a certain condition is true.</li>
-                        <li><strong>If Else Statement:</strong> An if-else statement is a type of conditional that executes one block of code if a condition is true and another block of code if the condition is false.</li>
-                    </ul>
+        <aside class="sidebar">
+            <div class="exercise-list">
+                <div class="exercise-item" data-exercise="overview">
+                    <span>Lesson Overview</span>
                 </div>
-
-                <h3>Blocks Used/Introduced Today:</h3>
-                <div class="blocks-section">
-                    <ul>
-                        <li>
-                            <img src="whileloop.png" alt="While Loop">
-                            <p>The While Loop. Use this block to create the conditional to where the while loop will execute.</p>
-                        </li>
-                        <li>
-                            <img src="ifstatement.png" alt="If Conditional">
-                            <p>If Conditional. If the conditional is met, the code inside will execute.</p>
-                        </li>
-                        <li>
-                            <img src="ifelse.png" alt="If Else Conditional">
-                            <p>If Else Conditional. Allows you to program the conditional if the conditional is not met.</p>
-                        </li>
-                        <li>
-                            <img src="path_to_image/conditional_check.png" alt="Conditional Check">
-                            <p>This block lets your conditional be checked. The computer will check if the key you selected has been pressed or not.</p>
-                        </li>
-                        <li>
-                            <img src="path_to_image/touching_color.png" alt="Touching Color">
-                            <p>Touching Color. This block checks if the sprite is touching a specified color. Often used in conditionals to trigger an action when the sprite interacts with a specific color on the stage.</p>
-                        </li>
-                        <li>
-                            <img src="keypressed.png" alt="Key Pressed">
-                            <p>Key Pressed. This block checks if a specific key on the keyboard is pressed. It is commonly used in conditionals to trigger actions based on user input.</p>
-                        </li>
-                        <li>
-                            <img src="path_to_image/mouse_down.png" alt="Mouse Down">
-                            <p>Mouse Down. This block checks if the mouse button is being pressed. It can be used to create interactive elements where the sprite reacts to mouse clicks.</p>
-                        </li>
-                    </ul>
+                <div class="exercise-item" data-exercise="conditionals">
+                    <span>1. Understanding Conditionals</span>
+                </div>
+                <div class="exercise-item" data-exercise="if-statements">
+                    <span>2. If Statements</span>
+                </div>
+                <div class="exercise-item" data-exercise="if-else">
+                    <span>3. If-Else Statements</span>
+                </div>
+                <div class="exercise-item" data-exercise="tutorial">
+                    <span>4. Guided Tutorial</span>
+                </div>
+                <div class="exercise-item" data-exercise="project">
+                    <span>5. Mini-Project</span>
+                </div>
+                <div class="exercise-item" onclick="window.location.href='scratch_tutorials.html'">
+                    <span>Return to Home</span>
                 </div>
             </div>
-        </div>
-      
-        <!-- Exercise 1 -->
-        <div id="exercise1" class="exercise-container">
-            <div class="handout">
-                <h3>Exercise 1: Implementing Conditionals</h3>
-                <p>A conditional in coding is a statement that allows a program to execute a certain piece of code only if a specific condition is met.</p>
-                <p>Conditionals are very versatile and important. It allows programs to handle multiple scenarios and basically allows the computer to make decisions!</p>
-                <p>Examples include:</p> 
-                    <li>Computer log in with the correct password</li>
-                    <li>If temperature is too hot, stay inside</li>
-                <br>
-                <p><strong>A conditional check</strong> is when the computer "checks" whether a certain condition, like pressing a key, is met. <strong>Think of it when someone asks you a yes no question.</strong> This is how conditionals are executed.</p>
+        </aside>
 
-                <br>
-                <p><strong>If Conditional:</strong> Use the "If" block to make a decision in your code. The sprite will only execute the action if the condition inside the block is true.</p>
-                <br>
-                <p><strong>If Else Conditional:</strong> Use the "If Else" block when you need the sprite to perform one action if the condition is true, and a different action if it is false.</p>
-                <br>
-                <p><strong>While Loop:</strong> Although the while loop is technically a loop, it is also a conditional. Use the "While" block when you want to repeat an action until a certain condition is no longer true.</p>
-            </div>
-        </div>
+        <main class="main-content">
+            <div id="tutorial-content"></div>
+        </main>
+    </div>
 
-        <!--Exercise 2-->
-        <div id="exercise2" class="exercise-container" style="display: none;">
-            <div class="handout">
-                <h3>Exercise 2: Implementing Common Conditionals in Scratch</h3>
-                <p>In this exercise, you'll learn how to use common conditional blocks in Scratch to make your sprite respond to different events and conditions.</p>
-                <br>
+    <script>
+        lucide.createIcons();
 
-                <h3>Understanding Conditionals:</h3>
-                <p>A conditional is like a decision-maker in your program. It helps the computer decide what to do next based on whether a certain condition is true or false.</p>
-                <br>
+        const exercises = [
+            {
+                title: "Lesson Overview",
+                content: `
+                    <h1 class="tutorial-title">Lesson 5: Conditionals in Scratch</h1>
+                    <div class="content-box">
+                        <h2 class="text-2xl font-semibold mb-4">What You'll Learn</h2>
+                        <p class="tutorial-text">
+                            In this lesson, we'll explore conditionals in Scratch. You'll learn how to use if statements 
+                            and if-else statements to make decisions in your code, allowing your sprites to respond to 
+                            different conditions.
+                        </p>
+                    </div>
 
-                <p>For example, if you want your sprite to move only when the space key is pressed, you would use a conditional to check if the space key is pressed before moving the sprite.</p>
-                <br>
+                    <div class="content-box">
+                        <h2 class="text-2xl font-semibold mb-4">Key Concepts</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">Conditional</h3>
+                                <p>A statement that performs different actions based on whether a condition is true or false.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">Boolean</h3>
+                                <p>A data type that represents one of two values: true or false.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">If Statement</h3>
+                                <p>A conditional that executes a set of instructions only if a certain condition is true.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <h3 class="text-xl font-semibold mb-2">If-Else Statement</h3>
+                                <p>A conditional that executes one block of code if a condition is true and another if it's false.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <h3>Step 1: Using the "Key Pressed" Conditional</h3>
-                <p>Let's start by making your sprite move when a key is pressed:</p>
-                <p><strong>1. Drag the "When Green Flag Clicked" block to the workspace.</strong></p>
-                <p><strong>2. Go to the "Control" category and drag the "If" block into the workspace.</strong></p>
-                <p><strong>3. In the "Sensing" category, find the "Key [space] pressed?" block and drag it into the hexagon space in the "If" block.</strong></p>
-                <p><strong>4. Inside the "If" block, add a "Move 10 steps" block from the "Motion" category.</strong></p>
-                <br>
-                <p>Now, when you press the space key, your sprite will move 10 steps!</p>
-                <br>
+                    <div class="content-box">
+                        <h2 class="text-2xl font-semibold mb-4">Blocks We'll Use</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="step-box">
+                                <h3 class="text-xl font-semibold mb-2">Control Blocks</h3>
+                                <ul class="list-disc list-inside">
+                                    <li>If [ ] then</li>
+                                    <li>If [ ] then ... else</li>
+                                </ul>
+                            </div>
+                            <div class="step-box">
+                                <h3 class="text-xl font-semibold mb-2">Sensing Blocks</h3>
+                                <ul class="list-disc list-inside">
+                                    <li>Key [ ] pressed?</li>
+                                    <li>Touching [ ]?</li>
+                                    <li>Mouse down?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Understanding Conditionals",
+                content: `
+                    <h1 class="tutorial-title">Understanding Conditionals</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            In programming, a conditional is a statement that allows your code to make decisions. It's like 
+                            asking a question and then doing something based on the answer. In Scratch, we use conditionals 
+                            to make our sprites react to different situations.
+                        </p>
+                        <div class="highlight-box">
+                            <p><strong>Key Point:</strong> Conditionals help your program make decisions based on different conditions.</p>
+                        </div>
+                    </div>
 
-                <h3>Step 2: Using the "Touching Color" Conditional</h3>
-                <p>Next, let's make your sprite change direction when it touches a specific color:</p>
-                <p><strong>1. Below your previous "If" block, add another "If" block.</strong></p>
-                <p><strong>2. Go to the "Sensing" category, and find the "Touching color [ ] ?" block.</strong></p>
-                <p><strong>3. Drag this block into the hexagon space in the new "If" block. Click the color box and choose a color that your sprite will interact with.</strong></p>
-                <p><strong>4. Inside this "If" block, add a "Turn 15 degrees" block from the "Motion" category.</strong></p>
-                <br>
-                <p>Now, whenever your sprite touches the specified color, it will turn 15 degrees!</p>
-                <br>
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">How Conditionals Work</h3>
+                        <p class="tutorial-text">A conditional typically follows this pattern:</p>
+                        <ul class="list-disc list-inside mb-4">
+                            <li>If (some condition is true)</li>
+                            <li>Then (do this)</li>
+                            <li>Otherwise (do something else)</li>
+                        </ul>
+                    </div>
 
-                <h3>Step 3: Combining Conditionals with Loops</h3>
-                <p>Finally, let's combine what we've learned with a loop:</p>
-                <p><strong>1. Wrap both of your "If" blocks inside a "Forever" loop from the "Control" category.</strong></p>
-                <p><strong>2. This way, the conditions will be continuously checked, and your sprite will keep responding to key presses and touching colors as long as the program runs.</strong></p>
-                <br>
-                <p>Your sprite is now interactive! It moves when you press the space key and changes direction when it touches a certain color, all thanks to conditionals and loops.</p>
-            </div>
-        </div>
+                    <div class="interactive-demo">
+                        <h3 class="text-xl font-semibold mb-2">Interactive Demo: Conditional Check</h3>
+                        <div id="conditional-demo">
+                            <canvas id="conditional-canvas" width="400" height="200"></canvas>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="demo-button" onclick="toggleLight()">Toggle Light</button>
+                        </div>
+                    </div>
 
-        <!-- Tutorial -->
-        <div id="tutorial" class="exercise-container" style="display: none;">
-            <div class="handout">
-                <h3>Maze Game Enhancement: Adding Arrow Keys and "Death" by Touching Walls</h3>
-                <p>In this tutorial, you’ll enhance your maze game by adding controls with the arrow keys and a feature where the sprite "dies" (or restarts) if it touches the walls of the maze.</p>
-                <br>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            In the demo above, we're using a conditional to check if the light is on or off. Based on this 
+                            condition, we either show a bright or dark room. This is a simple example of how conditionals 
+                            can change the behavior of our program.
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "If Statements",
+                content: `
+                    <h1 class="tutorial-title">If Statements</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            An "If" statement is the most basic type of conditional. It allows you to execute a block of 
+                            code only if a certain condition is true.
+                        </p>
+                    </div>
 
-                <h3>Step 1: Setting Up the Arrow Keys</h3>
-                <p>Let's start by making your sprite move with the arrow keys:</p>
-                <br>
-                <p><strong>1. Drag the "When Green Flag Clicked" block to the workspace.</strong></p>
-                <p><strong>2. Go to the "Control" category and drag a "Forever" loop into the workspace. This will keep the sprite moving as long as the program runs.</strong></p>
-                <br>
-                <p><strong>3. Inside the "Forever" loop, add four "If" blocks from the "Control" category.</strong></p>
-                <p><strong>4. Go to the "Sensing" category, and in each "If" block, add a "Key [arrow] pressed?" block. Set the first block to "Key Up arrow pressed?", the second to "Key Down arrow pressed?", the third to "Key Right arrow pressed?", and the fourth to "Key Left arrow pressed?".</strong></p>
-                <br>
-                <p><strong>5. Inside each "If" block, add a "Move 10 steps" block from the "Motion" category. For the "Up" and "Down" arrows, also add a "Point in direction" block and set it to 0 (Up) and 180 (Down) degrees, respectively. Set the "Right" arrow to 90 degrees and the "Left" arrow to -90 degrees.</strong></p>
-                <br>
-                <p>Now, your sprite should move in the direction of the arrow key you press!</p>
-                <br>
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">The "If" Block in Scratch</h3>
+                        <p class="tutorial-text">
+                            In Scratch, the "If" block looks like this:
+                        </p>
+                        <img src="/placeholder.svg?height=50&width=200" alt="If Block in Scratch" class="image-block">
+                        <p class="image-caption">The "If" block in Scratch</p>
+                        <div class="highlight-box">
+                            <p><strong>Use Case:</strong> When you want to perform an action only under certain conditions.</p>
+                        </div>
+                    </div>
 
-                <h3>Step 2: Adding Walls to the Maze</h3>
-                <p>Next, ensure your maze has walls that the sprite cannot pass through:</p>
-                <br>
-                <p><strong>1. Draw or update your maze backdrop to include clear walls.</strong></p>
-                <p><strong>2. Go to the "Costumes" tab for your sprite, and draw your sprite (or use an existing one).</strong></p>
-                <br>
-                <p>Make sure the walls and sprite are distinct colors for easy detection.</p>
-                <br>
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Example: Moving a Sprite with Arrow Keys</h3>
+                        <p class="tutorial-text">Let's create a simple script that moves a sprite when an arrow key is pressed:</p>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Drag an "If" block into your script area.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> From the "Sensing" category, drag a "Key [space] pressed?" block into the condition of the "If" block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> Change "space" to "right arrow" in the dropdown menu.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">4</span> Inside the "If" block, add a "Move 10 steps" block from the "Motion" category.</p>
+                        </div>
+                    </div>
 
-                <h3>Step 3: Adding the "Death" Functionality</h3>
-                <p>Now, let’s make your sprite "die" (or restart) when it touches the walls:</p>
-                <br>
-                <p><strong>1. Inside the "Forever" loop, under your arrow key conditions, add another "If" block.</strong></p>
-                <p><strong>2. Go to the "Sensing" category, and add a "Touching color [ ]?" block into the "If" block. Click the color box and choose the color of your maze walls.</strong></p>
-                <br>
-                <p><strong>3. Inside the "If" block, add a "Go to [start position]" block from the "Motion" category. Set the X and Y coordinates to the starting position of your maze.</strong></p>
-                <p><strong>4. Optionally, you can add a "Play sound [sound]" block to play a sound when the sprite "dies."</strong></p>
-                <br>
-                <p>Now, if the sprite touches the walls, it will restart at the beginning of the maze!</p>
-                <br>
+                    <div class="interactive-demo">
+                        <h3 class="text-xl font-semibold mb-2">Interactive Demo: Moving with Arrow Keys</h3>
+                        <div id="arrow-key-demo">
+                            <canvas id="arrow-key-canvas" width="400" height="400"></canvas>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="demo-button" onmousedown="moveSprite('right')" onmouseup="stopSprite()">Right</button>
+                            <button class="demo-button" onmousedown="moveSprite('left')" onmouseup="stopSprite()">Left</button>
+                            <button class="demo-button" onmousedown="moveSprite('up')" onmouseup="stopSprite()">Up</button>
+                            <button class="demo-button" onmousedown="moveSprite('down')" onmouseup="stopSprite()">Down</button>
+                        </div>
+                    </div>
 
-                <h3>Step 4: Testing Your Maze Game</h3>
-                <p>Test your game by pressing the green flag and using the arrow keys to navigate your sprite through the maze. Make sure the sprite correctly "dies" and restarts if it touches the walls.</p>
-                <br>
-                <p>Congratulations! You’ve now enhanced your maze game with arrow key controls and a "death" mechanic when touching the walls!</p>
-            </div>
-        </div>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            In this example, we've used "If" statements to check which arrow key is pressed and move the 
+                            sprite accordingly. Try pressing the different arrow buttons to see how the sprite moves!
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "If-Else Statements",
+                content: `
+                    <h1 class="tutorial-title">If-Else Statements</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            An "If-Else" statement allows you to execute one block of code if a condition is true, and a 
+                            different block of code if the condition is false.
+                        </p>
+                    </div>
 
-        <script>
-            function goToHomepage() {
-                window.location.href = 'scratch_tutorials.html';  
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">The "If-Else" Block in Scratch</h3>
+                        <p class="tutorial-text">
+                            In Scratch, the "If-Else" block looks like this:
+                        </p>
+                        <img src="/placeholder.svg?height=100&width=200" alt="If-Else Block in Scratch" class="image-block">
+                        <p class="image-caption">The "If-Else" block in Scratch</p>
+                        <div class="highlight-box">
+                            <p><strong>Use Case:</strong> When you want to perform one action if a condition is true, and a different action if it's false.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Example: Changing Sprite Color Based on Position</h3>
+                        <p class="tutorial-text">Let's create a script that changes a sprite's color based on its position:</p>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Drag an "If-Else" block into your script area.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> From the "Operators" category, drag a "[ ] > [ ]" block into the condition of the "If-Else" block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> From the "Motion" category, drag an "x position" block into the first space of the ">" block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">4</span> Type "0" into the second space of the ">" block.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">5</span> Inside the "If" part, add a "Set color effect to 0" block from the "Looks" category.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">6</span> Inside the "Else" part, add another "Set color effect to 50" block.</p>
+                        </div>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h3 class="text-xl font-semibold mb-2">Interactive Demo: Color Change Based on Position</h3>
+                        <div id="color-change-demo">
+                            <canvas id="color-change-canvas" width="400" height="200"></canvas>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="demo-button" onclick="moveColorSprite('left')">Move Left</button>
+                            <button class="demo-button" onclick="moveColorSprite('right')">Move Right</button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            In this example, we've used an "If-Else" statement to change the sprite's color based on its 
+                            x-position. If the sprite is on the right side of the stage (x > 0), it turns one color. 
+                            Otherwise, it turns a different color. Try moving the sprite left and right to see the color change!
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "Guided Tutorial",
+                content: `
+                    <h1 class="tutorial-title">Guided Tutorial: Creating a Simple Game with Conditionals</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            In this tutorial, we'll create a simple game where a sprite tries to catch falling objects. 
+                            We'll use conditionals to control the sprite's movement and detect collisions.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Step 1: Setting Up the Stage</h3>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Create a new Scratch project.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Choose a backdrop for your game. You can use the default backdrop or choose a new one from the library.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Step 2: Creating the Player Sprite</h3>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Choose a sprite for the player. This will be the character that moves to catch falling objects.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Add the following script to control the player's movement:</p>
+                        </div>
+                        <pre class="code-block">
+when green flag clicked
+forever
+    if &lt;key [left arrow] pressed?&gt; then
+        change x by -10
+    end
+    if &lt;key [right arrow] pressed?&gt; then
+        change x by 10
+    end
+    if &lt;touching [edge v]?&gt; then
+        if &lt;(x position) &gt; (0)&gt; then
+            set x to (240)
+        else
+            set x to (-240)
+        end
+    end
+end
+                        </pre>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Step 3: Creating the Falling Object</h3>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Add a new sprite that will be the falling object. You can use any sprite you like.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Add the following script to control the falling object:</p>
+                        </div>
+                        <pre class="code-block">
+when green flag clicked
+forever
+    go to x: (pick random (-240) to (240)) y: (180)
+    repeat until &lt;touching [edge v]?&gt;
+        change y by -5
+        if &lt;touching [Player v]?&gt; then
+            change [score v] by (1)
+            play sound (pop)
+            wait (0.1) seconds
+        end
+    end
+end
+                        </pre>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Step 4: Adding a Score</h3>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Create a variable called "score" for all sprites.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Add the following script to initialize the score:</p>
+                        </div>
+                        <pre class="code-block">
+when green flag clicked
+set [score v] to (0)
+                        </pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h3 class="text-xl font-semibold mb-2">Interactive Demo: Catch the Falling Object</h3>
+                        <div id="game-demo">
+                            <canvas id="game-canvas" width="480" height="360"></canvas>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="demo-button" onclick="startGame()">Start Game</button>
+                            <button class="demo-button" onclick="movePlayer('left')">Move Left</button>
+                            <button class="demo-button" onclick="movePlayer('right')">Move Right</button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Congratulations! You've created a simple game using conditionals. The player sprite moves left 
+                            and right based on key presses, and the falling object resets its position when it touches the 
+                            edge or the player. The score increases each time the player catches the falling object.
+                        </p>
+                        <p class="tutorial-text">
+                            Try playing the demo above to see how the game works. You can move the player left and right 
+                            using the buttons, and try to catch the falling object to increase your score!
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "Mini-Project",
+                content: `
+                    <h1 class="tutorial-title">Mini-Project: Create a Maze Game with Conditionals</h1>
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Now it's your turn to create a project using what you've learned about conditionals. You'll be 
+                            creating a simple maze game where a sprite navigates through a maze using arrow keys.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Project Description</h3>
+                        <p class="tutorial-text">
+                            Create a Scratch project where a sprite navigates through a maze. The sprite should move with 
+                            arrow keys and stop when it hits a wall. When the sprite reaches the end of the maze, it should 
+                            display a "You Win!" message.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Step-by-Step Guide</h3>
+                        <div class="step-box">
+                            <p><span class="step-number">1</span> Create a new Scratch project and design a simple maze as the backdrop.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">2</span> Add a sprite that will navigate through the maze.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">3</span> Use "If" statements to move the sprite when arrow keys are pressed.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">4</span> Use an "If-Else" statement to check if the sprite is touching a wall. If it is, move it back slightly.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">5</span> Add another conditional to check if the sprite has reached the end of the maze.</p>
+                        </div>
+                        <div class="step-box">
+                            <p><span class="step-number">6</span> Display a "You Win!" message when the sprite reaches the end.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Example Code Structure</h3>
+                        <pre class="code-block">
+when green flag clicked
+forever
+    if &lt;key [right arrow] pressed?&gt; then
+        point in direction (90)
+        move (5) steps
+    end
+    if &lt;key [left arrow] pressed?&gt; then
+        point in direction (-90)
+        move (5) steps
+    end
+    if &lt;key [up arrow] pressed?&gt; then
+        point in direction (0)
+        move (5) steps
+    end
+    if &lt;key [down arrow] pressed?&gt; then
+        point in direction (180)
+        move (5) steps
+    end
+    if &lt;touching color [#000000]?&gt; then
+        move (-5) steps
+    end
+    if &lt;touching color [#00FF00]?&gt; then
+        say [You Win!] for (2) seconds
+        stop [all v]
+    end
+end
+                        </pre>
+                    </div>
+
+                    <div class="content-box">
+                        <h3 class="text-xl font-semibold mb-2">Challenge</h3>
+                        <p class="tutorial-text">
+                            Can you add a timer to your maze game? Use a variable to keep track of time, and display how long 
+                            it took the player to complete the maze. You might need to use some additional conditionals to 
+                            start and stop the timer at the right moments!
+                        </p>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h3 class="text-xl font-semibold mb-2">Interactive Demo: Simple Maze Game</h3>
+                        <div id="maze-demo">
+                            <canvas id="maze-canvas" width="400" height="400"></canvas>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="demo-button" onclick="moveMazeSprite('up')">Up</button>
+                            <button class="demo-button" onclick="moveMazeSprite('down')">Down</button>
+                            <button class="demo-button" onclick="moveMazeSprite('left')">Left</button>
+                            <button class="demo-button" onclick="moveMazeSprite('right')">Right</button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <p class="tutorial-text">
+                            Remember, creativity is key! Feel free to add your own twists to the maze game. Maybe add 
+                            collectibles, multiple levels, or even enemies to avoid. Don't forget to share your project 
+                            with your classmates when you're done!
+                        </p>
+                    </div>
+                `
             }
-        </script>
-    
-    
-        <script>
-            function showExercise(exerciseId) {
-                const exercises = document.querySelectorAll('.exercise-container');
-                exercises.forEach(exercise => {
-                    exercise.style.display = 'none';
-                });
-                document.getElementById(exerciseId).style.display = 'block';
+        ];
+
+        let currentExercise = 0;
+
+        function loadExercise(index) {
+            const exercise = exercises[index];
+            document.getElementById('tutorial-content').innerHTML = exercise.content;
+            document.querySelectorAll('.exercise-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+            currentExercise = index;
+            initializeInteractiveDemos();
+        }
+
+        document.querySelectorAll('.exercise-item').forEach((item, index) => {
+            item.addEventListener('click', () => loadExercise(index));
+        });
+
+        // Load the first exercise by default
+        loadExercise(0);
+
+        // Functions for interactive demos
+        function initializeInteractiveDemos() {
+            // Conditional Demo
+            const conditionalCanvas = document.getElementById('conditional-canvas');
+            if (conditionalCanvas) {
+                const ctx = conditionalCanvas.getContext('2d');
+                let isLightOn = false;
+
+                function drawRoom() {
+                    ctx.fillStyle = isLightOn ? '#FFFF99' : '#333333';
+                    ctx.fillRect(0, 0, 400, 200);
+                    ctx.fillStyle = '#000000';
+                    ctx.font = '20px Arial';
+                    ctx.fillText(isLightOn ? 'Light is ON' : 'Light is OFF', 150, 100);
+                }
+
+                window.toggleLight = function() {
+                    isLightOn = !isLightOn;
+                    drawRoom();
+                };
+
+                drawRoom();
             }
-        </script>
-    </body>
-    </html>
 
+            // Arrow Key Demo
+            const arrowKeyCanvas = document.getElementById('arrow-key-canvas');
+            if (arrowKeyCanvas) {
+                const ctx = arrowKeyCanvas.getContext('2d');
+                let spriteX = 200;
+                let spriteY = 200;
 
+                function drawSprite() {
+                    ctx.clearRect(0, 0, 400, 400);
+                    ctx.fillStyle = '#FF0000';
+                    ctx.beginPath();
+                    ctx.arc(spriteX, spriteY, 20, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
 
+                window.moveSprite = function(direction) {
+                    switch(direction) {
+                        case 'right': spriteX = Math.min(380, spriteX + 10); break;
+                        case 'left': spriteX = Math.max(20, spriteX - 10); break;
+                        case 'up': spriteY = Math.max(20, spriteY - 10); break;
+                        case 'down': spriteY = Math.min(380, spriteY + 10); break;
+                    }
+                    drawSprite();
+                };
+
+                window.stopSprite = function() {
+                    // This function is empty as we're not implementing continuous movement
+                };
+
+                drawSprite();
+            }
+
+            // Color Change Demo
+            const colorChangeCanvas = document.getElementById('color-change-canvas');
+            if (colorChangeCanvas) {
+                const ctx = colorChangeCanvas.getContext('2d');
+                let spriteX = 200;
+
+                function drawColorSprite() {
+                    ctx.clearRect(0, 0, 400, 200);
+                    ctx.fillStyle = spriteX > 200 ? '#FF0000' : '#0000FF';
+                    ctx.beginPath();
+                    ctx.arc(spriteX, 100, 20, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+
+                window.moveColorSprite = function(direction) {
+                    spriteX += direction === 'right' ? 10 : -10;
+                    spriteX = Math.max(20, Math.min(380, spriteX));
+                    drawColorSprite();
+                };
+
+                drawColorSprite();
+            }
+
+            // Game Demo
+            const gameCanvas = document.getElementById('game-canvas');
+            if (gameCanvas) {
+                const ctx = gameCanvas.getContext('2d');
+                let playerX = 240;
+                let objectY = 0;
+                let score = 0;
+                let gameLoop;
+
+                function drawGame() {
+                    ctx.clearRect(0, 0, 480, 360);
+                    
+                    // Draw player
+                    ctx.fillStyle = '#0000FF';
+                    ctx.fillRect(playerX - 20, 340, 40, 20);
+
+                    // Draw falling object
+                    ctx.fillStyle = '#FF0000';
+                    ctx.beginPath();
+                    ctx.arc(240, objectY, 10, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Draw score
+                    ctx.fillStyle = '#000000';
+                    ctx.font = '20px Arial';
+                    ctx.fillText(`Score: ${score}`, 10, 30);
+                }
+
+                window.startGame = function() {
+                    if (gameLoop) clearInterval(gameLoop);
+                    playerX = 240;
+                    objectY = 0;
+                    score = 0;
+                    gameLoop = setInterval(() => {
+                        objectY += 5;
+                        if (objectY > 360) {
+                            objectY = 0;
+                        }
+                        if (Math.abs(playerX - 240) < 30 && objectY > 330) {
+                            score++;
+                            objectY = 0;
+                        }
+                        drawGame();
+                    }, 50);
+                };
+
+                window.movePlayer = function(direction) {
+                    playerX += direction === 'right' ? 10 : -10;
+                    playerX = Math.max(20, Math.min(460, playerX));
+                };
+
+                drawGame();
+            }
+
+            // Maze Game Demo
+            const mazeCanvas = document.getElementById('maze-canvas');
+            if (mazeCanvas) {
+                const ctx = mazeCanvas.getContext('2d');
+                let playerX = 20;
+                let playerY = 20;
+                const maze = [
+                    "##########",
+                    "#P       #",
+                    "# ###### #",
+                    "#      # #",
+                    "# #### # #",
+                    "#    # # #",
+                    "#### # # #",
+                    "#    #   #",
+                    "# ###### #",
+                    "#       E#",
+                    "##########"
+                ];
+
+                function drawMaze() {
+                    ctx.clearRect(0, 0, 400, 400);
+                    for (let y = 0; y < maze.length; y++) {
+                        for (let x = 0; x < maze[y].length; x++) {
+                            if (maze[y][x] === '#') {
+                                ctx.fillStyle = '#000000';
+                                ctx.fillRect(x * 40, y * 40, 40, 40);
+                            } else if (maze[y][x] === 'E') {
+                                ctx.fillStyle = '#00FF00';
+                                ctx.fillRect(x * 40, y * 40, 40, 40);
+                            }
+                        }
+                    }
+                    ctx.fillStyle = '#FF0000';
+                    ctx.beginPath();
+                    ctx.arc(playerX, playerY, 15, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+
+                window.moveMazeSprite = function(direction) {
+                    let newX = playerX;
+                    let newY = playerY;
+                    switch(direction) {
+                        case 'right': newX += 40; break;
+                        case 'left': newX -= 40; break;
+                        case 'up': newY -= 40; break;
+                        case 'down': newY += 40; break;
+                    }
+                    const gridX = Math.floor(newX / 40);
+                    const gridY = Math.floor(newY / 40);
+                    if (maze[gridY] && maze[gridY][gridX] && maze[gridY][gridX] !== '#') {
+                        playerX = newX;
+                        playerY = newY;
+                        if (maze[gridY][gridX] === 'E') {
+                            alert('You Win!');
+                        }
+                    }
+                    drawMaze();
+                };
+
+                drawMaze();
+            }
+        }
+
+        // Initialize demos for the first exercise
+        initializeInteractiveDemos();
+    </script>
+</body>
+</html>
