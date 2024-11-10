@@ -313,13 +313,11 @@
 
                     <div class="interactive-demo">
                         <h3 class="text-xl font-semibold mb-2">Interactive Platformer Demo</h3>
-                        <div id="platformer-demo">
-                            <canvas id="game-canvas" width="400" height="300"></canvas>
-                        </div>
+                        <canvas id="game-canvas" width="400" height="300"></canvas>
                         <div class="demo-controls">
-                            <button onclick="moveLeft()">Move Left</button>
-                            <button onclick="moveRight()">Move Right</button>
-                            <button onclick="jump()">Jump</button>
+                            <button class="demo-button" onclick="moveLeft()">Move Left</button>
+                            <button class="demo-button" onclick="moveRight()">Move Right</button>
+                            <button class="demo-button" onclick="jump()">Jump</button>
                         </div>
                     </div>
                 `
@@ -346,12 +344,10 @@
 
                     <div class="interactive-demo">
                         <h3 class="text-xl font-semibold mb-2">Platform Designer</h3>
-                        <div id="platform-designer">
-                            <canvas id="platform-canvas" width="400" height="300"></canvas>
-                        </div>
+                        <canvas id="platform-canvas" width="400" height="300"></canvas>
                         <div class="demo-controls">
-                            <button onclick="addPlatform()">Add Platform</button>
-                            <button onclick="clearPlatforms()">Clear All</button>
+                            <button class="demo-button" onclick="addPlatform()">Add Platform</button>
+                            <button class="demo-button" onclick="clearPlatforms()">Clear All</button>
                         </div>
                     </div>
                 `
@@ -378,12 +374,10 @@
 
                     <div class="interactive-demo">
                         <h3 class="text-xl font-semibold mb-2">Character Movement Demo</h3>
-                        <div id="character-demo">
-                            <canvas id="character-canvas" width="400" height="300"></canvas>
-                        </div>
+                        <canvas id="character-canvas" width="400" height="300"></canvas>
                         <div class="demo-controls">
-                            <button onmousedown="startMove('left')" onmouseup="stopMove()" ontouchstart="startMove('left')" ontouchend="stopMove()">Move Left</button>
-                            <button onmousedown="startMove('right')" onmouseup="stopMove()" ontouchstart="startMove('right')" ontouchend="stopMove()">Move Right</button>
+                            <button class="demo-button" onmousedown="startMove('left')" onmouseup="stopMove()" ontouchstart="startMove('left')" ontouchend="stopMove()">Move Left</button>
+                            <button class="demo-button" onmousedown="startMove('right')" onmouseup="stopMove()" ontouchstart="startMove('right')" ontouchend="stopMove()">Move Right</button>
                         </div>
                     </div>
                 `
@@ -409,12 +403,12 @@
                     </div>
 
                     <div class="interactive-demo">
-                        <h3 class="text-xl font-semibold mb-2">Jumping and Gravity Demo</h3>
-                        <div id="jump-demo">
-                            <canvas id="jump-canvas" width="400" height="300"></canvas>
-                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Interactive Platformer Demo</h3>
+                        <canvas id="game-canvas" width="400" height="300"></canvas>
                         <div class="demo-controls">
-                            <button onclick="jump()">Jump</button>
+                            <button class="demo-button" onclick="moveLeft()">Move Left</button>
+                            <button class="demo-button" onclick="moveRight()">Move Right</button>
+                            <button class="demo-button" onclick="jump()">Jump</button>
                         </div>
                     </div>
                 `
@@ -442,14 +436,12 @@
                     </div>
 
                     <div class="interactive-demo">
-                        <h3 class="text-xl font-semibold mb-2">Platform Collision Demo</h3>
-                        <div id="collision-demo">
-                            <canvas id="collision-canvas" width="400" height="300"></canvas>
-                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Interactive Platformer Demo</h3>
+                        <canvas id="game-canvas" width="400" height="300"></canvas>
                         <div class="demo-controls">
-                            <button onmousedown="startMove('left')" onmouseup="stopMove()" ontouchstart="startMove('left')" ontouchend="stopMove()">Move Left</button>
-                            <button onmousedown="startMove('right')" onmouseup="stopMove()" ontouchstart="startMove('right')" ontouchend="stopMove()">Move Right</button>
-                            <button onclick="jump()">Jump</button>
+                            <button class="demo-button" onclick="moveLeft()">Move Left</button>
+                            <button class="demo-button" onclick="moveRight()">Move Right</button>
+                            <button class="demo-button" onclick="jump()">Jump</button>
                         </div>
                     </div>
                 `
@@ -508,48 +500,81 @@
                 const ctx = gameCanvas.getContext('2d');
                 let characterX = 200;
                 let characterY = 250;
+                let isJumping = false;
+                let jumpVelocity = 0;
+                const gravity = 0.5;
+                const platforms = [
+                    {x: 0, y: 280, width: 400, height: 20},
+                    {x: 100, y: 200, width: 100, height: 20},
+                    {x: 250, y: 150, width: 100, height: 20}
+                ];
                 
                 function drawPlatformerDemo() {
                     ctx.clearRect(0, 0, 400, 300);
                     // Draw platforms
                     ctx.fillStyle = '#8B4513';
-                    ctx.fillRect(0, 280, 400, 20);
-                    ctx.fillRect(100, 200, 100, 20);
-                    ctx.fillRect(250, 150, 100, 20);
+                    platforms.forEach(platform => {
+                        ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+                    });
                     // Draw character
                     ctx.fillStyle = '#FF0000';
                     ctx.fillRect(characterX, characterY, 20, 30);
                 }
 
+                function checkCollision() {
+                    for (let platform of platforms) {
+                        if (characterX < platform.x + platform.width &&
+                            characterX + 20 > platform.x &&
+                            characterY + 30 > platform.y &&
+                            characterY < platform.y + platform.height) {
+                            return platform;
+                        }
+                    }
+                    return null;
+                }
+
+                function applyPhysics() {
+                    if (isJumping) {
+                        jumpVelocity += gravity;
+                        characterY += jumpVelocity;
+                    }
+
+                    const collidedPlatform = checkCollision();
+                    if (collidedPlatform) {
+                        characterY = collidedPlatform.y - 30;
+                        isJumping = false;
+                        jumpVelocity = 0;
+                    } else if (characterY < 250) {
+                        isJumping = true;
+                    }
+
+                    if (characterY > 300) {
+                        characterX = 200;
+                        characterY = 250;
+                        isJumping = false;
+                        jumpVelocity = 0;
+                    }
+
+                    drawPlatformerDemo();
+                    requestAnimationFrame(applyPhysics);
+                }
+
                 window.moveLeft = function() {
                     characterX = Math.max(0, characterX - 10);
-                    drawPlatformerDemo();
                 };
 
                 window.moveRight = function() {
                     characterX = Math.min(380, characterX + 10);
-                    drawPlatformerDemo();
                 };
 
                 window.jump = function() {
-                    if (characterY === 250) {
-                        let jumpHeight = 0;
-                        const jumpInterval = setInterval(() => {
-                            if (jumpHeight < 60) {
-                                characterY--;
-                                jumpHeight++;
-                            } else if (jumpHeight < 120) {
-                                characterY++;
-                                jumpHeight++;
-                            } else {
-                                clearInterval(jumpInterval);
-                            }
-                            drawPlatformerDemo();
-                        }, 10);
+                    if (!isJumping) {
+                        isJumping = true;
+                        jumpVelocity = -10;
                     }
                 };
 
-                drawPlatformerDemo();
+                applyPhysics();
             }
 
             // Platform Designer Demo
