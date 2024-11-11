@@ -385,14 +385,84 @@
             <details class="common-errors">
                 <summary>Common Java Errors</summary>
                 <ul>
-                    <li>Missing semicolon at the end of a statement</li>
-                    <li>Unmatched parentheses, brackets, or braces</li>
-                    <li>Using undeclared variables</li>
-                    <li>Incorrect method or variable names (case-sensitive)</li>
-                    <li>Forgetting to declare the main method</li>
-                    <li>Incorrect data type assignments</li>
-                    <li>Array index out of bounds</li>
-                    <li>Null pointer exceptions</li>
+                    <li>
+                        <strong>Error:</strong> "; expected"
+                        <br>
+                        <strong>Cause:</strong> Missing semicolon at the end of a statement
+                        <br>
+                        <strong>Fix:</strong> Add a semicolon at the end of the statement.
+                        <pre><code>System.out.println("Hello, World");</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "reached end of file while parsing" or "')' expected"
+                        <br>
+                        <strong>Cause:</strong> Unmatched parentheses, brackets, or braces
+                        <br>
+                        <strong>Fix:</strong> Ensure all opening parentheses, brackets, and braces have matching closing ones.
+                        <pre><code>if (condition) {
+                // code
+            }</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "cannot find symbol" or "variable x is not defined"
+                        <br>
+                        <strong>Cause:</strong> Using undeclared variables
+                        <br>
+                        <strong>Fix:</strong> Declare the variable before using it.
+                        <pre><code>int x = 5;
+            System.out.println(x);</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "cannot find symbol" (for methods) or "cannot resolve symbol" (for variables)
+                        <br>
+                        <strong>Cause:</strong> Incorrect method or variable names (case-sensitive)
+                        <br>
+                        <strong>Fix:</strong> Check the spelling and capitalization of method and variable names.
+                        <pre><code>String message = "Hello";
+            System.out.println(message); // Not Message or MESSAGE</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "main method not found in class"
+                        <br>
+                        <strong>Cause:</strong> Forgetting to declare the main method
+                        <br>
+                        <strong>Fix:</strong> Include the main method in your class.
+                        <pre><code>public class MyClass {
+                public static void main(String[] args) {
+                    // Your code here
+                }
+            }</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "incompatible types" or "possible lossy conversion"
+                        <br>
+                        <strong>Cause:</strong> Incorrect data type assignments
+                        <br>
+                        <strong>Fix:</strong> Ensure you're assigning values to variables of the correct type, or use explicit casting when necessary.
+                        <pre><code>int x = 5;
+            double y = 2.5;
+            int z = (int) y; // Explicit casting</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "ArrayIndexOutOfBoundsException"
+                        <br>
+                        <strong>Cause:</strong> Trying to access an array index that doesn't exist
+                        <br>
+                        <strong>Fix:</strong> Ensure array indices are within the valid range (0 to length-1).
+                        <pre><code>int[] arr = {1, 2, 3};
+            System.out.println(arr[2]); // Last valid index is 2</code></pre>
+                    </li>
+                    <li>
+                        <strong>Error:</strong> "NullPointerException"
+                        <br>
+                        <strong>Cause:</strong> Trying to use a reference variable that points to a null object
+                        <br>
+                        <strong>Fix:</strong> Initialize objects before using them, or check for null before accessing object methods or properties.
+                        <pre><code>String str = null;
+            if (str != null) {
+                System.out.println(str.length());
+            }</code></pre>
+                    </li>
                 </ul>
             </details>
         </main>
