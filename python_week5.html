@@ -375,8 +375,8 @@
             },
             {
                 id: 'lesson1',
-                title: 'List Operations',
-                video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                title: 'List Basics',
+                video: 'https://www.youtube.com/embed/1KLgcBcWCsE?si=vsA0cIV7w1jOdd4g',
                 description: `
                     <h2>Common List Operations</h2>
                     <p>Python provides a variety of operations that you can perform on lists. Let's explore some of the most common ones.</p>
@@ -446,8 +446,8 @@
             },
             {
                 id: 'lesson2',
-                title: 'List Methods and Advanced Techniques',
-                video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                title: 'List Methods',
+                video: 'https://www.youtube.com/embed/0yySumZTxJ0?si=w4TBIJ8ZytXa5VFY',
                 description: `
                     <h2>Advanced List Methods and Techniques</h2>
                     <p>Python provides a rich set of built-in methods for working with lists. Let's explore some of the most useful ones.</p>
@@ -509,52 +509,6 @@
                     <p>These advanced techniques will help you manipulate lists more efficiently in your Python programs.</p>
                 `
             },
-            {
-                id: 'lesson3',
-                title: 'Working with Nested Lists',
-                video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                description: `
-                    <h2>Nested Lists in Python</h2>
-                    <p>Nested lists are lists that contain other lists as elements. They are useful for representing matrices, grids, or hierarchical data structures.</p>
-
-                    <h3>Creating Nested Lists</h3>
-                    <div class="example-box">
-                        <code>
-                        matrix = [
-                            [1, 2, 3],
-                            [4, 5, 6],
-                            [7, 8, 9]
-                        ]
-                        print(matrix)
-
-                        # Accessing Elements in Nested Lists
-                        print(matrix[0][1])  # Output: 2
-                        print(matrix[2][0])  # Output: 7
-
-                        # Modifying Nested Lists
-                        matrix[1][1] = 0
-                        print(matrix)  # Output: [[1, 2, 3], [4, 0, 6], [7, 8, 9]]
-
-                        # Iterating Over Nested Lists
-                        for row in matrix:
-                            for element in row:
-                                print(element, end=" ")
-                            print()  # New line after each row
-
-                        # List Comprehensions with Nested Lists
-                        # Create a 3x3 matrix of squares
-                        squares = [[i**2 for i in range(3)] for _ in range(3)]
-                        print(squares)  # Output: [[0, 1, 4], [0, 1, 4], [0, 1, 4]]
-
-                        # Flatten a nested list
-                        flat_list = [item for sublist in matrix for item in sublist]
-                        print(flat_list)  # Output: [1, 2, 3, 4, 0, 6, 7, 8, 9]
-                        </code>
-                    </div>
-
-                    <p>Nested lists are powerful data structures that allow you to represent complex data in Python. Understanding how to work with them effectively will greatly enhance your programming skills.</p>
-                `
-            }
         ];
 
         let currentLessonIndex = 0;
