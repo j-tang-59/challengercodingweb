@@ -189,7 +189,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="online_compiler.html">Online Compiler</a></li>
             <li><a href="resources.html">Resources</a></li>
-            <li><a href="https://forms.office.com/r/BnXvEhKGVs" target="_blank" class="enroll-button">Enroll</a></li>
+            <li><a href="#" target="_blank" class="enroll-button">Enroll</a></li>
 
         </ul>
     </nav>
@@ -215,6 +215,11 @@
         <p id="error" class="error"></p>
     </div>
 
+    <script>
+        document.querySelectorAll(".enroll-button").forEach(button => {
+            button.href = enrollLink;
+        });
+    </script>
     <script>
         const loginForm = document.getElementById('loginForm');
         loginForm.addEventListener('submit', function(event) {

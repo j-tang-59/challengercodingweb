@@ -338,7 +338,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="compiler.html">Online Compiler</a></li>
             <li><a href="resources.html">Resources</a></li>
-            <li><a href="https://tinyurl.com/challengercoding" target="_blank" rel="noopener noreferrer">Enroll</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Enroll</a></li>
         </ul>
     </nav>
 
@@ -410,7 +410,11 @@ System.out.println(arr[0][1]); // Valid
             </details>
         </main>
     </div>
-
+    <script>
+        document.querySelectorAll(".enroll-button").forEach(button => {
+            button.href = enrollLink;
+        });
+    </script>
     <script>
         lucide.createIcons();
 

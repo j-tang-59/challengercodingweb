@@ -286,7 +286,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="online_compiler.html">Online Compiler</a></li>
             <li><a href="resources.html">Links and Other Resources</a></li>
-            <li><a href="https://tinyurl.com/challengercoding" target="_blank" class="enroll-button">Enroll</a></li>
+            <li><a href="#" target="_blank" class="enroll-button">Enroll</a></li>
 
         </ul>
     </nav>
@@ -396,6 +396,11 @@
     </footer>
     
 
+    <script>
+        document.querySelectorAll(".enroll-button").forEach(button => {
+            button.href = enrollLink;
+        });
+    </script>
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
