@@ -1,1 +1,1 @@
-const enrollLink = "google.com";
+const enrollLink = "https://google.com";
