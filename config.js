@@ -1,1 +1,1 @@
-const enrollLink = "https://forms.office.com/r/BnXvEhKGVs";
+const enrollLink = "google.com";
